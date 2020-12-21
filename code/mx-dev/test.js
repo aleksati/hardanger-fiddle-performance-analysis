@@ -1,36 +1,16 @@
-autowatch = 1;
 inlets = 1;
 outlets = 1;
-
-var measure = "[[[[3 4] [60]] [1/2[Db5 100 0]] [1/2[E#5] [G#4]]]]";
-var test = [1, 2, 3];
+autowatch = 1;
 
 
-//[
-//	[
-//		[ [4 4] [60] ] 
-//		[ 1/2[Db5 100 0] ] 
-//		[ 1/2[E#5 100 0] [G#4 100 0] ]
-//	]
-//];
+function calc(freq) {
+	var bach_freq_ref = 262;
+	var bach_cent_ref = 6000;
 
+	var cent = bach_cent_ref+(1200 * (Math.log(freq/bach_freq_ref)/Math.log(2)));
 
-[
-	[ 
-		[ [3 4 ] [60] ]
-	
-		[   ]
-		[
-	]
-	
-]
+	// the inverse function:
+	// var freq = 262 * Math.pow(2, ((cent-6000)/1200));
 
-
-
-
-function bang() {
-	test.push();
-	post(test);
-	outlet(0, test);
-	
-	};
+	outlet(0, cent);
+}; 
