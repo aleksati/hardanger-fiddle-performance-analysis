@@ -7,29 +7,31 @@ outlets = 3;
 // duration(ms)
 // pitch(cent)
 // markers(barlines for every beat).
+// Color for ornametation
 
 // outlet 1 = to [bach.roll]
-// outlet 2 = to Coll for visualization
-// outlet 3 = to [at.arrayTransform.js]
+// outlet 2 = to Coll for data viewing
 
-// csv/data format:
-// [ [onset, offset, pitch, bar, numerator, denominator] ]
-var data = new Array();
+// Global variables
+data = new Array();
+// [ [onset, offset, pitch, bar, numerator, denominator, ornament] ]
 
-var data_onset_idx = 0;
-var data_offset_idx = 1;
-var data_pitch_idx = 2;
-var data_bar_idx = 3;
-var data_numer_idx = 4;
-var data_denom_idx = 5;
+data_onset_idx = 0;
+data_offset_idx = 1;
+data_pitch_idx = 2;
+data_bar_idx = 3;
+data_numer_idx = 4;
+data_denom_idx = 5;
+data_orna_idx = 6;
+beats_per_bar = 3;
 
-var beats_per_bar = 3;
-
+// Local variables
+// Bach library converts pitch to cents with C4 (262hz) as reference. Which is == to 6000 cents.
 var bach_freq_ref = 262;
 var bach_cent_ref = 6000;
 
 
-// import csv to Coll and array().
+// import csv to Coll and Data variable (array).
 function csv(filename) {
 	data = new Array();
 	var f = new File(filename);
@@ -43,37 +45,38 @@ function csv(filename) {
 			// convert strings to array (elements are delimited by a comma)
 			var line = str.split(",");
 			
-			// uncomment to devide the 6th column by 1000
-			//a[5] /= 1000;
-			
-			// store in the coll
+			// store in the coll for jit.cellblock
 			outlet(1, "store", line);
+			
+			// convert the string numbers into actual numbers.
+			var numb_line = new Array();
+			for (var i = 0; i < line.length; i++) {
+				numb_line.push(parseFloat(line[i]));
+			};
+			
 			// store in the data array
-			data = data.concat([line]);
+			data = data.concat([numb_line]);
 		};
 		f.close();
 	} else {
 		error("couldn't find the file ("+ filename +")\n");
 	};
-
-	//send the data onwards for further processing.
-	outlet(2, data);
 };
 
 
-function export_data() {
-	outlet(3, data);
-};
+//function export_data() {
+//	outlet(3, data);
+//};
 
+//convert the data into bach-readable data and send out to [bach.roll]
 // ADD SUPPORT FOR ORNAMETATIONS. THEY SHOULD BE IN DIFFERENT COLOR, OR SOMETHING..
 function mir2bach() {
-	//convert the input data into bach-readable data.
 	var onsets = [];
 	var durations = [];
 	var pitches = [];
 	var markers = new Array();
 
-	//collect the data in the variables above.
+	//collect the data in the variables declared above.
 	for(var i=0; i<data.length;i++) {
 		
 		// onsets. in miliseconds

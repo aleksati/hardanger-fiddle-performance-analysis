@@ -1,89 +1,144 @@
 autowatch = 1;
 inlets = 1;
-outlets = 1;
+outlets = 2;
 
 // Here the data consist of every event in a beat (pauses and notes!!!).
 // That way, we can recreate onset&offsets via ratios (event percentages of total beat duration).
 
 
-// Now I need to add.. if the beat duration changes. that the changes would be made.
+//var bar_column_idx = 2; 
+//var beat_column_idx = 3;
+//var beats_per_bar = 3;
 
-
-
-//ALSO, the regular data needs to be converted to this kind of data (with spaces between ratios).
-
-var bar_column_idx = 2; 
-var beat_column_idx = 3;
-var beats_per_bar = 3;
-var data = new Array();
+// global variables declared in [at.transc2bach.js]
+// data = new Array(); [ [onset, offset, pitch, bar, numerator, denominator, ornament] ]
+// data_onset_idx = 0;
+// data_offset_idx = 1;
+// data_pitch_idx = 2;
+// data_bar_idx = 3;
+// data_numer_idx = 4;
+// data_denom_idx = 5;
+// data_orna_idx = 6;
+// beats_per_bar = 3;
 
 //format is onset, offset, bar number, beat number
-data[0] = [0, 1.56, 1, 1];
-data[1] = [1.56, 1.9, 1, 1];
-data[2] = [1.9, 2.4, 1, 1];
-
-data[3] = [2.4, 4.5, 1, 2];
-data[4] = [4.5, 5.1, 1, 2];
-data[5] = [5.1, 5.7, 1, 2];
-
-data[6] = [5.7, 6.3, 1, 3];
-data[7] = [6.3, 6.5, 1, 3];
-
-data[8] = [6.5, 7.0, 2, 1];
-data[9] = [7.0, 8.0, 2, 1];
-
-data[10] = [8.0, 8.32, 2, 2];
-data[11] = [8.32, 8.9, 2, 2];
-data[12] = [8.9, 9.4, 2, 2];
-
-data[13] = [9.4, 10.0, 2, 3];
-data[14] = [10.0, 10.3, 2, 3];
+// data[0] = [0, 1.56, 1, 1];
+// data[1] = [1.56, 1.9, 1, 1];
+// data[2] = [1.9, 2.4, 1, 1];
+// 
+// data[3] = [2.4, 4.5, 1, 2];
+// data[4] = [4.5, 5.1, 1, 2];
+// data[5] = [5.1, 5.7, 1, 2];
+// 
+// data[6] = [5.7, 6.3, 1, 3];
+// data[7] = [6.3, 6.5, 1, 3];
+// 
+// data[8] = [6.5, 7.0, 2, 1];
+// data[9] = [7.0, 8.0, 2, 1];
+// 
+// data[10] = [8.0, 8.32, 2, 2];
+// data[11] = [8.32, 8.9, 2, 2];
+// data[12] = [8.9, 9.4, 2, 2];
+// 
+// data[13] = [9.4, 10.0, 2, 3];
+// data[14] = [10.0, 10.3, 2, 3];
 
 function calc_note_ratios() {
 
-    //here we store the note ratios. 
-    var event_perc = new Array();
-    // get the total length of the track in seconds.
-    var beat_durations = new Array();
-    //var temp_data = new Array();
+    // store the duration of every beat (ms) in the track. onset - onset
+    var beat_dur_ms = new Array();
+    // store the note duration percentages with respect to the duration (ms) of the associated beat. 
+    var note_dur_perc = new Array();
+    // store the note onset percentages with respect to the duration (ms) of the associated beat. 
+    var note_onset_perc = new Array();
+
+    // first, collect the beat durations (ms) of every beat in the track. 
+    // add onsets of every 1st beat note to array.
+    var temp_array = new Array();
+    for (var y=0; y<data.length; y++) {
+        if (data[y][data_denom_idx] == beats_per_bar) {
+            temp_array.push(data[y][data_onset_idx]*1000); // in ms
+
+            // we also need to add the last beat's offset as an "onset".
+            if (y == data.length-1) {
+                temp_array.push(data[y][data_offset_idx]*1000);
+            };
+        };
+    };
+    // calc the difference between each subsequent beat onsets and add the durations to beat_dur_ms.
+    for (var q=0; q<temp_array.length-1; q++) {
+        beat_dur_ms.push(temp_array[q+1] - temp_array[q]);
+    };
+
+
+    // next, collect the onset and duration percentages of every note based on the beat durations.
+    var temp_data;
+    var collec_bool = false;
     var curr_beat_number = 0;
     var curr_bar_number = 0;
-    var total_num_bars = data[data.length-1][bar_column_idx];
-
-    //Iterate over the number of bars.
-    for(var i=0; i<total_num_bars;i++) {
-        //set the current bar number
+    var total_num_bars = data[data.length-1][data_bar_idx];
+    // iterate over the number of bars.
+    for(var i=0; i<total_num_bars; i++) {
+        // set the current bar number
         curr_bar_number = i+1;
-        outlet(0, "bar number:", curr_bar_number);
+        //outlet(0, "bar number:", curr_bar_number);
 
-        //Iterate over the number of beats
+        // iterate over the number of beats
         for(var j=0; j<beats_per_bar; j++) {
-            //set the current beat number
+            // set the current beat number
             curr_beat_number = j+1;
-            outlet(0, "beat number:", curr_beat_number);
-
+            //outlet(0, "beat number:", curr_beat_number);
             temp_data = new Array();
-            // iterate over the data
+
+            // iterate over every row of the data and collect the desired rows (according to the current beat and bar number) for processing
             for(var x=0; x<data.length; x++) {
-                //if the row has the desired bar and beat number
-                if ((data[x][bar_column_idx] == curr_bar_number) && (data[x][beat_column_idx] == curr_beat_number)) {
-                    //load it into the temp_array for further processing.
+                // we look at the denominator. If we find a 3, then we check if its the correct bar and beat before setting the collect bool to true.
+                // if the row doesnt satisfy these conditions, we dont collect.
+                if (data[x][data_denom_idx] == beats_per_bar) {
+                    if ((data[x][data_bar_idx] == curr_bar_number) && (data[x][data_numer_idx] == curr_beat_number)) {
+                        collec_bool = true;
+                    } else {
+                        collec_bool = false;
+                    };
+                };
+
+                if (collec_bool) {
                     temp_data.push(data[x]);
                 };
             };
 
-            //for(var z=0; z<temp_data.length;z++){
-            //    outlet(0, "data:",temp_data[z]);
+            // print the temp data.. just to see.
+            //for(var f=0; f<temp_data.length; f++){
+            //    outlet(0, "data:",temp_data[f]);
             //};
 
-
-            // Here I do the processing and ratio collection of each beat
-            // store in the event precentage array.
-
-
+            // collect onset percentages (the notes "position" in the bar) of each note with respect to the beat duration.
+            temp_array = new Array();
+            for (var z=0; z<temp_data.length; z++) {
+                temp_array.push((((temp_data[z][data_onset_idx]-temp_data[0][data_onset_idx])*1000) / beat_dur_ms[j+(i*beats_per_bar)]) * 100);
+            };
+            note_onset_perc.push(temp_array);
+            
+            // collect duration percentage of each note with respect to the beat duration.
+            temp_array = new Array();
+            for (var w=0; w<temp_data.length; w++) {
+                temp_array.push((((temp_data[w][data_offset_idx] - temp_data[w][data_onset_idx])*1000) / beat_dur_ms[j+(i*beats_per_bar)]) * 100);
+            };
+            note_dur_perc.push(temp_array);
         };
+    };
 
-    }; 
+    outlet(0, "Total duration of beats:", beat_dur_ms);
+    
+    for(var i=0; i<note_onset_perc.length; i++){
+        outlet(0, "Onset-percentages/position:", note_onset_perc[i]);
+    };
+
+    for(var j=0; j<note_dur_perc.length; j++){
+        outlet(0, "Duration percentages:", note_dur_perc[j]);
+    };
+
+    //outlet(0, "beat durations:", beat_dur_ms);
 
     // Now I need to find the first beat.. calc the durations and percentages, then move on. 
 
@@ -106,7 +161,8 @@ function calc_note_ratios() {
 
 
 
-// maybe here we can pass the new beat duration..
+// maybe here we can pass beat durations..
+// and calculate all the new note/event duration BASED ON the event percentages (ratios) collected. 
 function recreate() {
 
     var recreated_data = new Array();
@@ -137,3 +193,7 @@ function recreate() {
         outlet(0,"recreated duration from event percentages of the total duration:", recreated_data[i]);
     };
 };
+
+
+
+
