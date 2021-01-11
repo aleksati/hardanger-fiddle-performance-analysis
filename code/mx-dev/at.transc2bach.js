@@ -6,33 +6,38 @@ outlets = 3;
 // onset(ms)
 // duration(ms)
 // pitch(cent)
-// marker_tags(barlines for every beat).
+// global_marker_tags(barlines for every beat).
 // Color for ornametation
 
 // outlet 1 = to [bach.roll]
 // outlet 2 = to Coll for data viewing
 
-// Global variables
-data = new Array();
+// Global variables:
+global_data = new Array();
 // [ [onset, offset, pitch, bar, numerator, denominator, ornament] ]
 
-data_onset_idx = 0;
-data_offset_idx = 1;
-data_pitch_idx = 2;
-data_bar_idx = 3;
-data_numer_idx = 4;
-data_denom_idx = 5;
-data_orna_idx = 6;
-beats_per_bar = 3;
+global_data_onset_idx = 0;
+global_data_offset_idx = 1;
+global_data_pitch_idx = 2;
+global_data_bar_idx = 3;
+global_data_numer_idx = 4;
+global_data_denom_idx = 5;
+global_data_orna_idx = 6;
+
+global_beats_per_bar = 3;
 
 // I use these two variable in [at.marker2onset.js]
-marker_tags = new Array();
-durations = new Array();
+global_marker_tags;
+global_note_durations;
 
+// a bool that identifies if the ratio_init function has been called in the [at.calcRatios.js].
+global_calcratio_init = false;
+// a bool that identifies if the marker_init function has been called in the [at.marker2onset.js].
+global_marker2onset_init = false;
 
 // import csv to Coll and Data variable (array).
 function csv(filename) {
-	data = new Array();
+	global_data = new Array();
 	var f = new File(filename);
 	
 	if (f.open) {
@@ -40,60 +45,83 @@ function csv(filename) {
 		outlet(1, "clear");
 		
 		while (f.position < f.eof) {
+			// read line
 			var str = f.readline();	
-			// convert strings to array (elements are delimited by a comma)
+			// convert strings to array (of symbols) (elements are delimited by a comma)
 			var line = str.split(",");
 			
-			// store in the coll for jit.cellblock
-			outlet(1, "store", line);
-			
-			// convert the string numbers into actual numbers.
+			// convert the symbols (string numbers) into actual numbers.
 			var numb_line = new Array();
 			for (var i = 0; i < line.length; i++) {
 				numb_line.push(parseFloat(line[i]));
 			};
 			
-			// store in the data array
-			data = data.concat([numb_line]);
-		};
+			// We skip onramentations for now. So only care about NaN and 0.
+			if ((numb_line[global_data_orna_idx] != numb_line[global_data_orna_idx]) || (numb_line[global_data_orna_idx] == 0)) {
+
+				// some of the rows (note events) have the same beat positions at offset times.
+				// We only want 1 row (time) to indicate the start of a new beat. Therefore we mark the first, and exclude the others that have the same beat position. (for instance 1 1 3)
+				if (global_data.length) {
+					// if the line has the same bar number as the previous entry AND
+					// the same numerator number as the previous entry AND
+					// the same denominator number as the previous entry.
+					if (numb_line[global_data_bar_idx] == global_data[global_data.length-1][global_data_bar_idx] && 
+						numb_line[global_data_numer_idx] == global_data[global_data.length-1][global_data_numer_idx] && 
+						numb_line[global_data_denom_idx] == global_data[global_data.length-1][global_data_denom_idx]) {
+			
+						// then we edit the numerator and demonator to 0 0. before storing.
+						numb_line[global_data_numer_idx] = 0;
+						numb_line[global_data_denom_idx] = 0;
+					}
+				}
+				// store in the data array
+				global_data = global_data.concat([numb_line]);
+			}
+		}
 		f.close();
+		// store the data in a Coll for jit.cellblock viewing
+		for (var i=0; i<global_data.length; i++) {
+			outlet(1, i, global_data[i]);
+		}
 	} else {
 		error("couldn't find the file ("+ filename +")\n");
-	};
-};
+	}
+}
 
 
-//convert the data into bach-readable data and send out to [bach.roll]
+// Convert the data into bach-readable data and send out to [bach.roll].
+// Also init other js files.
 // ADD SUPPORT FOR ORNAMETATIONS. THEY SHOULD BE IN DIFFERENT COLOR, OR SOMETHING..
 function mir2bach() {
 	var onsets = new Array();
 	var pitches = new Array();
-	marker_tags = new Array();
-	durations = new Array();
+	global_calcratio_init = false;
+	global_marker2onset_init = false;
+	global_marker_tags = new Array();
+	global_note_durations = new Array();
 
-	//collect the data in the variables declared above.
-	for(var i=0; i<data.length;i++) {
-		
+	//collect the data in the variables declared above. IGNORE ornamentations
+	for(var i=0; i<global_data.length;i++) {
 		// onsets. in miliseconds
-		onsets.push(Math.floor(data[i][data_onset_idx]*1000));
+		onsets.push(Math.floor(global_data[i][global_data_onset_idx]*1000));
 
-		// durations. in miliseconds
-		durations.push(Math.floor(data[i][data_offset_idx]*1000)-onsets[i]);
+		// global_note_durations. in miliseconds
+		global_note_durations.push(Math.floor(global_data[i][global_data_offset_idx]*1000)-onsets[i]);
 
 		// pitches = Frequency to MIDI cents. Round to nearest int cent.
-		//pitches.push(data[i][data_pitch_idx]*100);
-		pitches.push(midi2hz2cent(data[i][data_pitch_idx]));
+		//pitches.push(data[i][global_data_pitch_idx]*100);
+		pitches.push(midi2hz2cent(global_data[i][global_data_pitch_idx]));
 
-		// beat marker_tags
-		// if the denominator in the data is equal to the number of beats per bar.
+		// beat onsets = global_marker_tags
+		// if the denominator in the global_data is equal to the number of beats per bar.
 		// we know the note is a "metric anchor", so we have a marker here.
-		// marker_tags are stored with ["addmaker", note-onset, bar-num, beat-num]
-		if (data[i][data_denom_idx] == beats_per_bar) {
-			marker_tags.push([
+		// global_marker_tags are stored with ["addmaker", note-onset, bar-num, beat-num]
+		if (global_data[i][global_data_denom_idx] == global_beats_per_bar) {
+			global_marker_tags.push([
 				"addmarker",
 				onsets[i],
-				data[i][data_bar_idx],
-				data[i][data_numer_idx]]);
+				global_data[i][global_data_bar_idx],
+				global_data[i][global_data_numer_idx]]);
 		}
 	}
 
@@ -103,15 +131,20 @@ function mir2bach() {
 	outlet(0, "clear");
 	outlet(0, "onsets", onsets);
 	outlet(0, "cents", pitches);
-	outlet(0, "durations", durations);
+	outlet(0, "global_note_durations", global_note_durations);
 	outlet(0, "bang");
 
-	for(var i=0; i<marker_tags.length; i++) {
-		outlet(0,"markers", marker_tags[i]);
+	for(var i=0; i<global_marker_tags.length; i++) {
+		outlet(0,"markers", global_marker_tags[i]);
 	}
 
-	//send init message to other js files; init function in [marker2onset.js] and calc_ratios in [ratioTransform.js]
+	//send init message to other js files; init function in [marker2onset.js] and [calcRatios.js]
 	outlet(2, "init");
+
+
+	//if (global_data[1][global_data_orna_idx] != global_data[1][global_data_orna_idx] || global_data[1][global_data_orna_idx] == 0) {
+	//	do the stuff
+	//}
 }
 
 
@@ -123,15 +156,4 @@ function midi2hz2cent(mir_midi) {
 	var hz = Math.pow(2, (mir_midi-69)/12)*440;
 	var cent = bach_cent_ref+(1200 * (Math.log(hz/bach_freq_ref)/Math.log(2)));
 	return cent;
-};
-
-
-
-function print_data() {
-	// print the input data as array
-	for(var i = 0; i < data.length; i++) {
-		outlet(0, data[i]);
-	};
-	//print a cell
-	//outlet(0, data[1][2]);
-};
+}

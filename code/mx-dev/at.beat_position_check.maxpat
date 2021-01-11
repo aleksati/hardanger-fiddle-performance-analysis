@@ -190,8 +190,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 177.048582677046397, 188.564102590084076, 178.0, 22.0 ],
-					"text" : "if $f1 > $f2 then $f1 else out2 1"
+					"patching_rect" : [ 177.048582677046397, 188.564102590084076, 184.0, 22.0 ],
+					"text" : "if $f1 >= $f2 then $f1 else out2 1"
 				}
 
 			}
@@ -210,12 +210,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-207",
-					"linecount" : 6,
+					"linecount" : 8,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 379.048582677046397, 150.564102590084076, 187.0, 89.0 ],
-					"text" : "Check that all the new beat onsets are increasing. If they are NOT, then we reset the bach.roll. \n\nThis is because the beat cannot come before the previous beat."
+					"patching_rect" : [ 383.048582677046397, 150.564102590084076, 188.0, 117.0 ],
+					"text" : "Make sure that all the new beat onsets are increasing in sequential order. If they are NOT, then we reset the bach.roll and all the data. \n\nThis is because the beat cannot come before the previous beat."
 				}
 
 			}
