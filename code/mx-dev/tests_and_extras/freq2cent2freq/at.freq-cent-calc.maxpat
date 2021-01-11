@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 629.0, 163.0, 531.0, 328.0 ],
+		"rect" : [ 290.0, 182.0, 760.0, 420.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,13 +40,61 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 502.0, 103.0, 182.0, 20.0 ],
+					"text" : "midi notes with 440 as reference"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"format" : 6,
+					"id" : "obj-4",
+					"maxclass" : "flonum",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 436.0, 91.0, 50.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 368.0, 260.0, 87.0, 22.0 ],
+					"text" : "440"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 436.0, 144.0, 135.0, 22.0 ],
+					"text" : "prepend midi2hz2cent"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-27",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 253.0, 210.0, 98.0, 22.0 ],
-					"text" : "2400 Cent"
+					"patching_rect" : [ 215.0, 260.0, 113.0, 22.0 ],
+					"text" : "6008.524054 Cent"
 				}
 
 			}
@@ -59,7 +107,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 307.0, 56.0, 50.0, 22.0 ]
+					"patching_rect" : [ 295.0, 91.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -70,7 +118,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 307.0, 98.0, 101.0, 22.0 ],
+					"patching_rect" : [ 295.0, 144.0, 101.0, 22.0 ],
 					"text" : "prepend hz2cent"
 				}
 
@@ -84,7 +132,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 101.0, 62.0, 50.0, 22.0 ]
+					"patching_rect" : [ 154.0, 91.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -95,7 +143,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 101.0, 98.0, 102.0, 22.0 ],
+					"patching_rect" : [ 154.0, 144.0, 102.0, 22.0 ],
 					"text" : "prepend cent2hz"
 				}
 
@@ -107,7 +155,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 83.0, 210.0, 98.0, 22.0 ],
+					"patching_rect" : [ 75.0, 256.0, 98.0, 22.0 ],
 					"text" : "36.760632 Hz"
 				}
 
@@ -116,10 +164,10 @@
 				"box" : 				{
 					"id" : "obj-75",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 166.0, 151.0, 139.0, 22.0 ],
+					"numinlets" : 3,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "" ],
+					"patching_rect" : [ 154.0, 197.0, 301.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "freq-cent-calculator.js",
 						"parameter_enable" : 0
@@ -131,6 +179,13 @@
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-75", 2 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-81", 0 ],
 					"source" : [ "obj-12", 0 ]
@@ -148,6 +203,20 @@
 				"patchline" : 				{
 					"destination" : [ "obj-23", 0 ],
 					"source" : [ "obj-26", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 1 ],
+					"source" : [ "obj-75", 2 ]
 				}
 
 			}
@@ -175,7 +244,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "freq-cent-calculator.js",
-				"bootpath" : "~/Documents/GitHub/thesis/code/mx-dev",
+				"bootpath" : "~/Documents/GitHub/thesis/code/mx-dev/tests_and_extras/freq2cent2freq",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
