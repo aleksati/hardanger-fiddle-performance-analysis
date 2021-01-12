@@ -7,10 +7,11 @@ outlets = 3;
 // duration(ms)
 // pitch(cent)
 // global_marker_tags(barlines for every beat).
-// Color for ornametation
+// Color for ornametation?
 
 // outlet 1 = to [bach.roll]
 // outlet 2 = to Coll for data viewing
+// outlet 3 = init message to calcRatio and bach2onsets.
 
 // Global variables:
 global_data = new Array();
@@ -26,14 +27,14 @@ global_data_orna_idx = 6;
 
 global_beats_per_bar = 3;
 
-// I use these two variable in [at.marker2onset.js]
-global_marker_tags;
-global_note_durations;
+// Used in [at.bach2onset.js]:
+global_marker_tags = new Array();
+global_note_durations = new Array();
 
 // a bool that identifies if the ratio_init function has been called in the [at.calcRatios.js].
 global_calcratio_init = false;
-// a bool that identifies if the marker_init function has been called in the [at.marker2onset.js].
-global_marker2onset_init = false;
+// a bool that identifies if the marker_init function has been called in the [at.bach2onset.js].
+global_bach2onset_init = false;
 
 // import csv to Coll and Data variable (array).
 function csv(filename) {
@@ -57,6 +58,7 @@ function csv(filename) {
 			};
 			
 			// We skip onramentations for now. So only care about NaN and 0.
+			// (numb_line[global_data_orna_idx] != numb_line[global_data_orna_idx]) || (numb_line[global_data_orna_idx] == 0)
 			if ((numb_line[global_data_orna_idx] != numb_line[global_data_orna_idx]) || (numb_line[global_data_orna_idx] == 0)) {
 
 				// some of the rows (note events) have the same beat positions at offset times.
@@ -96,7 +98,7 @@ function mir2bach() {
 	var onsets = new Array();
 	var pitches = new Array();
 	global_calcratio_init = false;
-	global_marker2onset_init = false;
+	global_bach2onset_init = false;
 	global_marker_tags = new Array();
 	global_note_durations = new Array();
 
@@ -125,26 +127,25 @@ function mir2bach() {
 		}
 	}
 
-	// finally we add an ending marker.
+	// finally we add an ending marker...
+
+	// initialize the [v beat_onsets] object with list.
+	var mx_obj = this.patcher.getnamed("valuebox_beat_onsets");
+    mx_obj.message(onsets);
 
 	//output data to [bach.roll]
 	outlet(0, "clear");
 	outlet(0, "onsets", onsets);
 	outlet(0, "cents", pitches);
-	outlet(0, "global_note_durations", global_note_durations);
+	outlet(0, "durations", global_note_durations);
 	outlet(0, "bang");
 
 	for(var i=0; i<global_marker_tags.length; i++) {
 		outlet(0,"markers", global_marker_tags[i]);
 	}
 
-	//send init message to other js files; init function in [marker2onset.js] and [calcRatios.js]
+	//send init message to other js files; init function in [bach2onset.js] and [calcRatios.js]
 	outlet(2, "init");
-
-
-	//if (global_data[1][global_data_orna_idx] != global_data[1][global_data_orna_idx] || global_data[1][global_data_orna_idx] == 0) {
-	//	do the stuff
-	//}
 }
 
 

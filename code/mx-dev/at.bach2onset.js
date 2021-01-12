@@ -2,22 +2,22 @@ autowatch = 1;
 inlets = 1;
 outlets = 2;
 
-// Takes the markers and duration bump from bach.roll and creates a list with new marker onsets.
-// Needs the durations to set the last item of the list which is the duration of the last beat.
-// Needs to have messages [dump durations] and [getmarkers @namefirst 1] sending to first inlet, from bangs from last outlet.
+// Takes the markers and duration bump from bach.roll and creates a list with new beat/marker onsets.
+// We need the note durations here to set the last item of the list, which aids in calculating the duration of the last beat.
+
+// Requires messages [dump durations] and [getmarkers @namefirst 1] sending to first inlet, from BANGS out the last outlet of [bach.roll]
 
 // global variables in use:
 // global_marker_tags ["addmarker", beat onset (ms), marker tag bar, marker tag beat]
 // global_note_durations -- all the note durations in the track. (ms)
-// global_marker2onset_init = false;
+// global_bach2onset_init = false;
 
 // local
-var new_note_dur;
 var reference_marker_tags;
 
 
 // message recieved from [transc2bach.js] after calling the mir2bach function.
-function marker_init() {
+function bach2onset_init() {
 
   // add the marker_tags (1.1 1.2 1.3 2.1 2.2 etc..) to local variable.
   reference_marker_tags = new Array();
@@ -27,16 +27,16 @@ function marker_init() {
 
   // initalize the note durations with the global durations.
   new_note_dur = global_note_durations;
-  global_marker2onset_init = true;
+  global_bach2onset_init = true;
 }
 
 
 // clean the marker list coming from bach.roll.
 // arguments include ["[" tag, duration, none "]" etc..]
 function markers() {
-  if (global_marker2onset_init) {
+  if (global_bach2onset_init) {
     var new_marker_onsets = arrayfromargs(arguments);
-
+    
     // remove the brackets and "none" from the new markers / beat onsets.
     for (var i=0; i<new_marker_onsets.length; i++) {
       if ((new_marker_onsets[i] == "[") || (new_marker_onsets[i] == "]")) {
@@ -75,13 +75,13 @@ function markers() {
   
     outlet(0, new_marker_onsets);
   } else {
-    post("Init error (marker2onsets). The [mir2bach] function has not been called yet..?");
+    error("Init error (bach2onsets). The [mir2bach] function has not been called yet..?");
   }
 }
 
 
-
 // Yes, I still need this, because if we want to squeeze the last bar (not implemented yet...) the last note duration might change?
+var new_note_dur;
 function notedurations() {
   new_note_dur = arrayfromargs(arguments);
   // remove the brackets from the duration list

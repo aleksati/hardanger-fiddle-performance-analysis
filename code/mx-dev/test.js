@@ -7,12 +7,28 @@ var testing = 3;
 
 
 function bang() {
-    
-    if ([1,2,5].indexOf(testing) > -1) {
 
-        outlet(0, "inside");
+        // create a new dictionary
+        var jada_dict = new Dict("jada");
 
-    } else {
-        outlet(0, "outside");
-    }
+        jada_dict.set("hf_tune");
+        jada_dict.append("hf_tune::beat_onset_duration::note", 1);
+        jada_dict.append("hf_tune::beat_onset_duration::note", 2);
+ 
+    //if ([1,2,5].indexOf(testing) > -1) {
+//
+    //    outlet(0, "inside");
+//
+    //} else {
+    //    outlet(0, "outside");
+    //}
+}
+
+function get() {
+    //var obj = this.patcher.getnamed("jada");
+    var obj = new Dict("jada");
+
+    obj.remove("hf_tune::beat_onset_duration::note");
+
+    obj.append("hf_tune::beat_onset_duration::note", 3);
 }
