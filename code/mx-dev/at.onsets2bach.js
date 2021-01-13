@@ -48,7 +48,7 @@ function recreateOD() {
             // lastly, we update the [dict @name track_data] with the new beat onsets and durations.
             // code from [calcRatios.js].
             var hf_dict = new Dict("track_data");
-            hf_dict.remove("hf_tune::beat_onset_and_duration");
+            hf_dict.remove(global_filename+"::beat_onset_and_duration");
             for (var w=0; w<global_marker_tags.length; w++) {
 
                 // create the tag for all keys
@@ -56,7 +56,7 @@ function recreateOD() {
                 var str_tag = "beat" + tag;
 
                 // add the BEAT onset (ms) and duration.
-                var key = "hf_tune::beat_onset_and_duration::";
+                var key = global_filename+"::beat_onset_and_duration::";
                 // add the onset
                 hf_dict.append(key+str_tag, new_beat_onsets[w]);
                 // add the duration

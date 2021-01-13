@@ -21,7 +21,12 @@ global_dur_ratios = new Array();
 // store the note onset percentages with respect to the duration (ms) of the associated beat. 
 global_onset_ratios = new Array();
 // store the duration of every beat (ms) in the track. onset to onset
-global_beat_durations = new Array();
+global_beat_durations = new Array(); 
+// store the current track filename.
+global_filename = "";
+function track_filename(name) {
+    global_filename = name;
+}
 
 // calculate the notes duration and onset ratios with respect to the transcriptions beat duration (%)
 function ratio_init() {
@@ -115,7 +120,6 @@ function ratio_init() {
     }
 }
 
-
 // add all the "data" to a dict.
 function ratios2dict() {
     if (global_calcratio_init) {
@@ -123,10 +127,10 @@ function ratios2dict() {
         // create a new dictionary
         var hf_dict = new Dict("track_data");
 
-        hf_dict.set("hf_tune");
-        hf_dict.replace("hf_tune::total_bar_number", (global_beat_durations.length / global_beats_per_bar));
-        hf_dict.replace("hf_tune::beats_per_bar", global_beats_per_bar);
-        hf_dict.replace("hf_tune::total_duration_ms", (global_data[global_data.length-1][global_data_offset_idx] - global_data[0][global_data_onset_idx])*1000);
+        hf_dict.set(global_filename);
+        hf_dict.replace(global_filename+"::total_bar_number", (global_beat_durations.length / global_beats_per_bar));
+        hf_dict.replace(global_filename+"::beats_per_bar", global_beats_per_bar);
+        hf_dict.replace(global_filename+"::total_duration_ms", (global_data[global_data.length-1][global_data_offset_idx] - global_data[0][global_data_onset_idx])*1000);
 
         // we go "through" every beat.
         for (var i=0; i<global_marker_tags.length; i++) {
@@ -136,19 +140,19 @@ function ratios2dict() {
             var str_tag = "beat" + tag;
 
             // add the note_onset_ratios
-            var key = "hf_tune::note_onset_ratio::";
+            var key = global_filename+"::note_onset_ratio::";
             for (var y=0; y<global_onset_ratios[i].length; y++) {
                 hf_dict.append(key+str_tag, global_onset_ratios[i][y]);
             }
 
             // add the note_onset_ratios
-            key = "hf_tune::note_duration_ratio::";
+            key = global_filename+"::note_duration_ratio::";
             for (var w=0; w<global_dur_ratios[i].length; w++) {
                 hf_dict.append(key+str_tag, global_dur_ratios[i][w]);
             }
 
             // Lastly, add the BEAT onset (ms) and duration.
-            key = "hf_tune::beat_onset_and_duration::";
+            key = global_filename+"::beat_onset_and_duration::";
             // add the onset
             hf_dict.append(key+str_tag, global_marker_tags[i][1]);
             // duration

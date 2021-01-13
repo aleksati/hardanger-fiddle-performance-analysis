@@ -14,8 +14,10 @@ outlets = 3;
 // outlet 3 = init message to calcRatio and bach2onsets.
 
 // Global variables:
-global_data = new Array();
-// [ [onset, offset, pitch, bar, numerator, denominator, ornament] ]
+global_data = new Array(); // [ [onset, offset, pitch, bar, numerator, denominator, ornament] ]
+
+// lookup table to keep track of the bar-numerator-denominator combos in the global_data.
+var data_hashTable = {};
 
 global_data_onset_idx = 0;
 global_data_offset_idx = 1;
@@ -39,12 +41,10 @@ global_bach2onset_init = false;
 // import csv to Coll and Data variable (array).
 function csv(filename) {
 	global_data = new Array();
+	data_hashTable = {};
 	var f = new File(filename);
 	
-	if (f.open) {
-		// Clear coll
-		outlet(1, "clear");
-		
+	if (f.open) {		
 		while (f.position < f.eof) {
 			// read line
 			var str = f.readline();	
@@ -58,36 +58,54 @@ function csv(filename) {
 			};
 			
 			// We skip onramentations for now. So only care about NaN and 0.
-			// (numb_line[global_data_orna_idx] != numb_line[global_data_orna_idx]) || (numb_line[global_data_orna_idx] == 0)
 			if ((numb_line[global_data_orna_idx] != numb_line[global_data_orna_idx]) || (numb_line[global_data_orna_idx] == 0)) {
-
-				// some of the rows (note events) have the same beat positions at offset times.
-				// We only want 1 row (time) to indicate the start of a new beat. Therefore we mark the first, and exclude the others that have the same beat position. (for instance 1 1 3)
-				if (global_data.length) {
-					// if the line has the same bar number as the previous entry AND
-					// the same numerator number as the previous entry AND
-					// the same denominator number as the previous entry.
-					if (numb_line[global_data_bar_idx] == global_data[global_data.length-1][global_data_bar_idx] && 
-						numb_line[global_data_numer_idx] == global_data[global_data.length-1][global_data_numer_idx] && 
-						numb_line[global_data_denom_idx] == global_data[global_data.length-1][global_data_denom_idx]) {
-			
-						// then we edit the numerator and demonator to 0 0. before storing.
-						numb_line[global_data_numer_idx] = 0;
-						numb_line[global_data_denom_idx] = 0;
-					}
+				// every row (that is not an ornamentation) should have an unique bar-numerator-denominator combo. 
+				// if we have seen the same bar-numerator-denominator combo before, we therefore edit a little.
+				if (!checkList(numb_line)) {
+					numb_line[global_data_numer_idx] = 0;
+					numb_line[global_data_denom_idx] = 0;
 				}
-				// store in the data array
+				// store the line as a row in the global_data.
 				global_data = global_data.concat([numb_line]);
 			}
 		}
 		f.close();
 		// store the data in a Coll for jit.cellblock viewing
+		outlet(1, "clear");
 		for (var i=0; i<global_data.length; i++) {
 			outlet(1, i, global_data[i]);
 		}
 	} else {
 		error("couldn't find the file ("+ filename +")\n");
 	}
+}
+
+// Checks previous occurances of bar-numerator-denominator combos in global_data.
+function checkList(input) {
+    var a = input[global_data_bar_idx];
+    var b = input[global_data_numer_idx];
+    var c = input[global_data_denom_idx];
+
+    // return if we’ve seen these entries before
+    if (data_hashTable[a] && data_hashTable[a][b] && data_hashTable[a][b][c]) {
+        return false;
+    }
+
+    // check first entry to the hash table
+    if (!data_hashTable[a]) {
+        data_hashTable[a] = {};
+    }
+
+    // check second entry to the hash table
+    if (!data_hashTable[a][b]) {
+        data_hashTable[a][b] = {};
+    }
+
+    // add third entry as true.
+    data_hashTable[a][b][c] = true;
+
+    // add the full input to the data array
+    return true;
 }
 
 
@@ -127,12 +145,17 @@ function mir2bach() {
 		}
 	}
 
-	// finally we add an ending marker...
+	// finally we add an ending marker...????
 
-	// initialize the [v beat_onsets] object with list.
-	var mx_obj = this.patcher.getnamed("valuebox_beat_onsets");
-    mx_obj.message(onsets);
-
+	
+	// set the [bach.roll] domain to score length.
+	this.patcher.getnamed(
+		"curr_domain").message(
+			"domain", 
+			global_data[0][global_data_onset_idx]*1000,
+			global_data[global_data.length-1][global_data_offset_idx]*1000);
+	
+	
 	//output data to [bach.roll]
 	outlet(0, "clear");
 	outlet(0, "onsets", onsets);
