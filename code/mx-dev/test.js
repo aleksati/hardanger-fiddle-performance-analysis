@@ -29,3 +29,18 @@ function bang() {
     //listMethods(obj);
     //listProps(obj);
 }
+
+function an_array() {
+    var test = arrayfromargs(arguments);
+    var sum = test.reduce(function(a, b){
+        return a + b;
+    }, 0);
+
+    outlet(0, sum);
+
+
+    global_beat_durations.reduce(function(a,b){
+        return a+b;
+    }, 0)
+
+}

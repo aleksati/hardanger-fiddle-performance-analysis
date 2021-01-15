@@ -2,19 +2,13 @@ autowatch = 1;
 inlets = 1;
 outlets = 3;
 
-// Convert the MIRAGE transcriptions into [bach.roll] supported notation:
-// onset(ms)
-// duration(ms)
-// pitch(cent)
-// global_marker_tags(barlines for every beat).
-// Color for ornametation?
-
-// outlet 1 = to [bach.roll]
-// outlet 2 = to Coll for data viewing
-// outlet 3 = init message to calcRatio and bach2onsets.
+// Processes and store the transcrtion data as a global variable
+// Then, it converts the transcriptions into [bach.roll] supported notation including:
+// onset(ms), duration(ms), pitch(cent) and global_marker_tags (barlines for every beat).
+// Finally, it sends an "init" message to the other js.files.  
 
 // Global variables:
-global_data = new Array(); // [ [onset, offset, pitch, bar, numerator, denominator, ornament] ]
+global_data = new Array(); // 2D array = [ [onset, offset, pitch, bar, numerator, denominator, ornament] ]
 
 // lookup table to keep track of the bar-numerator-denominator combos in the global_data.
 var data_hashTable = {};
@@ -29,10 +23,7 @@ global_data_orna_idx = 6;
 
 global_beats_per_bar = 3;
 
-// Used in [at.bach2onset.js]:
-global_marker_tags = new Array();
-global_note_durations = new Array();
-
+global_marker_tags = new Array(); // 2D array = [ ["addmarker", beat onset (ms), bar, beat] ["addmarker", beat onset (ms), bar, beat] ]
 // a bool that identifies if the ratio_init function has been called in the [at.calcRatios.js].
 global_calcratio_init = false;
 // a bool that identifies if the marker_init function has been called in the [at.bach2onset.js].
@@ -80,6 +71,7 @@ function csv(filename) {
 	}
 }
 
+
 // Checks previous occurances of bar-numerator-denominator combos in global_data.
 function checkList(input) {
     var a = input[global_data_bar_idx];
@@ -110,45 +102,48 @@ function checkList(input) {
 
 
 // Convert the data into bach-readable data and send out to [bach.roll].
-// Also init other js files.
-// ADD SUPPORT FOR ORNAMETATIONS. THEY SHOULD BE IN DIFFERENT COLOR, OR SOMETHING..
 function mir2bach() {
-	var onsets = new Array();
-	var pitches = new Array();
+	var note_onsets = new Array();
+	var note_durations = new Array();
+	var note_pitches = new Array();
 	global_calcratio_init = false;
 	global_bach2onset_init = false;
 	global_marker_tags = new Array();
-	global_note_durations = new Array();
 
 	//collect the data in the variables declared above. IGNORE ornamentations
-	for(var i=0; i<global_data.length;i++) {
-		// onsets. in miliseconds
-		onsets.push(Math.floor(global_data[i][global_data_onset_idx]*1000));
+	for(var i=0; i<global_data.length; i++) {
+		// note_onsets. in miliseconds
+		note_onsets.push(Math.floor(global_data[i][global_data_onset_idx]*1000));
 
-		// global_note_durations. in miliseconds
-		global_note_durations.push(Math.floor(global_data[i][global_data_offset_idx]*1000)-onsets[i]);
+		// note_durations. in miliseconds
+		note_durations.push(Math.floor(global_data[i][global_data_offset_idx]*1000)-note_onsets[i]);
 
-		// pitches = Frequency to MIDI cents. Round to nearest int cent.
-		//pitches.push(data[i][global_data_pitch_idx]*100);
-		pitches.push(midi2hz2cent(global_data[i][global_data_pitch_idx]));
+		// note_pitches = Frequency to MIDI cents. Round to nearest int cent.
+		//note_pitches.push(data[i][global_data_pitch_idx]*100);
+		note_pitches.push(midi2hz2cent(global_data[i][global_data_pitch_idx]));
 
-		// beat onsets = global_marker_tags
+		// marker onset = beat note_onsets.
 		// if the denominator in the global_data is equal to the number of beats per bar.
 		// we know the note is a "metric anchor", so we have a marker here.
-		// global_marker_tags are stored with ["addmaker", note-onset, bar-num, beat-num]
 		if (global_data[i][global_data_denom_idx] == global_beats_per_bar) {
 			global_marker_tags.push([
 				"addmarker",
-				onsets[i],
+				note_onsets[i],
 				global_data[i][global_data_bar_idx],
 				global_data[i][global_data_numer_idx]]);
 		}
+
+		// when we are at the last row in the data, add the last notes offset as an "ending marker".
+		if (i==global_data.length-1) { 
+			global_marker_tags.push([
+				"addmarker",
+				global_data[i][global_data_offset_idx]*1000,
+				Math.floor((global_marker_tags.length/global_beats_per_bar)+1),
+				1]);
+		}
 	}
-
-	// finally we add an ending marker...????
-
 	
-	// set the [bach.roll] domain to score length.
+	// set the [bach.roll] domain to score length. [v domain] object.
 	this.patcher.getnamed(
 		"curr_domain").message(
 			"domain", 
@@ -158,9 +153,9 @@ function mir2bach() {
 	
 	//output data to [bach.roll]
 	outlet(0, "clear");
-	outlet(0, "onsets", onsets);
-	outlet(0, "cents", pitches);
-	outlet(0, "durations", global_note_durations);
+	outlet(0, "onsets", note_onsets);
+	outlet(0, "cents", note_pitches);
+	outlet(0, "durations", note_durations);
 	outlet(0, "bang");
 
 	for(var i=0; i<global_marker_tags.length; i++) {
@@ -172,8 +167,8 @@ function mir2bach() {
 }
 
 
-// we assume the midi note from mirage transc has 440hz (at m note 69) as reference.
-// bach library converts pitch to cents with C4 (262hz) as reference. Which is == to 6000 cents.
+// we assume the midi note from the MIRAGE transcrips has 440hz (at midi note 69) as reference.
+// the Bach library converts pitch(hz) to cents with C4 (262hz) as reference, which for them is == to 6000 cents.
 function midi2hz2cent(mir_midi) {
 	var bach_freq_ref = 262;
 	var bach_cent_ref = 6000;
