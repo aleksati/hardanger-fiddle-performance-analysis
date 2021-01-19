@@ -40,3 +40,6 @@ global_beat_ratios = a 2D array with format [ [bar1 - beat1, 2 and 3 ratio] [bar
 
 ### store the filename of the csv imported.
 global_filename = ""; // "Vrjenga.csv" 
+
+### when adding the patterns to the [track_data] dict, we also add them here.
+global_patterns = new Array(); // a 2D array [ [pattern1] [pattern2] [pattern3] etc..]
