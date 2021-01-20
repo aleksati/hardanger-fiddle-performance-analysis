@@ -35,42 +35,39 @@ mgraphics.autofill = 0;
 mgraphics.relative_coords = 0;
 
 
-function list()
-{
+function list() {
 	vector = arguments;
 	mgraphics.redraw();
 }
 
 
-function onclick(x,y) 
-{
+function onclick(x,y) {
 	mgraphics.redraw();
 }
 
 
-function myscale(input, inlow, inhigh, outlow, outhigh)
-{
+function myscale(input, inlow, inhigh, outlow, outhigh) {
 	var indiff = inhigh - inlow;
 	var outdiff = outhigh - outlow;
 	var inscale;
 	var value;
 	
-	if (input == Number.NEGATIVE_INFINITY)
+	if (input == Number.NEGATIVE_INFINITY) {
 	 	input = inlow * 1000000.0;
-	else if (input == Number.POSITIVE_INFINITY)
+    } else if (input == Number.POSITIVE_INFINITY) {
 	 	input = inhigh * 1000000.0;
-
-	if (indiff != 0.0)
+    }    
+	if (indiff != 0.0) {
 		inscale = 1.0 / indiff;
-	else
-		inscale = 1.0;
+    } else {
+        inscale = 1.0;
+    }
 	value = (input - inlow) * inscale;
 	return (value * outdiff) + outlow;
 }
 
 
-function calculate_x(index, width)
-{
+function calculate_x(index, width) {
 	var	numpoints = vector.length;
 	var	pointspan = width / numpoints;
 	var	x;
@@ -91,8 +88,7 @@ function calculate_x(index, width)
 }
 
 
-function paint_grid()
-{
+function paint_grid() {
 	var width = this.box.rect[2] - this.box.rect[0];
 	var height = this.box.rect[3] - this.box.rect[1];
 
@@ -137,8 +133,7 @@ function paint_grid()
 }
 
 
-function paint_data()
-{
+function paint_data() {
 	var width = this.box.rect[2] - this.box.rect[0];
 	var height = this.box.rect[3] - this.box.rect[1];
 	var	i = 0;
@@ -332,14 +327,12 @@ function paint_data()
 }
 
 
-function paint() 
-{
+function paint() {
 	paint_grid();
 	paint_data();
 }
 
 
-function bang() 
-{
+function bang() {
 	mgraphics.redraw();
 }
