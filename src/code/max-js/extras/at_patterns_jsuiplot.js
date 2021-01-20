@@ -1,3 +1,4 @@
+// A modified version of:
 // plot.js -- a simplified and customizable version of the plot~ object in Max 6
 // timothy place -- cycling '74
 
@@ -9,9 +10,9 @@ var range = [0.0, 100.0];
 var origin = [0.0, 0.0];			// the base-line for the domain and range
 var	color = [0.4, 0.4, 0.75, 1.0];	// plot color
 var thickness = 3;					// line width
-var symbol = "circle";				// data point: none, circle, square, etc.
-var lines = "linear";				// style: none, linear, curve, origin
-var number = "none";				// style: none, above, below, center
+var symbol = "dot";				// data point: none, circle, square, etc.
+var lines = "origin";				// style: none, linear, curve, origin
+var number = "above";				// style: none, above, below, center
 var grid_x = new Array();
 var grid_y = new Array();
 var labels_x = new Array();
@@ -335,4 +336,13 @@ function paint() {
 
 function bang() {
 	mgraphics.redraw();
+}
+
+
+function clear() {
+    grid_x = new Array();
+    grid_y = new Array();
+    vector = new Array();
+    domain = [1.0, 4.0];
+    mgraphics.redraw();
 }
