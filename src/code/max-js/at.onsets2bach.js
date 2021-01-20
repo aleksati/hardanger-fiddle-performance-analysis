@@ -31,7 +31,7 @@ function recreateOD() {
             for (var x=0; x<new_beat_onsets.length-1; x++) {
                 global_beat_durations.push(new_beat_onsets[x+1] - new_beat_onsets[x]);
 
-                if (x%global_beats_per_bar === 0) { //if x is not even (in our case)
+                if (x%global_beats_per_bar === 0) { //for every third x (in our case)
                     global_bar_durations.push(new_beat_onsets[x+global_beats_per_bar] - new_beat_onsets[x]);
                 }
             }

@@ -12,16 +12,14 @@ outlets = 2;
 
 var reference_marker_tags; // 1D array = [1.1, 1.2, 1.3, 2.1, 2.2, etc..] as float numbers, mind you.
 
-// message recieved from [transc2bach.js] after calling the mir2bach function.
 function bach2onset_init() {
+    // add the marker_tags
+    reference_marker_tags = new Array();
+    for (var i=0; i<global_marker_tags.length; i++) {
+        reference_marker_tags.push(global_marker_tags[i][2] + (global_marker_tags[i][3]/10));
+    }
 
-  // add the marker_tags
-  reference_marker_tags = new Array();
-  for (var i=0; i<global_marker_tags.length; i++) {
-    reference_marker_tags.push(global_marker_tags[i][2] + (global_marker_tags[i][3]/10));
-  }
-
-  global_bach2onset_init = true;
+    global_bach2onset_init = true;
 }
 
 
@@ -35,7 +33,7 @@ function markers() {
         new_marker_onsets.splice(i, 1);
         i--;
       }
-      if ((new_marker_onsets[i] == "none") || (new_marker_onsets[i] == "none")) {
+      if (new_marker_onsets[i] == "none") {
         new_marker_onsets.splice(i, 1);
         i--;
       }
