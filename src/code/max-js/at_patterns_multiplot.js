@@ -16,7 +16,7 @@ if (jsarguments.length > 1) {
 }
 
 
-// our plot objects
+// The plot enties (from the data input) are best handled as objects in themselves.
 var plot_entry = {
     vector: new Array("vector"),
     color: new Array("color", 0, 0, 0, 1),
@@ -38,12 +38,12 @@ var plot_entry = {
         this.pdomain = new Array();
     },
     get drawGraph() {
-        // if it's the first data entry of a new bar-selection, we want to do some inital config on the first plot (grid).
+        // if it's the first data entry of a collection of entries, we reset and scale the grid to fit.
         if (entry_tracker == 0) {
             plots_array[entry_tracker].message(this.pdomain);
-            plots_array[entry_tracker].message(this.vector);
             plots_array[entry_tracker].message(this.pgrid_x);
             plots_array[entry_tracker].message(this.pgrid_y);
+            plots_array[entry_tracker].message(this.vector);
             plots_array[entry_tracker].message(this.color);
             plots_array[entry_tracker].message("bang");
 
@@ -56,7 +56,8 @@ var plot_entry = {
 }; 
 
 
-// add data to plots. format lists [vector data, color, color data]
+// Propagate input data to all the plots we've created. 
+// list arguments format [vector data, "color", color data]
 function add_data() {
     if (plots_array.length) {
         if (entry_tracker < plot_count) {
@@ -83,7 +84,7 @@ function add_data() {
 }
 
 
-// create some plots on top of each other.
+// create however many jsui_plots on top of each other.
 function create_plots(amount) {
     if (!plots_array.length) {
         plot_count = 0;
@@ -107,7 +108,7 @@ function create_plots(amount) {
 }
 
 
-// edit the style of our current plots.
+// edit the style of our current plot array.
 function edit_plotstyle(plines, psymbol, pnumber, pthickness) {
     if (plots_array.length) {
         for (var x=0; x<plots_array.length; x++) {
@@ -123,7 +124,7 @@ function edit_plotstyle(plines, psymbol, pnumber, pthickness) {
 }
 
 
-//clear the data in the plots_array.
+// clear all the data in our plots.
 function clear_all_data() {
     if (plots_array.length) {
         for (var i=0; i<plot_count; i++) {
@@ -136,7 +137,7 @@ function clear_all_data() {
 }
 
 
-//clear the plots_arrays.
+// delete all our plots.
 function clear_all_plots() {
     if (plots_array.length) {
         for (var y=0; y<plot_count; y++) {
