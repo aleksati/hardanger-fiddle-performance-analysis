@@ -23,10 +23,10 @@ outlets = 1;
 // global_beat_ratios
 
 
-global_filename = ""; // "Vrjenga.csv" 
-function track_filename(name) {
-    global_filename = name;
-}
+//global_filename = ""; // "Vrjenga.csv" 
+//function track_filename(name) {
+//    global_filename = name;
+//}
 
 
 // store the duration of every beat (ms) in the track. onset to onset
@@ -113,14 +113,6 @@ function ratio_init() {
     if (global_note_onset_ratios.length == global_note_dur_ratios.length) {
         global_calcratio_init = true;
         ratios2dict();
-        //outlet(0, "Number of bars", total_num_bars);
-        //outlet(0, "-----------------------------------");
-        //for(var x=0; x<global_beat_ratios.length; x++){
-            //outlet(0, "Bar nr.",x+1,"duration ratios:", global_beat_ratios[x]);
-            //outlet(0, "note onset ratios (%):", global_note_onset_ratios[x]);
-            //outlet(0, "note duration ratios (%):", global_note_dur_ratios[x]);
-            //outlet(0, "-----------------------------------");
-        //}
     } else {
         global_calcratio_init = false;
         error("the duration and onset sizes do not match each other.. They should, so something is wrong..Try again..");

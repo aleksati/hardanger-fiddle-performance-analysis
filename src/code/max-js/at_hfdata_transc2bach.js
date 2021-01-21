@@ -29,15 +29,21 @@ global_calcratio_init = false;
 // a bool that identifies if the marker_init function has been called in the [at.bach2onset.js].
 global_bach2onset_init = false;
 
-// import csv to Coll and Data variable (array).
+global_filename = "noname"; //"Vrjenga.csv" for instance.
+
+
 function csv(filename) {
 	global_data = new Array();
-	data_hashTable = {};
+    data_hashTable = {};
+
+    // set global_filename and [v filname] in max.
+    global_filename = filename.split("\\").pop().split("/").pop();
+    this.patcher.getnamed("hf_filename").message(global_filename);
+
+    // read every line of the csv and store to global_data
 	var f = new File(filename);
-	
 	if (f.open) {		
 		while (f.position < f.eof) {
-			// read line
 			var str = f.readline();	
 			// convert strings to array (of symbols) (elements are delimited by a comma)
 			var line = str.split(",");
@@ -60,9 +66,9 @@ function csv(filename) {
 				global_data = global_data.concat([numb_line]);
 			}
 		}
-		f.close();
+        f.close();
+        
 		// store the data in a Coll for jit.cellblock viewing
-		outlet(1, "clear");
 		for (var i=0; i<global_data.length; i++) {
 			outlet(1, i, global_data[i]);
 		}

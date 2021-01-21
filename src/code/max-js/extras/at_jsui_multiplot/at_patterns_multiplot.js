@@ -5,7 +5,7 @@ var p = this.patcher;
 var parent = this.patcher.parentpatcher;
 var plots_array = new Array();
 var plot_count = 0;
-var plot_data_tracker = 0;
+var entry_tracker = 0;
 
 // The patching rect format is [x, y, width, height]
 var patching_rect = new Array(52.75, 302., 592., 345.);
@@ -16,7 +16,7 @@ if (jsarguments.length > 1) {
 }
 
 // our plot objects
-var plot_data = {
+var plot_entry = {
     vector: new Array("vector"),
     color: new Array("color", 0, 0, 0, 1),
     pgrid_x: new Array("grid_x"),
@@ -38,18 +38,18 @@ var plot_data = {
     },
     get drawGraph() {
         // if it's the first data entry of a new bar-selection, we want to do some inital config on the first plot (grid).
-        if (plot_data_tracker == 0) {
-            plots_array[plot_data_tracker].message(this.pdomain);
-            plots_array[plot_data_tracker].message(this.vector);
-            plots_array[plot_data_tracker].message(this.pgrid_x);
-            plots_array[plot_data_tracker].message(this.pgrid_y);
-            plots_array[plot_data_tracker].message(this.color);
-            plots_array[plot_data_tracker].message("bang");
+        if (entry_tracker == 0) {
+            plots_array[entry_tracker].message(this.pdomain);
+            plots_array[entry_tracker].message(this.vector);
+            plots_array[entry_tracker].message(this.pgrid_x);
+            plots_array[entry_tracker].message(this.pgrid_y);
+            plots_array[entry_tracker].message(this.color);
+            plots_array[entry_tracker].message("bang");
 
         } else {
-            plots_array[plot_data_tracker].message(this.vector);
-            plots_array[plot_data_tracker].message(this.color);
-            plots_array[plot_data_tracker].message("bang");
+            plots_array[entry_tracker].message(this.vector);
+            plots_array[entry_tracker].message(this.color);
+            plots_array[entry_tracker].message("bang");
         }
     }
 }; 
@@ -58,21 +58,21 @@ var plot_data = {
 // add data to plots. format lists [vector data, color, color data]
 function add_data() {
     if (plots_array.length) {
-        if (plot_data_tracker < plot_count) {
+        if (entry_tracker < plot_count) {
             var input_data = arrayfromargs(arguments);
-            plot_data.reset;
+            plot_entry.reset;
             // if we have color data at the end of our input.
             if (input_data.indexOf("color") != -1) {
                 var vector_data = input_data.slice(0, input_data.indexOf("color"));
                 var color_data = input_data.slice(input_data.indexOf("color"), input_data.length);
-                plot_data.addData = vector_data;
-                plot_data.color = color_data;
+                plot_entry.addData = vector_data;
+                plot_entry.color = color_data;
             } else {
                // if we dont have color data in the input.
-                plot_data.addData = input_data;
+                plot_entry.addData = input_data;
             }
-            plot_data.drawGraph;
-            plot_data_tracker += 1;
+            plot_entry.drawGraph;
+            entry_tracker += 1;
         } else {
             error("We need to create more plots first..");
         }
@@ -86,7 +86,7 @@ function add_data() {
 function create_plots(amount) {
     if (!plots_array.length) {
         plot_count = 0;
-        plot_data_tracker = 0;
+        entry_tracker = 0;
         for (var x=0; x<amount; x++) {
             // initialize the jsui object
             plots_array[plot_count] = p.newdefault(
@@ -128,7 +128,7 @@ function clear_all_data() {
         for (var i=0; i<plot_count; i++) {
             plots_array[i].message("clear");
         }
-        plot_data_tracker = 0;
+        entry_tracker = 0;
     } else {
         error("No plot data to clear..");
     }
@@ -143,7 +143,7 @@ function clear_all_plots() {
         }
         plots_array = new Array();
         plot_count = 0;
-        plot_data_tracker = 0;
+        entry_tracker = 0;
     } else {
         error("No plots to clear..");
     }
