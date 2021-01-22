@@ -22,13 +22,6 @@ outlets = 1;
 // global_note_onset_ratios
 // global_beat_ratios
 
-
-//global_filename = ""; // "Vrjenga.csv" 
-//function track_filename(name) {
-//    global_filename = name;
-//}
-
-
 // store the duration of every beat (ms) in the track. onset to onset
 global_beat_durations = new Array(); // 1D array = [ beat1.1 - duration(ms), beat1.2 - duration(ms), beat1.3 - duration(ms) ]
 // store the duration of every bar (ms) in the track. onset to onset.
@@ -118,6 +111,7 @@ function ratio_init() {
         error("the duration and onset sizes do not match each other.. They should, so something is wrong..Try again..");
     }
 }
+
 
 // add all the "data" to a dict.
 function ratios2dict() {

@@ -26,9 +26,9 @@ var plot_entry = {
     set addData(a) {
         this.vector = this.vector.concat(a);
         for (var i=0; i<this.vector.length; i++) {
-            this.pgrid_x.push(i+1);
+            this.pgrid_x.push(i);
         }
-        this.pdomain.push("domain", 1, this.vector.length);
+        this.pdomain.push("domain", 1, this.vector.length-1);
     },
     get reset() {
         this.vector = new Array("vector");

@@ -19,9 +19,11 @@ function add_patterns() {
     }
 }
 
+
 function clear_data() {
 	patterns = new Array();
 }
+
 
 // fill out the to and from bars.
 function list_fill(bar1, bar2) {
@@ -38,6 +40,7 @@ function list_fill(bar1, bar2) {
     }
     return output;
 }
+
 
 // Look for "from" "to" combos in the patterns txt. 
 // If we fant a pattern, output beat onsets to [bach.roll] (for coloring of notes and domain)
