@@ -47,6 +47,8 @@ function onclick(x,y) {
 }
 
 
+// Scale from Range or Domain to the Pixels of the JSUI. so Height og Width.
+// From input in inlow, inhigh, convert to output in outlow, outhigh. 
 function myscale(input, inlow, inhigh, outlow, outhigh) {
 	var indiff = inhigh - inlow;
 	var outdiff = outhigh - outlow;
@@ -67,7 +69,16 @@ function myscale(input, inlow, inhigh, outlow, outhigh) {
 	return (value * outdiff) + outlow;
 }
 
+// vector er 20 20 20 40.
+// input [vector.length, width of the box (688,6)]
+// numpoints = 4
+// pointspan = 172.1
 
+// x (1.3) = index(4) / (numpoints-1) 3; 
+
+// x_c = x(1.3) * (width (688.6) - pointspan/2 (86.05)) + pointspan/4(43)
+
+// calculates where "index" is in "width". based on some params. we have set.
 function calculate_x(index, width) {
 	var	numpoints = vector.length;
 	var	pointspan = width / numpoints;
@@ -136,14 +147,16 @@ function paint_grid() {
 
 function paint_data() {
 	var width = this.box.rect[2] - this.box.rect[0];
-	var height = this.box.rect[3] - this.box.rect[1];
+    var height = this.box.rect[3] - this.box.rect[1];
+    
+    // this is where a big for-loop starts
 	var	i = 0;
 	var	m;
 	var stride_data = 1;	// stride is normally one, unless the data is thinned and we want to make larger steps through the vector
 	var vecsize = vector.length;
 	
 	// work accross the domain of the plot
-	// we have to do 2 passes, one for the lines and one for the points
+	// we have to do 3 passes, one for the lines, one for the points and one for numbers
 	
 	// Draw the lines
 	if (lines != "none") {
@@ -152,29 +165,29 @@ function paint_data() {
 			set_line_width(thickness);
 		
 			for (m=0; m < vecsize; m += stride_data) {
-				var y = myscale(vector[m], range[0], range[1], height, 0);
-				var x_c = calculate_x(i, width);
-				var y_c = y;
+				var y1 = myscale(vector[m], range[0], range[1], height, 0);
+				var x_c1 = calculate_x(i, width);
+				var y_c1 = y1;
 			
 				i += stride_data;
 			
-				if (isNaN(y))
+				if (isNaN(y1))
 					continue;
-				if (y == Infinity)
+				if (y1 == Infinity)
 					continue;
 
 				if (lines == "origin") {
-					move_to(x_c, myscale(origin[1], range[0], range[1], height, 0));
-					line_to(x_c, y_c);
+					move_to(x_c1, myscale(origin[1], range[0], range[1], height, 0));
+					line_to(x_c1, y_c1);
 					stroke();
 				}
 				else if (lines == "linear") {
 					if (i == 1)
-						move_to(x_c, y_c);
+						move_to(x_c1, y_c1);
 					else {
 						set_line_cap("round");
 						set_line_join("round");
-						line_to(x_c, y_c);
+						line_to(x_c1, y_c1);
 					}
 				}
 				else if (lines == "curve") {
@@ -192,7 +205,7 @@ function paint_data() {
 					
 						if (i == 1) {
 							if (k == 0) {
-								move_to(x_c, y_c);
+								move_to(x_c1, y_c1);
 								continue;
 							}
 							c = vector[i];
@@ -237,19 +250,19 @@ function paint_data() {
 	// If there are labels we need make sure that we clear the margin of any lines that have gone out of range
 	// However, we still want the points to appear in their entirety, which may bleed over the margin slightly
 	// So we apply the label background here
-	with (mgraphics) {
-		set_source_rgba(1.0, 1.0, 1.0, 1.0);
-		rectangle(0, height, width, 40.0);
-		fill();
-	}
+	//with (mgraphics) {
+	//	set_source_rgba(1.0, 1.0, 1.0, 1.0);
+	//	rectangle(0, height, width, 40.0);
+	//	fill();
+	//}
 	
 	// Draw the points	
 	if (symbol != "none") {
 		i = 0;
 		for (m=0; m < vecsize; m += stride_data) {
-			var x_c = calculate_x(i, width);
-			var y = myscale(vector[m], range[0], range[1], height, 0);
-			var y_c = y;
+			var x_c2 = calculate_x(i, width);
+			var y2 = myscale(vector[m], range[0], range[1], height, 0);
+			var y_c2 = y2;
 			var radius = thickness * 1.5;
 			
 			i += stride_data;
@@ -258,30 +271,30 @@ function paint_data() {
 				set_source_rgba(color);
 				set_line_width(thickness);				
 			
-				if (isNaN(y))
+				if (isNaN(y2))
 					continue;
 			
 				if (symbol == "circle") {
 					set_source_rgba(1.0, 1.0, 1.0, 1.0);
-					ellipse(x_c - radius, y_c - radius, radius * 2.0, radius * 2.0);
+					ellipse(x_c2 - radius, y_c2 - radius, radius * 2.0, radius * 2.0);
 					fill();
 				    
 					set_source_rgba(color);
-					ellipse(x_c - radius, y_c - radius, radius * 2.0, radius * 2.0);
+					ellipse(x_c2 - radius, y_c2 - radius, radius * 2.0, radius * 2.0);
 					stroke();
 				}
 				else if (symbol == "dot") {
 					set_source_rgba(color);
-					ellipse(x_c - thickness*2.0, y_c - thickness*2.0, thickness * 4.0, thickness * 4.0);
+					ellipse(x_c2 - thickness*2.0, y_c2 - thickness*2.0, thickness * 4.0, thickness * 4.0);
 					fill();					
 				}
 				else if (symbol == "square") {
 					set_source_rgba(1.0, 1.0, 1.0, 1.0);
-					rectangle(x_c - radius, y_c - radius, radius * 2.0, radius * 2.0);
+					rectangle(x_c2 - radius, y_c2 - radius, radius * 2.0, radius * 2.0);
 					fill();
 				    
 					set_source_rgba(color);
-					rectangle(x_c - radius, y_c - radius, radius * 2.0, radius * 2.0);
+					rectangle(x_c2 - radius, y_c2 - radius, radius * 2.0, radius * 2.0);
 					stroke();
 				}
 			}
@@ -292,9 +305,9 @@ function paint_data() {
 	if (number != "none") {
 		i = 0;
 		for (m=0; m < vecsize; m += stride_data) {
-			var x_c = calculate_x(i, width);
-			var y = myscale(vector[m], range[0], range[1], height, 0);
-			var y_c = y;
+			var x_c3 = calculate_x(i, width);
+			var y3 = myscale(vector[m], range[0], range[1], height, 0);
+			var y_c3 = y3;
 			var str;
 			
 			i += stride_data;
@@ -303,17 +316,17 @@ function paint_data() {
 				set_source_rgba(color);
 				set_line_width(thickness);				
 			
-				if (isNaN(y))
+				if (isNaN(y3))
 					continue;
 			
 				if (number == "above") {
-					move_to(x_c - 10.0, y_c - 11.0);
+					move_to(x_c3 - 10.0, y_c3 - 11.0);
 				}
 				else if (number == "below") {
-					move_to(x_c - 10.0, y_c + 19.0);
+					move_to(x_c3 - 10.0, y_c3 + 19.0);
 				}
 				else if (number == "center") {
-					move_to(x_c - 10.0, y_c + 4.0);
+					move_to(x_c3 - 10.0, y_c3 + 4.0);
 				}
 
 				set_source_rgb(0.2, 0.2, 0.2);
@@ -324,7 +337,6 @@ function paint_data() {
 			}
 		}
 	}
-	
 }
 
 
