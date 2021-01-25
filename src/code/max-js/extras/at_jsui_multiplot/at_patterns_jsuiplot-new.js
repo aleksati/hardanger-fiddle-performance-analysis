@@ -3,7 +3,7 @@
 // timothy place -- cycling '74
 
 
-var vector = new Array();			// a vector of data to plot
+var vector = new Array();			// a 2D vector of data to plot
 var lrgest_vec_len = 0;
 var domain = [1.0, 4.0];
 var domain_style = "linear";		// linear or log
@@ -15,22 +15,25 @@ var relative_x = 0;
 
 var data_thickness = 3;             // line width
 var symbol = "dot";				    // data point: none, circle, square, etc.
-var lines = "origin";				// style: none, linear, curve, origin
+var lines = "linear";				// style: none, linear, curve, origin
 var number = "above";				// style: none, above, below, center
 
 var grid_x = new Array();
 var grid_y = new Array(0, 25, 50, 75, 100);
 var labels_x = new Array();
 var labels_y = new Array();
-var grid_fontsize = 10.0;
+var label_fontsize = 10.0;
 var label_font_offset = 30.0;
 var grid_shrink = 60;
 var label_grid_offset;
-
+var title_x = "Merry X-mas";
+var title_y = "Y are we here?";
+var title_fontsize = 14.0;
 
 declareattribute("data_fontsize");
-declareattribute("grid_fontsize");
-declareattribute("grid_x");
+declareattribute("label_fontsize");
+declareattribute("title_fontsize");
+//declareattribute("grid_x");
 declareattribute("grid_y");
 declareattribute("symbol");
 declareattribute("lines");
@@ -41,6 +44,8 @@ declareattribute("data_thickness");
 declareattribute("relative_x");
 declareattribute("labels_x");
 declareattribute("labels_y");
+declareattribute("title_x");
+declareattribute("title_y");
 declareattribute("label_font_offset");
 declareattribute("grid_shrink");
 //declareattribute("inputs", "getattr_inputs_obj", "setattr_inputs_obj", 1);
@@ -51,8 +56,7 @@ mgraphics.autofill = 0;
 mgraphics.relative_coords = 0;
 
 
-// add data to be plotted.
-// it's possible to add color in same list. Else, a random color will be assigned.
+// add data to be plotted. It's possible to add color in same list. Else, a random color will be assigned.
 function list() {
     inn_vec = arrayfromargs(arguments);
 
@@ -63,19 +67,21 @@ function list() {
         var vector_data = inn_vec;
         var color_data = new Array(Math.random(), Math.random(), Math.random(), 1);
     }
-
     if (!vector_data.some(isNaN)) {
-        // set the largest vector length for the grid drawing.
+        // store the largest vector length for the grid painting.
         if (vector_data.length > lrgest_vec_len) {
             lrgest_vec_len = vector_data.length;
-            // set a new x_grid
+            
+            // set the x_grid
             grid_x = new Array();
             for (var y=0; y<=lrgest_vec_len; y++) {
                 grid_x.push(y);
             }
+
             // set a new x domain range.
             domain = new Array(1, lrgest_vec_len);
-        } 
+        }
+
         vector.push(vector_data);
         color.push(color_data);
 
@@ -85,12 +91,7 @@ function list() {
 }
 
 
-function onclick(x,y) {
-	mgraphics.redraw();
-}
-
-
-// Scale from Range or Domain to the Pixels of the JSUI. so Height og Width.
+// Scale an input from a specifc range, to another range. 
 // From input in inlow, inhigh, convert to output in outlow, outhigh. 
 function myscale(input, inlow, inhigh, outlow, outhigh) {
 	var indiff = inhigh - inlow;
@@ -113,9 +114,9 @@ function myscale(input, inlow, inhigh, outlow, outhigh) {
 }
 
 
-// calculates where "index" is in "width". based on some params. we have set.
+// calculates where "index" is in "width", based on the vector_length.
 function calculate_x(index, width, vector_length) {  
-    // we can choose to have all data entries strech the whole x-distance, or be relative (so some lines are shorter than others). 
+    // we can choose to have all data entries "stretch" the whole x-distance, or be relative so some lines are shorter than others. 
     var	numpoints;
     if (relative_x == 0) {
         numpoints = vector_length;
@@ -123,7 +124,7 @@ function calculate_x(index, width, vector_length) {
         numpoints = lrgest_vec_len;
     }
 
-	var	pointspan = width / numpoints;
+	var	pointspan = width / lrgest_vec_len; //was originally "width / numpoints"
 	var	x;
 	var	x_c;
 	
@@ -143,7 +144,7 @@ function calculate_x(index, width, vector_length) {
 
 
 function paint_grid() {
-    // set a grid-offset if we have labels to draw.
+    // set a grid-offset if we have labels to paint.
     if (!labels_x.length && !labels_y.length) {
         label_grid_offset = 0;
     } else {
@@ -153,8 +154,9 @@ function paint_grid() {
 	var width = (this.box.rect[2] - this.box.rect[0])-label_grid_offset;
 	var height = (this.box.rect[3] - this.box.rect[1])-label_grid_offset;
 
-	mgraphics.set_line_width(0.5);
-
+    mgraphics.set_line_width(0.5);
+    
+    // draw x_grid lines
 	var size = grid_x.length;
 	for (var m=1; m<size; m++) {
 		var f = grid_x[m];		
@@ -167,25 +169,25 @@ function paint_grid() {
 			else
 				set_source_rgba(0.5, 0.5, 0.5, 1.0);
 
-            // draw x_grid line
 			move_to(x+label_grid_offset, 0);
 			line_to(x+label_grid_offset, height);
             stroke();
             
-            //set x_labels
+            // draw x_labels
             if (labels_x.length) {
                 if (m<=labels_x.length) {
                     move_to(x+label_grid_offset, height+(label_font_offset-15));
                     set_source_rgb(0.2, 0.2, 0.2);
                     select_font_face("Verdana", "normal", "normal");
-                    set_font_size(grid_fontsize);
+                    set_font_size(label_fontsize);
                     label_x_str = labels_x[m-1].toString();
                     show_text(label_x_str);
                 }
             }
 		}
 	}
-		
+    
+    // draw y_grid lines
 	var size = grid_y.length;
 	var x = calculate_x(0, width, lrgest_vec_len);
 	var width = calculate_x(lrgest_vec_len-1, width, lrgest_vec_len);
@@ -203,15 +205,15 @@ function paint_grid() {
 			line_to(width+label_grid_offset, y);
             stroke();
             
-            // set y_labels.
+            // draw y_labels.
             if (labels_y.length) {
-                // we dont label the 0% y label. we do that with X.
+                // we don't label the "top" y-grid instance, which is 0. we do that with X.
                 if (m != 0) {
                     if (m<labels_y.length) {
                         move_to(x+label_grid_offset-label_font_offset, y);
                         set_source_rgb(0.2, 0.2, 0.2);
                         select_font_face("Verdana", "normal", "normal");
-                        set_font_size(grid_fontsize);
+                        set_font_size(label_fontsize);
                         label_y_str = labels_y[m-1].toString();
                         show_text(label_y_str);
                     }
@@ -220,9 +222,29 @@ function paint_grid() {
         }
     }
     
-    // add label names.
-    //with (mgraphics) {
-    //    rotate(0);
+    // draw title names.
+    with (mgraphics) {
+        if (labels_x.length) {
+            if (typeof title_x === "string") {
+                move_to((label_grid_offset+(width/2))-35, (height+(label_font_offset-15)+(label_font_offset)));
+                set_source_rgb(0.2, 0.2, 0.2);
+                select_font_face("Verdana", "normal", "normal");
+                set_font_size(title_fontsize);
+                show_text(title_x);
+            }
+        }
+        if (labels_y.length) {
+            if (typeof title_y === "string") {
+                move_to(label_grid_offset-label_font_offset, (height/2)+35);
+                set_source_rgb(0.2, 0.2, 0.2);
+                select_font_face("Verdana", "normal", "normal");
+                set_font_size(title_fontsize);
+                rotate(0-(Math.PI/2));
+                show_text(title_y);
+                rotate(Math.PI/2);
+            }
+        }
+    }        
 }
 
 
@@ -401,8 +423,8 @@ function paint_data() {
 
 	    			set_source_rgb(0.2, 0.2, 0.2);
 	    			select_font_face("Verdana", "normal", "normal");
-	    			set_font_size(data_fontsize);
-	    			str = vector[x][m].toString();
+                    set_font_size(data_fontsize);
+	    			str = (Math.round(vector[x][m] * 10) / 10).toString();
 	    			show_text(str);
 	    		}
 	    	}
@@ -410,7 +432,7 @@ function paint_data() {
     }
 }
 
-
+// This is "main" function.
 function paint() {
     paint_grid();
     paint_data();
@@ -419,6 +441,15 @@ function paint() {
 
 function bang() {
 	mgraphics.redraw();
+}
+
+
+function getdictionary(dict_name) {
+    var plot_dict = new Dict(dict_name);
+    plot_dict.set(dict_name);
+    for (var i=0; i<vector.length; i++) {
+        plot_dict.replace(dict_name+"::pattern_instance"+(i+1), vector[i]);
+    }
 }
 
 

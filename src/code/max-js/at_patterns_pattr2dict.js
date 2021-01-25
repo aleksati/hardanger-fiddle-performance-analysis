@@ -82,7 +82,7 @@ function bar2dictdata(from, to) {
 
                 // we have found a pattern we will use.
                 if (found_pattern.length) { 
-                    post("More pattern matches were found!");
+                    //post("More pattern matches were found!");
                     // iterate over the pattern instances.
                     for (var x=0; x<found_pattern.length; x+=2) {
 
@@ -114,18 +114,18 @@ function bar2dictdata(from, to) {
                         outlet(1, "bang");
                     }
                 } else {
-                    post("No further pattern matches were found..");
+                    //post("No further pattern matches were found..");
                     // found no matches, so we just output the input in "dict" format.
                     outlet(0, "beat"+from+".1");
 
                     if (from == to) {
-                        if ((to+1) <= global_beat_ratios.length) {
+                        if ((to+1) > global_beat_ratios.length) {
                             outlet(0, "beat"+(to+1)+".1");
                         } else {
                             outlet(0, "beat"+(to)+".3");
                         }
                     } else {
-                        outlet(0, "beat"+to+".1");   
+                        outlet(0, "beat"+(to+1)+".1");   
                     }
                     outlet(0, "bang");
                     outlet(0, "bang-domain");
