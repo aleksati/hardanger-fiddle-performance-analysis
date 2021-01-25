@@ -1,6 +1,5 @@
-// A modified version of:
-// plot.js -- a simplified and customizable version of the plot~ object in Max 6
-// timothy place -- cycling '74
+// An extended and modified version of
+// plot.js by timothy place, a simplified and customizable version of the plot~ object.
 
 
 var vector = new Array();			// a 2D vector of data to plot
