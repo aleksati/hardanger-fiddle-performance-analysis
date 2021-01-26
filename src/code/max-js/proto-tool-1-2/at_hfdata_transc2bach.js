@@ -24,6 +24,9 @@ global_data_orna_idx = 6;
 global_beats_per_bar = 3;
 
 global_marker_tags = new Array(); // 2D array = [ ["addmarker", beat onset (ms), bar, beat] ["addmarker", beat onset (ms), bar, beat] ]
+
+global_note_pitches = new Array(); // store bach-referenced midi-pitch of all notes in the score.
+
 // a bool that identifies if the ratio_init function has been called in the [at.calcRatios.js].
 global_calcratio_init = false;
 // a bool that identifies if the marker_init function has been called in the [at.bach2onset.js].
@@ -111,7 +114,7 @@ function checkList(input) {
 function mir2bach() {
 	var note_onsets = new Array();
 	var note_durations = new Array();
-	var note_pitches = new Array();
+	global_note_pitches = new Array();
 	global_calcratio_init = false;
 	global_bach2onset_init = false;
 	global_marker_tags = new Array();
@@ -124,9 +127,8 @@ function mir2bach() {
 		// note_durations. in miliseconds
 		note_durations.push(Math.floor(global_data[i][global_data_offset_idx]*1000)-note_onsets[i]);
 
-		// note_pitches = Frequency to MIDI cents. Round to nearest int cent.
-		//note_pitches.push(data[i][global_data_pitch_idx]*100);
-		note_pitches.push(midi2hz2cent(global_data[i][global_data_pitch_idx]));
+		// global_note_pitches = Frequency to MIDI cents. Round to nearest int cent.
+		global_note_pitches.push(midi2hz2cent(global_data[i][global_data_pitch_idx]));
 
 		// marker onset = beat note_onsets.
 		// if the denominator in the global_data is equal to the number of beats per bar.
@@ -160,7 +162,7 @@ function mir2bach() {
 	//output data to [bach.roll]
 	outlet(0, "clear");
 	outlet(0, "onsets", note_onsets);
-	outlet(0, "cents", note_pitches);
+	outlet(0, "cents", global_note_pitches);
 	outlet(0, "durations", note_durations);
 	outlet(0, "bang");
 
