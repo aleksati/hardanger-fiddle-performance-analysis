@@ -8,7 +8,6 @@ outlets = 1;
 // global_markers
 // global_beats_per_bar
 
-//var sel_on_and_dur = new Array();
 var lookup_table = {};
 
 // get [onset, duration] from all notes selected. sequentially.

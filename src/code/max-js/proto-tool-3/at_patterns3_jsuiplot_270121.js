@@ -14,25 +14,26 @@ var relative_x = 0;
 
 var data_thickness = 3;             // line width
 var symbol = "dot";				    // data point: none, circle, square, etc.
-var lines = "linear";				// style: none, linear, curve, origin
+var lines = "origin";				// style: none, linear, curve, origin
 var number = "above";				// style: none, above, below, center
 
 var grid_x = new Array();
-var grid_y = new Array(0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100);
+var grid_y = new Array();
 var labels_x = new Array();
-var labels_y = new Array("10%", "20%", "30%", "40%", "50%", "60%", "70%", "80%", "90%", "100%");
+var labels_y = new Array();
 var label_fontsize = 8.0;
 var label_font_offset = 30.0;
 var grid_shrink = 60;
 var label_grid_offset;
-var title_x = "Pattern Beats";
-var title_y = "Beat Durations (%)";
+var title_x = "X";
+var title_y = "Y";
 var title_fontsize = 14.0;
 
 declareattribute("data_fontsize");
 declareattribute("label_fontsize");
 declareattribute("title_fontsize");
 //declareattribute("grid_x");
+declareattribute("range");
 declareattribute("grid_y");
 declareattribute("symbol");
 declareattribute("lines");
@@ -41,10 +42,10 @@ declareattribute("number");
 declareattribute("data_thickness");
 //declareattribute("domain");
 declareattribute("relative_x");
-//declareattribute("labels_x");
-//declareattribute("labels_y");
-//declareattribute("title_x");
-//declareattribute("title_y");
+declareattribute("labels_x");
+declareattribute("labels_y");
+declareattribute("title_x");
+declareattribute("title_y");
 declareattribute("label_font_offset");
 declareattribute("grid_shrink");
 //declareattribute("inputs", "getattr_inputs_obj", "setattr_inputs_obj", 1);
@@ -225,7 +226,7 @@ function paint_grid() {
     with (mgraphics) {
         if (labels_x.length) {
             if (typeof title_x === "string") {
-                move_to((width/2)-40, (height+label_grid_offset)-10);
+                move_to((width/2)-30, (height+label_grid_offset)-10);
                 set_source_rgb(0.2, 0.2, 0.2);
                 select_font_face("Verdana", "normal", "normal");
                 set_font_size(title_fontsize);
@@ -455,30 +456,14 @@ function getdictionary(dict_name) {
 }
 
 
-// this is just to make the x_labels fit the selection. very native.
-function selection() {
-    var bars_input = arrayfromargs(arguments);
-    var count=0;
-    var full_bars = new Array();
-    labels_x = new Array();
-    while ((count+bars_input[0]) <= bars_input[1]) {
-        full_bars.push(count+bars_input[0]);
-        count+=1;
-    }
-    for (var y=0; y<full_bars.length; y++) {
-        labels_x.push("b"+full_bars[y]+"."+"1");
-        labels_x.push("b"+full_bars[y]+"."+"2");
-        labels_x.push("b"+full_bars[y]+"."+"3");
-    }
-}
-
-
 function clear_all_data() {
     lrgest_vec_len = 0;
     vector = new Array();
     color = new Array();
     grid_x = new Array();
+    grid_y = new Array();
     labels_x = new Array();
+    labels_y = new Array();
 
     label_fontsize = 8.0;
     title_fontsize = 14.0;
