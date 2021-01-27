@@ -1,6 +1,6 @@
 autowatch = 1;
 inlets = 1;
-outlets = 2;
+outlets = 1;
 
 // global_note_duration_ratios
 // global_note_onsets
@@ -56,15 +56,19 @@ function bang() {
         }
     }
 
-    // now we should actually collect the note_duration_ratios buut...
-
-    // Use global markers to output the beat number first.
+    // Use the beat and note_pos idx to find the duration ratios of the bach.roll selection
+    var cumul_note_ratios = new Array();
     for (var w=0; w<note_beat_idx.length; w++) {
-        var bar = global_markers[note_beat_idx[w]][2];
-        var beat = global_markers[note_beat_idx[w]][3];
+        // this might be usufull when PLOTTING the selections placement in the bar. so theyr beats.
+        //var bar = global_markers[note_beat_idx[w]][2];
+        //var beat = global_markers[note_beat_idx[w]][3];
+        //outlet(0,"beat: ", bar+(beat/10));
+        //outlet(0, "beat idx (0-based): ", note_beat_idx[w]);
+        //outlet(0, "position idx (0-based): ", note_beat_pos_idx[w]);
 
-        outlet(0,"beat: ", bar+(beat/10));
-        outlet(0, "beat idx (0-based): ", note_beat_idx[w]);
-        outlet(0, "position idx (0-based): ", note_beat_pos_idx[w]);
+        cumul_note_ratios.push(global_note_duration_ratios[note_beat_idx[w]][note_beat_pos_idx[w]]);
     }
+
+    // Outputs a list of note duration ratios from the selected pattern in bach.roll
+    outlet(0, cumul_note_ratios);
 }

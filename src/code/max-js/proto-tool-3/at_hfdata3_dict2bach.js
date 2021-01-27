@@ -9,8 +9,8 @@ global_midi_pitch = new Array();
 
 global_note_onset_ratios = new Array();
 global_note_duration_ratios = new Array();
-global_note_onsets = new Array();
-global_note_durations = new Array();
+global_note_onsets = new Array(); // 1d array
+global_note_durations = new Array(); // 1d array
 
 global_beat_onset_and_duration = new Array();
 global_markers = new Array();
