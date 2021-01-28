@@ -38,11 +38,11 @@ The overall concept is an environment of applications where you can easily impor
 
 1. In this tool, we import the dictionary we created in the first and second tool. This creates the score and every feature that is available in the first tool.
 
-2. Here, we can manually select a region in the score, for instance 3 successive notes, with our mouse. The program will then take the note duration ratios of the selection and find other parts in the score where the same duration ratios (in succession) are present. So it finds recurrent timing patterns of a manually selected region of notes, and colors them in the score for visual inspection.
+2. Here, we can manually select a region in the score, for instance 3 successive notes, with our mouse. The program will then take the **note duration ratios** of the selected region and find other sections in the performance where the same duration ratios (in succession) are present. So it finds recurrent timing patterns of a manually selected region of notes. Lastly it colors them in the score for visual inspection.
 
-3. Since the ratios are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a selected region in the score. Therefore, the tool features a "scale" slider. This slider lets you round all the note duration ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more rounded the ratios, the more patterns you will find.
+3. Since the ratios are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region in the score. Therefore, the tool features a "scale" slider. This slider lets you round all the note duration ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more rounded the ratios, the more patterns you will find.
 
-4. Lastly, in this tool we can plot various musical properties of the selected patterns. This lets us investigate different correlations of repeating sections which share the same timing patterns. In the prototype, I features these plotting possibilities:
+4. Lastly, in this tool we can plot various musical properties of the found patterns. This lets us investigate different correlations of repeating sections that share the same timing patterns. In the prototype, I features these plotting possibilities:
 	1. **metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y axis. Then, all recurrent instances of the pattern are plotted in the same graph. This can help us to see if patterns with similar timing profiles share the same metrical positions, or not. 
 	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not.
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
@@ -50,9 +50,10 @@ The overall concept is an environment of applications where you can easily impor
 
 ### Additional Suggestions
 
-* None of the tools explore the timing patterns of the ornamentations. This could be worth looking further into.
+* None of the tools explore the timing patterns of ornamentations or how they relate to the "regular" notes. This could be worth looking into.
 
-* In relation to tool nr.1; when changing the beat durations and ratios, we only do so locally. A nice idea would be to make a new tool, based on tool 1 and 2, where a local change in beat duration would result in similar changes in all it's recurrent harmonic patterns.
-	* Furthermore, we can not yet change the note onset and durations the same way.
+* In relation to tool nr.1; when changing the beat durations and ratios, we only do so locally. A nice idea would be to make a new tool, based on 1 and 2, where a local beat duration change would result in similar changes being made to all of it's associated harmonic patterns.
+
+* In relation to tool nr.1; we could explore the possibility of change the note onset and duration ratios as well.
 	
 * In relation to tool nr.2; it will only find repeating harmonic patterns using the text file. It could be nice to actually detect repeating harmonic patterns in Max itself, using pitch. I do a similar kind of pattern detection in the third tool, when I look for similar note duration ratios throughout the track.
