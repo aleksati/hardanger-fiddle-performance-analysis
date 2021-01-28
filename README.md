@@ -20,27 +20,27 @@ The overall concept is an environment of applications where you can easily impor
 * The beat ratios are calculated with respect to their associated bar duration.
 * We cannot drag a beat marker across one of its neighbouring beats. This will simply result in the beat markers changing their names and configurations to fit. (a nice little brag to myself here)
 
-### 2. Visually inspect the **timing patterns of repeating harmonic patterns**
+### 2. Exploring "timing profiles" of repeating harmonic patterns (motifs)
 
 1. This is an extension of the first tool, so it harbours all the features of tool 1.
 
-2. First, we import a specific text file listing all the repeating harmonic patterns of the tune in question. The harmonic patterns are then added to the dictionary.
+2. First, we import a specific text file listing all the repeating harmonic patterns of the performance in question. The harmonic patterns (or motifs) are then added to the dictionary in a specific format.
 
-3. Then, we can select a bar/measure range, for instance from bar 1 to bar 3. The program will then see if your selection corresponds to any repeating harmonic patterns in the text file. If it finds matches, it will color all matches in the score with different colors. 
+3. Then, we can select a bar/measure range, for instance from bar 1 to bar 3. The program will then see if your selection corresponds to any of the morifs patterns recently added to the dictionary. If it finds matches it colors ALL the instances of the motif (throughout the performance) with different colors.
 
-4. **More interestingly**, it will plot the timing patterns of all the found patterns in a custom plot (jsui). We can then investigate how timing patterns of repeating harmonic patterns evolve over the course of the performance. 
+4. **More interestingly**, it will plot the "timing profiles" (in this case the **beat duration ratios**) of all the patterns in a custom plot (built in jsui). We can then investigate specifically how the timing of repeating motifs evolve over the course of the performance. 
 
 5. Lastly, we can of course export the plotted data in a smaller, more concise dictionary format.
 
 
 
-### 3. Investigate various musical properties of recurrent instances of manually selected regions of notes, based on the selected regions "timing profile".
+### 3. Investigate musical properties of recurrent instances of manually selected regions of notes, based on the selected regions timing profile.
 
 1. In this tool, we import the dictionary we created in the first and second tool. This creates the score and every feature that is available in the first tool.
 
-2. Here, we can manually select a region in the score, for instance 3 successive notes, with our mouse. The program will then take the **note duration ratios** of the selected region and find other sections in the performance where the same duration ratios (in succession) are present. So it finds recurrent timing patterns of a manually selected region of notes. Lastly it colors them in the score for visual inspection.
+2. Here, we can manually select a region in the score, for instance 3 successive notes, with our mouse. The program will then collect the **note duration ratios** of the selected region and find other regions in the performance where the same timing profile is present. So it finds recurrent instances of a manually selected region of notes, based on the selected regions timing profile. Lastly it colors them in the score for visual inspection.
 
-3. Since the ratios are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region in the score. Therefore, the tool features a "scale" slider. This slider lets you round all the note duration ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more rounded the ratios, the more patterns you will find.
+3. Since the ratios in question are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region. Therefore, the tool features a "scale" slider. This slider lets you round all the note duration ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more rounded the ratios, the more patterns you will find.
 
 4. Lastly, in this tool we can plot various musical properties of the found patterns. This lets us investigate different correlations of repeating sections that share the same timing patterns. In the prototype, I features these plotting possibilities:
 	1. **metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y axis. Then, all recurrent instances of the pattern are plotted in the same graph. This can help us to see if patterns with similar timing profiles share the same metrical positions, or not. 
