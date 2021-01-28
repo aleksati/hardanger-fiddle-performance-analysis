@@ -28,8 +28,8 @@ The overall concept is an environment of applications where you can easily impor
 * We cannot drag a beat marker across one of its neighbouring beats. This will simply result in the beat markers changing their names and configurations to fit. (a nice little brag to myself here)
 
 <p align="left">
- <img src="figs/1.jpg" width=540>
- <img src="figs/1.1.jpg" width=540>
+ <img src="figs/1.jpg" width=440>
+ <img src="figs/1.1.jpg" width=440>
 </p>
 
 
