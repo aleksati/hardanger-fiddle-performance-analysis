@@ -7,7 +7,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 The overall concept is an environment of applications where you can easily import/export specific JSON files (dictionaries) between tools that perform different operations on computationally transcribed performances of Hardanger Fiddle music (specifically provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/)).
 
-### 1. **A dynamic beat duration "editor"**
+### 1. A dynamic beat duration "editor"
 
 1. First off, this tool successfully converts all the necessary data from the MIRAGE .csv transcription data into dictionary format; including note onset ratios, note duration ratios, beat ratios, beat onset and durations, total tune duration, pitches etc.
 	1. Sidenote - the dictionaries themselves can be useful and insightful for research. As shown in the jupyter notebook files in "src -> code -> python". 
@@ -19,6 +19,7 @@ The overall concept is an environment of applications where you can easily impor
 * The note ratios are calculated with respects to their associated beat duration.
 * The beat ratios are calculated with respect to their associated bar duration.
 * We cannot drag a beat marker across one of its neighbouring beats. This will simply result in the beat markers changing their names and configurations to fit. (a nice little brag to myself here)
+
 
 ### 2. Exploring "timing profiles" of repeating harmonic patterns (motifs)
 
@@ -42,8 +43,8 @@ The overall concept is an environment of applications where you can easily impor
 
 3. Since the ratios in question are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region. Therefore, the tool features a "scale" slider. This slider lets you round all the note duration ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more rounded the ratios, the more patterns you will find.
 
-4. Lastly, in this tool we can plot various musical properties of the found patterns. This lets us investigate different correlations of repeating sections that share the same timing patterns. In the prototype, I features these plotting possibilities:
-	1. **metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y axis. Then, all recurrent instances of the pattern are plotted in the same graph. This can help us to see if patterns with similar timing profiles share the same metrical positions, or not. 
+4. Lastly, in this tool we can plot various musical properties of the found patterns. This lets us quickly investigate different commonalities in note sections that share the same timing profile. In the prototype, I feature these plotting possibilities:
+	1. **Metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y axis. Then, all recurrent instances of the pattern are plotted in the same graph. This can help us to see if patterns with similar timing profiles share the same metrical positions, or not. 
 	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not.
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
 
