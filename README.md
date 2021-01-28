@@ -2,14 +2,17 @@ A work in progress.. Currently (28.01.21), all these tools (1,2 and 3) have been
 
 # Brief Description of Toolbox Prototypes
 
-The overall concept is an environment of tools where you can easily import/export specific JSON files (dictionaries) between applications that perform different operations on the performance transcription. 
+The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) for score representation and visualization, Javascript for list processing, logic and custom plotting, and Python for further data science using the Jupyter Notebook environment. 
+
+**intention**
+The overall concept is an environment of applications where you can easily import/export specific JSON files (dictionaries) between tools that perform different operations on the performance transcription provided by the [MIRAGE research project](https://www.uio.no/ritmo/english/projects/mirage/).
 
 ### 1. **A manual beat "editor"**
 
 1. First off, this tool successfully converts all the necessary data from the MIRAGE .csv transcription data into dictionary format; including note onset ratios, note duration ratios, beat ratios, beat onset and durations, total tune duration, pitches etc.
 	1. Sidenote - the dictionaries themselves can be useful and insightful for research. As shown in the jupyter notebook files in "src -> code -> python". 
 2. Then, we actually use the dictionary (and it's ratios) to "recreate" the performance as notation in our score. Why this is a preferred solution will become apparent in the next point.
-3. Dynamically change the beat onsets. The performance notation consist of notes and markers indicating the beat positions. We can manually drag and edit these markers, effectively shortening and elongating sections of the performance. When we elongate one part and shorten another, the tool must refresh the score and scale everything accordingly. This means that changing a beat's duration will alter the onset and duration of all it's notes. However, we will not change these note's **ratios** by changing the beat position, we will only change the beat ratios. Lastly, for this to work, it's best to use the dictionary collected ratios as building block for the score itself
+3. The main feature of the first tool is it's ability to dynamically change the beat onsets and subsequently their durations. The performance notation consist of notes and markers indicating the beat positions. The tool let's us manually drag and edit these markers, effectively shortening and elongating the beats in the performance. When we elongate one part and shorten another, the tool must refresh the score and scale everything accordingly. This means that changing a beat's duration will alter the onset and duration of all it's notes. However, we will not change these note's **ratios** by changing the beat position, we will only change the beat ratios. Lastly, for this to work, it's best to use the dictionary collected ratios as building block for the score itself
 
 **Some notes on the first tool:**
 
