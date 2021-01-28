@@ -38,15 +38,15 @@ This is an extension of the first tool, so it harbours all the features of tool 
 
 
 
-### 3. Investigate musical properties of recurrent instances of manually selected regions of notes, based on the selected regions timing profile.
+### 3. Investigate musical properties of recurrent instances of manually selected regions of notes, based on the selected regions timing pattern.
 
 1. In this tool, we import the dictionary we created (and exported) in the first and second tool. The dictionary creates the score and every feature that is available in the first tool.
 
-2. Then, we can manually select a region in the score, for instance 3 successive notes, with our mouse. The program will then collect the **note duration ratios** of the selected region and find other regions in the performance where the same timing profile is present. So it finds recurrent instances of a manually selected region of notes, based on the selected regions timing profile. Lastly it colors them in the score for visual inspection.
+2. Then, we can manually select a region in the score, for instance 3 successive notes, with our mouse. The program will then collect the **note duration ratios** of the selected region and find other regions in the performance where the same timing pattern is present. So it finds recurrent instances of a manually selected region of notes, based on the selected regions timing pattern. Lastly it colors them in the score for visual inspection.
 	1. Since the ratios in question are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region. Therefore, the tool features a "scale" slider. This slider lets you round all the note duration ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more rounded the ratios, the more patterns you will find.
 
-3. Lastly, in this tool we can plot various musical properties of the found patterns. This enables us to quickly investigate commonalities across regions that share the same timing profile. In the prototype, I feature these plotting possibilities:
-	1. **Metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y-axis. Then, all recurrent instances of the pattern are plotted in the same graph. This can help us to see if patterns with similar timing profiles share the same metrical positions, or not. 
+3. Lastly, in this tool we can plot various musical properties of all the matching patterns, simultaneously. This enables us to quickly investigate commonalities across regions that share the same timing pattern. In the prototype, I feature these plotting possibilities:
+	1. **Metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y-axis. This can help us to see if patterns with similar timing patterns share the same metrical positions, or not. 
 	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not.
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
 
