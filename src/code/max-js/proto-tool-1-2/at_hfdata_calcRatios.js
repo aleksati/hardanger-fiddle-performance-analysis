@@ -138,6 +138,7 @@ function ratios2dict() {
         }, 0));
 
         // go through every bar
+        var pitch_count = 0;
         for (var j=0; j<Math.round(global_beat_durations.length/global_beats_per_bar); j++) {
             var key = global_filename+"::ratios::beat_ratios::bar";
             hf_dict.replace(key+(j+1), global_beat_ratios[j]);
@@ -149,34 +150,30 @@ function ratios2dict() {
             var tag = global_marker_tags[i][2] + (global_marker_tags[i][3]/10);
             var str_tag = "beat" + tag;
 
-            // add the note_onset_ratios
-            var key = global_filename+"::ratios::note_onset_ratios::";
+            // loop through every note in every beat.
             for (var y=0; y<global_note_onset_ratios[i].length; y++) {
-                hf_dict.append(key+str_tag, global_note_onset_ratios[i][y]);
-            }
 
-            // add the note_duration_ratios
-            key = global_filename+"::ratios::note_duration_ratios::";
-            for (var w=0; w<global_note_dur_ratios[i].length; w++) {
-                hf_dict.append(key+str_tag, global_note_dur_ratios[i][w]);
+                // add the note_onset_ratios
+                var key = global_filename+"::ratios::note_onset_ratios::";
+                hf_dict.append(key+str_tag, global_note_onset_ratios[i][y]);
+
+                // add the note_duration_ratios
+                key = global_filename+"::ratios::note_duration_ratios::";
+                hf_dict.append(key+str_tag, global_note_dur_ratios[i][y]);
+
+                // add pitches in every beat. originally a 1d array, but add as 2d array for effective storage. 
+                key = global_filename+"::pitch::";
+                hf_dict.append(key+str_tag, global_note_pitches[pitch_count]);
+                pitch_count += 1;
+
             }
 
             // Lastly, add the BEAT onset (ms) and duration.
             key = global_filename+"::beat_onset_and_duration::";
-            // add the onset
             hf_dict.append(key+str_tag, global_marker_tags[i][1]);
-            // duration
             hf_dict.append(key+str_tag, global_beat_durations[i]);
 
         }
-
-        // finally, add pitch-info to dict.
-        key = global_filename+"::pitch::";
-        hf_dict.replace(key+"bach-midi-cent", global_note_pitches);
-
-        //for (var x=0; x<global_note_pitches.length; x++) {
-        //    hf_dict.append(key+"Hz", Math.round(cent2hz((global_note_pitches[x]*10)/10)));
-        //}
         
     } else {
         error("Error (ratios2dict).. global_calcratio_init is false.");

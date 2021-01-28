@@ -22,8 +22,9 @@ global_beats_per_bar = 3;
 global_bach2onset_init = false;
 
 
-function pitch(){
-    global_midi_pitch = arrayfromargs(arguments);
+function pitch() { // get lists(!) so we need to concat.
+    var input_list = arrayfromargs(arguments);
+    global_midi_pitch.push(input_list);
 }
 
 
@@ -55,9 +56,8 @@ function file_name(dictname) {
     global_filename = dictname;
 }
 
-
+// main function
 function dict2bach() {
-
     // create note onsets and note durations from ratios.
     for (var i=0; i<global_note_onset_ratios.length; i++) {
         for (var y=0; y<global_note_onset_ratios[i].length; y++) {
@@ -92,7 +92,10 @@ function dict2bach() {
     
 
     outlet(0, "clear");
-    outlet(0, "cents", global_midi_pitch);
+    var oned_pitch = global_midi_pitch.reduce(function(prev, next) {
+        return prev.concat(next);
+    });
+    outlet(0, "cents", oned_pitch);
     outlet(0, "onsets", global_note_onsets);
     outlet(0, "durations", global_note_durations);
     for (var w=0; w<global_markers.length; w++) {
