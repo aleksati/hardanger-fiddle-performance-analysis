@@ -22,6 +22,10 @@ The overall concept is an environment of applications where you can easily impor
 * The beat ratios are calculated with respect to their associated bar duration.
 * We cannot drag a beat marker across one of its neighbouring beats. This will simply result in the beat markers changing their names and configurations to fit. (a nice little brag to myself here)
 
+<p align="left">
+ <img src="figs/1.jpg" width=440>
+</p>
+
 
 ### 2. Exploring timing patterns of repeating motifs
 This is an extension of the first tool, so it harbours all the features of tool 1.
