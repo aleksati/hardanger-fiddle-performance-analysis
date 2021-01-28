@@ -7,6 +7,10 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 The overall concept is an environment of applications where you can easily import/export specific JSON files (dictionaries) between tools that perform different operations on computationally transcribed performances of Hardanger Fiddle music (specifically provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/)).
 
+<p align="left">
+ <img src="dict/3.jpg" width=440>
+</p>
+
 ### 1. A dynamic beat duration "editor"
 
 1. First off, this tool successfully converts all the necessary data from the MIRAGE .csv transcription data into dictionary format; including note onset ratios, note duration ratios, beat ratios, beat onset and durations, total tune duration, pitches etc.
@@ -24,8 +28,8 @@ The overall concept is an environment of applications where you can easily impor
 * We cannot drag a beat marker across one of its neighbouring beats. This will simply result in the beat markers changing their names and configurations to fit. (a nice little brag to myself here)
 
 <p align="left">
- <img src="figs/1.jpg" width=440>
- <img src="figs/1.1.jpg" width=440>
+ <img src="figs/1.jpg" width=540>
+ <img src="figs/1.1.jpg" width=540>
 </p>
 
 
@@ -47,7 +51,6 @@ This is an extension of the first tool, so it harbours all the features of tool 
 </p>
 
 
-
 ### 3. Investigate musical properties of recurrent instances of manually selected regions of notes, based on the selected regions timing pattern.
 
 1. In this tool, we import the dictionary we created (and exported) in the first and second tool. The dictionary creates the score and every feature that is available in the first tool.
@@ -63,6 +66,10 @@ This is an extension of the first tool, so it harbours all the features of tool 
 
 **Some notes:**
 * Velocities are, for the time being, randomly generated and distributed because transcription data with note intensity (velocity) information has not yet been provided.  
+
+<p align="left">
+ <img src="figs/3.jpg" width=auto>
+</p>
 
 
 ## Additional Suggestions / Further Work
