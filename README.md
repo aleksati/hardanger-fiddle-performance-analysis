@@ -14,7 +14,7 @@ The overall concept is an environment of applications where you can easily impor
 2. Then, we actually use the dictionary (and it's ratios) to "recreate" the performance as notation in our score. Why this is a preferred solution will become apparent in the next point.
 3. The main feature of the first tool is it's ability to dynamically change the beat onsets and subsequently their durations. The performance notation consist of notes and markers indicating the beat positions. The tool let's us manually drag and edit these markers, effectively shortening and elongating the beats in the performance. When we elongate one part and shorten another, the score is refreshed and all notes are scaled accordingly. This means that changing a beat's duration will alter the onset and duration of all it's notes, the notes in the neighbouring beat, the bar durations, and the overall track duration (sometimes). However, altering duration **ratios** of the beats will **not** affect the note's onset and duration **ratios**. For this concept to work, it's best to use the dictionary method mentioned for dynamic score creation.
 
-**Some notes on the first tool:**
+**Some notes:**
 
 * The note ratios are calculated with respects to their associated beat duration.
 * The beat ratios are calculated with respect to their associated bar duration.
@@ -29,9 +29,13 @@ The overall concept is an environment of applications where you can easily impor
 
 3. Then, we can select a bar/measure range, for instance from bar 1 to bar 3. The program will then see if your selection corresponds to any of the morifs patterns recently added to the dictionary. If it finds matches it colors ALL the instances of the motif (throughout the performance) with different colors.
 
-4. **More interestingly**, it will plot the "timing profiles" (in this case the **beat duration ratios**) of all the patterns in a custom plot (built in jsui). We can then investigate specifically how the timing of repeating motifs evolve over the course of the performance. 
+4. **More interestingly**, the tool will plot the "timing profiles" (in this case the **beat duration ratios**) of all the found pattern instances in a custom plot (built in jsui). We can then investigate how the timing of repeating motifs evolve over the course of the performance. 
 
 5. Lastly, we can of course export the plotted data in a smaller, more concise dictionary format.
+
+
+**Some notes:**
+* The plotted info (beat duration ratios of the motifs) does not consider the motif duration as reference. Rather, the beat durations are calculated with respect to their associated bar, as brefly mentioned.
 
 
 
@@ -47,6 +51,10 @@ The overall concept is an environment of applications where you can easily impor
 	1. **Metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y-axis. Then, all recurrent instances of the pattern are plotted in the same graph. This can help us to see if patterns with similar timing profiles share the same metrical positions, or not. 
 	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not.
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
+
+
+**Some notes:**
+* Velocities are, for the time being, randomly generated and distributed because transcription data with note intensity (velocity) information has not yet been provided.  
 
 
 ## Additional Suggestions / Further Work
