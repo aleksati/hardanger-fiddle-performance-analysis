@@ -4,7 +4,7 @@ A work in progress.. Currently (28.01.21), all these tools (1,2 and 3) have been
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) for score representation and visualization, Javascript for list processing, logic and custom plotting, and Python for further data science using the Jupyter Notebook environment. 
 
-**intention**
+
 The overall concept is an environment of applications where you can easily import/export specific JSON files (dictionaries) between tools that perform different operations on the performance transcription provided by the [MIRAGE research project](https://www.uio.no/ritmo/english/projects/mirage/).
 
 ### 1. **A manual beat "editor"**
