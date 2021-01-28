@@ -7,7 +7,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 The overall concept is an environment of applications where you can easily import/export specific JSON files (dictionaries) between tools that perform different operations on computationally transcribed performances of Hardanger Fiddle music (specifically provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/)).
 
-### 1. **A manual beat "editor"**
+### 1. **A dynamic beat duration "editor"**
 
 1. First off, this tool successfully converts all the necessary data from the MIRAGE .csv transcription data into dictionary format; including note onset ratios, note duration ratios, beat ratios, beat onset and durations, total tune duration, pitches etc.
 	1. Sidenote - the dictionaries themselves can be useful and insightful for research. As shown in the jupyter notebook files in "src -> code -> python". 
