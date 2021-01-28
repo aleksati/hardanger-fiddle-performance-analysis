@@ -43,7 +43,7 @@ This is an extension of the first tool, so it harbours all the features of tool 
 * The plotted info (beat duration ratios of the motifs) does not consider the motif duration as reference. Rather, the beat durations are calculated with respect to their associated bar, as brefly mentioned.
 
 <p align="left">
- <img src="figs/2.jpg" width=640>
+ <img src="figs/2.jpg" width=auto>
 </p>
 
 
