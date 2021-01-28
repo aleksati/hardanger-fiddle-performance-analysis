@@ -1,6 +1,6 @@
 A work in progress.. Currently (28.01.21), all these tools (1,2 and 3) have been prototyped(!) successfully. There is, of course, major room for improvements, testing and experimentation. Also, the additional suggestions have yet to be developed.
 
-# Brief Description of Toolbox Prototypes
+# Brief Description of Proposed Toolbox
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) for score representation and visualization, Javascript for list processing, logic and custom plotting, and Python for further data science using the Jupyter Notebook environment. 
 
