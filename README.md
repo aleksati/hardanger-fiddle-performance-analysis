@@ -8,7 +8,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 The overall concept is an environment of applications where you can easily import/export specific JSON files (dictionaries) between tools that perform different operations on computationally transcribed performances of Hardanger Fiddle music (specifically provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/)).
 
 <p align="left">
- <img src="dict/3.jpg" width=440>
+ <img src="figs/dict.jpg" width=440>
 </p>
 
 ### 1. A dynamic beat duration "editor"
