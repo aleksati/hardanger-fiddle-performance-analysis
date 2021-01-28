@@ -1,4 +1,4 @@
-A work in progress.. Currently (28.01.21), all these tools (1,2 and 3) have been prototyped(!) successfully. There is, of course, major room for improvements, testing and experimentation. Also, the additional suggestions have yet to be developed.
+A work in progress.. Currently (28.01.21), all tools described below (1, 2 and 3) have been prototyped(!) successfully. There is, of course, major room for improvements, testing and experimentation.
 
 # Brief Description of Proposed Toolbox
 
@@ -49,7 +49,7 @@ The overall concept is an environment of applications where you can easily impor
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
 
 
-### Additional Suggestions
+## Additional Suggestions / Further Work
 
 * None of the tools explore the timing patterns of ornamentations or how they relate to the "regular" notes. This could be worth looking into.
 
