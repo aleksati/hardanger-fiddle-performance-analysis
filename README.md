@@ -16,17 +16,17 @@ The overall concept is an environment of applications where you can easily impor
 
 3. The main feature of the first tool is it's ability to dynamically change the beat onsets and subsequently their durations. The performance notation consist of notes and markers indicating the beat positions. The tool let's us manually drag and edit these markers, effectively shortening and elongating the beats in the performance. When we elongate one part and shorten another, the score is refreshed and all notes are scaled accordingly. This means that changing a beat's duration will alter the onset and duration of all it's notes, the notes in the neighbouring beat, the bar durations, and the overall track duration (sometimes). However, altering duration **ratios** of the beats will **not** affect the note's onset and duration **ratios**. For this concept to work, it's best to use the dictionary method mentioned for dynamic score creation.
 
-<p align="left">
- <img src="figs/1.jpg" width=440>
- <img src="figs/1.1.jpg" width=440>
-</p>
-
 
 **Some notes:**
 
 * The note ratios are calculated with respects to their associated beat duration.
 * The beat ratios are calculated with respect to their associated bar duration.
 * We cannot drag a beat marker across one of its neighbouring beats. This will simply result in the beat markers changing their names and configurations to fit. (a nice little brag to myself here)
+
+<p align="left">
+ <img src="figs/1.jpg" width=440>
+ <img src="figs/1.1.jpg" width=440>
+</p>
 
 
 ### 2. Exploring timing patterns of repeating motifs
@@ -41,6 +41,10 @@ This is an extension of the first tool, so it harbours all the features of tool 
 
 **Some notes:**
 * The plotted info (beat duration ratios of the motifs) does not consider the motif duration as reference. Rather, the beat durations are calculated with respect to their associated bar, as brefly mentioned.
+
+<p align="left">
+ <img src="figs/2.jpg" width=640>
+</p>
 
 
 
