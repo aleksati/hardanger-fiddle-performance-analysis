@@ -7,7 +7,7 @@ The overall concept is an environment of tools where you can easily import/expor
 ### 1. **A manual beat "editor"**
 
 1. First off, this tool successfully converts all the necessary data from the MIRAGE .csv transcription data into dictionary format; including note onset ratios, note duration ratios, beat ratios, beat onset and durations, total tune duration, pitches etc.
-	1. Sidenote -- the dictionaries themselves can be useful and insightful for research. As shown in "src -> code -> python -> track-data-plotting.ipynb" 
+	1. Sidenote - the dictionaries themselves can be useful and insightful for research. As shown in the jupyter notebook files in "src -> code -> python". 
 2. Then, we actually use the dictionary (and it's ratios) to "recreate" the performance as notation in our score. Why this is a preferred solution will become apparent in the next point.
 3. Dynamically change the beat onsets. The performance notation consist of notes and markers indicating the beat positions. We can manually drag and edit these markers, effectively shortening and elongating sections of the performance. When we elongate one part and shorten another, the tool must refresh the score and scale everything accordingly. This means that changing a beat's duration will alter the onset and duration of all it's notes. However, we will not change these note's **ratios** by changing the beat position, we will only change the beat ratios. Lastly, for this to work, it's best to use the dictionary collected ratios as building block for the score itself
 
