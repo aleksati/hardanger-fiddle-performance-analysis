@@ -20,6 +20,7 @@ declareattribute("plot_type");
 
 function beatPositions() {
     // now find the rest of the patterns notes assosiated beat position.
+    // basically, look through a 2d array like a 1d array.
     var pattr_beat_lst = new Array();
     for (var i=0; i<global_note_beat_idx.length; i++) {
         var beatpos = global_note_beat_idx[i];
@@ -72,6 +73,7 @@ function beatPositions() {
 
 function pitchDist() {
     // for full description of this logic, see beatPosition function.
+    // basically, look through a 2d array like a 1d array.
     var pattr_pitch_lst = new Array();
     for (var i=0; i<global_note_beat_idx.length; i++) {
         var beatpos = global_note_beat_idx[i];
@@ -117,8 +119,54 @@ function pitchDist() {
 
 
 function veloDist() {
+    // for full description of this logic, see beatPosition function.
+    // basically, look through a 2d array like a 1d array.
+    var pattr_velo_lst = new Array();
+    for (var i=0; i<global_note_beat_idx.length; i++) {
+        var beatpos = global_note_beat_idx[i];
+        var notepos = global_note_beat_pos_idx[i];
+        var inc = 0;
+        for (var y=0; y<global_sel_len; y++) {
+            if (notepos+inc == global_velocities[beatpos].length-1) {
+                pattr_velo_lst.push(global_velocities[beatpos][notepos+inc]);
+                beatpos += 1;
+                notepos = 0;
+                inc = 0;
+            } else {
+                pattr_velo_lst.push(global_velocities[beatpos][notepos+inc]);
+                inc += 1;
+            }
+        }
+    }
+
+    // output data and configure plot.
+    // the midi pitches of this piece varies from about 5500 - 9000
+    outlet(0, "clear_all_data");
+    outlet(0, "grid_y", 0, 13, 26, 39, 52, 65, 78, 91, 104, 117, 130);
+    outlet(0, "range", 0, 130);
+    outlet(0, "labels_y", "13", "26", "39", "52", "65", "78", "91", "104", "117", "130");
+    var labels_x = new Array();
+    for (var y=1; y<=global_sel_len; y++) {
+        labels_x.push("note"+y);
+    }
+    outlet(0, "labels_x", labels_x);
+    outlet(0, "title_x", "Notes in Pattern");
+    outlet(0, "title_y", "MIDI Velocity");
+    var count = 0;
+    for (var i=0; i<pattr_velo_lst.length; i+=global_sel_len) {
+        var data = pattr_velo_lst.slice(i, (i+(global_sel_len)));
+        var clr = new Array("color");
+        pattr_colors[count].forEach(function(elem) {
+            clr.push(elem);
+        });
+        outlet(0, data.concat(clr));
+        count += 1;
+    }
+    outlet(0, "bang");
+
 
 }
+
 
 // main function
 function bang() {
