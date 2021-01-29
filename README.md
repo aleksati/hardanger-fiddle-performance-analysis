@@ -66,7 +66,7 @@ This is an extension of the first tool, so it harbours all the features of tool 
 
 
 **Some notes:**
-* Velocities are, for the time being, randomly generated and distributed because transcription data with note intensity (velocity) information has not yet been provided.  
+* Velocities are, for the time being, randomly generated because transcription data with note intensity (velocity) information has not yet been provided. The velocity of a note is indicated by the size of its notehead. The bigger the louder.  
 
 <p align="left">
  <img src="figs/3.jpg" width=auto>
