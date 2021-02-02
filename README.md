@@ -75,6 +75,8 @@ This is an extension of the first tool, so it harbours all the features of tool 
 
 ## Additional Suggestions / Further Work
 
+* Instead of manually editing the beat onset and durations, maybe have one button that instantly quantizes the performance. And another button that recreates the performance variations again. 
+
 * None of the tools explore the timing patterns of ornamentations or how they relate to the "regular" notes. This could be worth looking into.
 
 * In relation to tool nr.1; when changing the beat durations and ratios, we only do so locally. A nice idea would be to make a new tool, based on 1 and 2, where a local beat duration change would result in similar changes being made to all of it's associated harmonic patterns.
