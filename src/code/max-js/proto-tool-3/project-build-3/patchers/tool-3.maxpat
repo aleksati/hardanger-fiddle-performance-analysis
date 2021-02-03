@@ -62,7 +62,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1814.0, 63.923233032226563, 117.653846740722656, 67.0 ],
+					"patching_rect" : [ 1814.0, 63.923233032226563, 121.0, 67.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 2,
 					"presentation_rect" : [ 710.079264736175787, 85.461616516113281, 136.038054037093616, 53.0 ],
@@ -92,14 +92,14 @@
 					"bubble" : 1,
 					"bubbleside" : 3,
 					"id" : "obj-74",
-					"linecount" : 5,
+					"linecount" : 4,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1674.096153259277344, 142.65916919708252, 117.653846740722656, 79.0 ],
+					"patching_rect" : [ 1674.096153259277344, 142.65916919708252, 120.0, 66.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 4,
-					"presentation_rect" : [ 13.961945962906384, 477.461616516113281, 128.038054037093616, 66.0 ],
+					"presentation_rect" : [ 13.961945962906384, 477.461616516113281, 130.0, 66.0 ],
 					"text" : "Use your mouse to select a region of notes you want to investigate"
 				}
 
@@ -113,10 +113,10 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1799.0, 48.923233032226563, 117.653846740722656, 121.0 ],
+					"patching_rect" : [ 1799.0, 48.923233032226563, 118.0, 121.0 ],
 					"presentation" : 1,
 					"presentation_linecount" : 7,
-					"presentation_rect" : [ 13.961945962906384, 61.961616516113281, 122.840096211432638, 107.0 ],
+					"presentation_rect" : [ 13.961945962906384, 61.961616516113281, 126.0, 107.0 ],
 					"text" : "First, import the JSON performance data you exported from the first tool, and hit the button to create the score."
 				}
 
@@ -224,9 +224,9 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 1297.884344071149826, 301.653921127319336, 78.615655928850174, 20.0 ],
+					"patching_rect" : [ 1297.884344071149826, 301.653921127319336, 79.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1254.136345791816211, 736.229721188545227, 78.615655928850174, 20.0 ],
+					"presentation_rect" : [ 1254.136345791816211, 736.229721188545227, 79.0, 20.0 ],
 					"text" : "label position"
 				}
 
@@ -34193,99 +34193,99 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "bach.ezmidiplay.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/bach/patchers",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/patchers",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "bach.gcd.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/bach/patchers",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/patchers",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "bach.approx.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/bach/patchers",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/patchers",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "bach.filter.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/bach/patchers",
-				"patcherrelativepath" : "../../../../../../Max 8/Packages/bach/patchers",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/patchers",
+				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_hfdata3.maxpat",
-				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_hfdata3_onsets2bach.js",
-				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
-				"patcherrelativepath" : ".",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/code",
+				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_hfdata3_bach2onset.js",
-				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
-				"patcherrelativepath" : ".",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/code",
+				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_hfdata3_beatpositioncheck.maxpat",
-				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_hfdata3_dict2bach.js",
-				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
-				"patcherrelativepath" : ".",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/code",
+				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_patterns3.maxpat",
-				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/patchers",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_patterns3_bach2dur_ratios.js",
-				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
-				"patcherrelativepath" : ".",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/code",
+				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_patterns3_dur_ratios2patterns.js",
-				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
-				"patcherrelativepath" : ".",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/code",
+				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_patterns3_choosePlot.js",
-				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
-				"patcherrelativepath" : ".",
+				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3/project-build-3/tool-3/code",
+				"patcherrelativepath" : "../code",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "at_patterns3_jsuiplot_270121.js",
 				"bootpath" : "~/Documents/GitHub/thesis/src/code/max-js/proto-tool-3",
-				"patcherrelativepath" : ".",
+				"patcherrelativepath" : "../../..",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
