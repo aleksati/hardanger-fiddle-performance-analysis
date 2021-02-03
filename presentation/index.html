@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Interactive Performance Tools</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -16,21 +16,74 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+                <section>
+                    <h2>Interactive Tools for Exploring Performance Patterns in Hardanger Fiddle Music </h2>
+                    <!--
+                    <p class="fragment">Slide 1</p>
+                    <p class="fragment">Hey</p>
+                    <p class="fragment">Look at me</p>
+                    -->
+                </section>
+
+                <section data-auto-animate>
+                    <h3 class="r-fit-text">Research Question</h3>
+                        <p style="text-align:left">How can we design interactive computational tools to explore performance patterns in Hardanger fiddle music?</p>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Research Question</h3>
+                    <p style="text-align:left">How can we design interactive computational tools to explore performance patterns in Hardanger fiddle music?</p>
+                    <ul>
+                        <small><li> How can we successfully generate performances from Hardanger fiddle music transcriptions with the help of performance patterns?</small></li>
+                    </ul>
+                </section>
+
+                <section data-auto-animate>
+                    <h3 class="r-fit-text">Methodology</h3>
+                    <p style="text-align:left">Develop a small set of interactive computational tools based on the performance data recieved from MIRAGE (supervisor).</p>
+                </section>
+        
+                <section data-auto-animate>
+                    <h3>Methodology</h3>
+                    <p style="text-align:left">Develop a small set of interactive computational tools based on the performance data recieved from MIRAGE (supervisor).</p>
+                    <ul>
+                        <li style="color: rgb(229, 255, 0)"><b>Qualitative</b> - online presentation to experts and subsequent questionnaire</li>
+                        <li style="color: rgb(0, 255, 149)" class="fragment">Quantitative - small scale analysis on data produced by the developed tools</li>
+                    </ul>
+                </section>
+
+                <section data-auto-animate>
+                    <h3 class="r-fit-text">Approach</h3>
+                    <p style="text-align:left">Specifically focus on the <b>timing patterns</b> of Hardanger fiddle performances.</p>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Approach</h3>
+                    <p style="text-align:left">Specifically focus on the <b>timing patterns</b> of Hardanger fiddle performances.</p>
+                    <ul>
+                        <li>Structrually</li>
+                        <li>Dynamically</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section><h3>1/3</h3></section>
+                    <section> <img data-src="img/dict.jpg"> </section>
+                    <section data-auto-animate> <img data-src="img/1.jpg" data-id="score"></section>
+                    <section data-auto-animate> <img data-src="img/1.1.jpg" data-id="score"></section>
+                </section>
 			</div>
 		</div>
 
-		<script src="dist/reveal.js"></script>
+        
+        <script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
 			Reveal.initialize({
-				hash: true,
+                hash: true,
+                overview: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
