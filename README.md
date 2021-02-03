@@ -6,9 +6,9 @@ A work in progress..
  <img src="figs/dict.jpg" width=440>
 </p>
 
-The prototyped tools examine performance patterns of Hardanger fiddle music. To narrow the scope, I decided to design a set of tools that specifically explore the timing patterns of such performances. The tools examine these aspects in 2 general ways; first, by looking at how the timing of repeating harmonic structures (motifs) evolve over time, and secondly by investigating other musical properties of recurrent timing patterns, such as pitch, metrical position and dynamics.
+The prototyped tools examine performance patterns of Hardanger fiddle music. To narrow the scope, I decided to design a set of tools that specifically explore the timing patterns of such performances. The tools examine these aspects in 2 general ways; first, by looking at how the timing of repeating harmonic structures (motifs) evolve over time, and second by investigating other musical properties of recurrent timing patterns, such as pitch, metrical position and dynamics.
 
-Additionally, several data visualization techniques are featured, such as interactive score representation, automatic coloring and dynamic plotting capabilities, as well as the ability to edit beat lengths and onsets via simple click and drag.
+Additionally, several data visualization techniques are featured, such as interactive score representation, automatic coloring and dynamic plotting capabilities, as well as the ability to edit beat lengths and onsets via simple click and drag. 
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science in the Jupyter Notebook environment). With computationally annotated performances of Hardanger Fiddle music provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
