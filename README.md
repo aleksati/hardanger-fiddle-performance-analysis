@@ -15,7 +15,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 # 1. The Editor
 
 <p align="center">
- <img src="presentation/img/1gif.gif" width=auto>
+ <img src="presentation/img/1gif.gif" width="653">
 </p>
 <!--
 <p align="center">
