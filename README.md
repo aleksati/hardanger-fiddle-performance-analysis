@@ -52,7 +52,7 @@ This is an extension of the first tool.
 * The plotted info (beat duration ratios of the motifs) does not consider the motif duration as reference. Rather, the beat durations are calculated with respect to their associated bar, as brefly mentioned.
 
 
-# 3. Investigate musical properties of recurrent timing patterns.
+# 3. Investigate Musical Properties of Recurring Timing Patterns.
 
 <p align="left">
  <img src="presentation/img/3.jpg" width=auto>
