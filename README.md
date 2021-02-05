@@ -2,7 +2,7 @@ A work in progress..
 
 # Brief Description
 
-<p align="left">
+<p align="center">
  <img src="figs/dict.jpg" width=440>
 </p>
 
