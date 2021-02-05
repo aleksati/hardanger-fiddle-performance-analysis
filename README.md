@@ -2,7 +2,7 @@ A work in progress..
 
 # Brief Description
 
-<p align="center">
+<p align="left">
  <img src="figs/dict.jpg" width=440>
 </p>
 
@@ -15,7 +15,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 # 1. The Editor
 
 <p align="center">
- <img src="presentation/img/1gif.gif" width="653">
+ <img src="presentation/img/1gif.gif" width="700">
 </p>
 <!--
 <p align="center">
