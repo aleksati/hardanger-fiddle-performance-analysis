@@ -12,13 +12,13 @@ Additionally, several data visualization techniques are featured, such as intera
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science in the Jupyter Notebook environment). With computationally annotated performances of Hardanger Fiddle music provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
-# 1. The editor
+# 1. The Editor
 
-<p align="left">
- <img src="figs/1.jpg" width=440>
+<p align="center">
+ <img src="presentation/img/1.jpg" width=440>
 </p>
-<p align="left">
- <img src="figs/1.1.jpg" width=440>
+<p align="center">
+ <img src="presentation/img/1.1.jpg" width=440>
 </p>
 
 1. This tool converts all the necessary .csv peformance data into JSON format.
@@ -34,10 +34,10 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 * The beat ratios are calculated with respect to their associated bar duration.
 * We cannot drag a beat marker across one of its neighbouring beats. This will simply result in the beat markers changing their names and configurations to fit. (a nice little brag to myself here)
 
-# 2. Exploring timing patterns of structures (repeating motifs and/or harmonic patterns)
+# 2. Timing Evolution of Repeating Structures (Motifs and/or phrases)
 
 <p align="left">
- <img src="figs/2.jpg" width=auto>
+ <img src="presentation/img/2.jpg" width=auto>
 </p>
 
 This is an extension of the first tool.
@@ -55,7 +55,7 @@ This is an extension of the first tool.
 # 3. Investigate musical properties of recurrent timing patterns.
 
 <p align="left">
- <img src="figs/3.jpg" width=auto>
+ <img src="presentation/img/3.jpg" width=auto>
 </p>
 
 1. In this tool, we import the JSON we created (and exported) in the first and second tool. The JSON creates the score and every feature that is available in the first tool.

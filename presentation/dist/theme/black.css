@@ -10,6 +10,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
+
 :root {
   --background-color: #191919;
   --main-font: Source Sans Pro, Helvetica, sans-serif;
@@ -114,8 +115,10 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal img,
 .reveal video,
 .reveal iframe {
-  max-width: 95%;
-  max-height: 95%; }
+  max-width:130%;
+  max-height:130%;
+  width: auto;
+  height: auto;}
 
 .reveal strong,
 .reveal b {
@@ -240,7 +243,10 @@ section.has-light-background, section.has-light-background h1, section.has-light
   vertical-align: top; }
 
 .reveal img {
-  margin: 20px 0; }
+    margin-left: -150px;
+  /*margin-bottom: 20px; 
+  margin-left: -160px;
+  margin-right: 20px; */}
 
 /*********************************************
  * LINKS
