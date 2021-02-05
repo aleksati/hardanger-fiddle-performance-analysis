@@ -59,7 +59,7 @@ This is an extension of the first tool.
 # 3. Investigate Musical Properties of Recurring Timing Patterns.
 
 <p align="left">
- <img src="presentation/img/3.jpg" width=auto>
+ <img src="presentation/img/3.2.jpg" width=auto>
 </p>
 
 1. In this tool, we import the JSON we created (and exported) in the first and second tool. The JSON creates the score and every feature that is available in the first tool.
