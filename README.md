@@ -26,12 +26,12 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 </p>
 -->
 
-* This tool converts all the necessary .csv peformance data into JSON format.
-	* Sidenote - the dictionaries provide the opportunity for more data science, as shown in the jupyter notebook files in "src -> code -> python". 
+* Converts all the necessary .csv peformance data into JSON format.
+	* Sidenote - the dictionaries provide the opportunity for interesting further music analysis, as shown in the jupyter notebook files in "src -> code -> python". 
 
 * We use the the JSON information (and it's ratios) to "recreate" the performance in our score along with beat markers. 
 
-* We dynamically change the beat lengths and onsets via click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beat's will alter the onset and duration of all notes, but **not** the note **ratios**.
+* We dynamically change the beat lengths and onsets via click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beat's will alter the onset and duration of all notes, but **not** the note ratios.
 
 ### Some notes
 
