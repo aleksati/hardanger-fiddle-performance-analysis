@@ -15,12 +15,16 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 # 1. The Editor
 
 <p align="center">
+ <img src="presentation/img/1gif.gif" width=auto>
+</p>
+<!--
+<p align="center">
  <img src="presentation/img/1.jpg" width=440>
 </p>
 <p align="center">
  <img src="presentation/img/1.1.jpg" width=440>
 </p>
-
+-->
 1. This tool converts all the necessary .csv peformance data into JSON format.
 	1. Sidenote - the dictionaries provide the opportunity for more data science, as shown in the jupyter notebook files in "src -> code -> python". 
 
