@@ -25,12 +25,13 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
  <img src="presentation/img/1.1.jpg" width=440>
 </p>
 -->
-1. This tool converts all the necessary .csv peformance data into JSON format.
-	1. Sidenote - the dictionaries provide the opportunity for more data science, as shown in the jupyter notebook files in "src -> code -> python". 
 
-2. We use the the JSON information (and it's ratios) to "recreate" the performance in our score along with beat markers. 
+* This tool converts all the necessary .csv peformance data into JSON format.
+	* Sidenote - the dictionaries provide the opportunity for more data science, as shown in the jupyter notebook files in "src -> code -> python". 
 
-3. We dynamically change the beat lengths and onsets via click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beat's will alter the onset and duration of all notes, but **not** the note **ratios**.
+* We use the the JSON information (and it's ratios) to "recreate" the performance in our score along with beat markers. 
+
+* We dynamically change the beat lengths and onsets via click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beat's will alter the onset and duration of all notes, but **not** the note **ratios**.
 
 ### Some notes
 
@@ -46,11 +47,11 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 This is an extension of the first tool.
 
-1. We import a specific text file listing all the repeating harmonic patterns of the performance. The list is added to the track JSON.
+* We import a specific text file listing all the repeating harmonic patterns of the performance. The list is added to the track JSON.
 
-2.By selecting a bar/measure range, for instance from bar 1 to bar 3, the program will see if your selection corresponds to any of the harmonic patterns. If it finds matches it colors ALL instances of the pattern in the performance.
+* By selecting a bar/measure range, for instance from bar 1 to bar 3, the program will see if your selection corresponds to any of the harmonic patterns. If it finds matches it colors ALL instances of the pattern in the performance.
 
-3. The main feature of this tool is its capability of plotting the timing patterns (in this case the **beat duration ratios**) of all the found patternm instances in a custom plot (built in jsui). We can then investigate how the timing of the repeating patterns evolve over the course of the performance. We can of course also export the plotted data in a smaller, more concise JSON format.
+* The main feature of this tool is its capability of plotting the timing patterns (in this case the **beat duration ratios**) of all the found patternm instances in a custom plot (built in jsui). We can then investigate how the timing of the repeating patterns evolve over the course of the performance. We can of course also export the plotted data in a smaller, more concise JSON format.
 
 ### Some notes
 * The plotted info (beat duration ratios of the motifs) does not consider the motif duration as reference. Rather, the beat durations are calculated with respect to their associated bar, as brefly mentioned.
@@ -62,12 +63,12 @@ This is an extension of the first tool.
  <img src="presentation/img/3.2.jpg" width=auto>
 </p>
 
-1. In this tool, we import the JSON we created (and exported) in the first and second tool. The JSON creates the score and every feature that is available in the first tool.
+* In this tool, we import the JSON we created (and exported) in the first and second tool. The JSON creates the score and every feature that is available in the first tool.
 
-2. If we manually select a region in the score, for instance 3 successive notes with our mouse, the program will collect the **note duration ratios** of the selected region and find other regions in the performance where the same timing pattern occurs and colors them for visual inspection.
-	1. Since the ratios in question are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region. Therefore, the tool features a "scale" slider. This slider lets you round all the note duration ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more rounded the ratios, the more patterns you will find.
+* If we manually select a region in the score, for instance 3 successive notes with our mouse, the program will collect the **note duration ratios** of the selected region and find other regions in the performance where the same timing pattern occurs and colors them for visual inspection.
+	* Since the ratios in question are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region. Therefore, the tool features a "scale" slider. This slider lets you round all the note duration ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more rounded the ratios, the more patterns you will find.
 
-3. We can then plot various musical properties of matching patterns. This enables us to quickly investigate commonalities across regions that share the same timing pattern. In the prototype, I feature these plotting possibilities:
+* We can then plot various musical properties of matching patterns. This enables us to quickly investigate commonalities across regions that share the same timing pattern. In the prototype, I feature these plotting possibilities:
 	1. **Metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y-axis. This can help us to see if patterns with similar timing patterns share the same metrical positions, or not. 
 	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not.
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
