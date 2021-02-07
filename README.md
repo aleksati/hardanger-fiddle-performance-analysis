@@ -3,7 +3,7 @@ A work in progress..
 # Brief Description
 
 <p align="left">
- <img src="figs/dict.jpg" width=440>
+ <img src="presentation/img/dict.jpg" width=440>
 </p>
 
 The prototyped tools examine performance patterns of Hardanger fiddle music. To narrow the scope, I decided to design a set of tools that specifically explore the timing patterns of such performances. The tools examine these aspects in 2 general ways; first, by looking at how the timing of repeating harmonic structures (motifs) evolve over time, and second by investigating other musical properties of recurrent timing patterns, such as pitch, metrical position and dynamics.
