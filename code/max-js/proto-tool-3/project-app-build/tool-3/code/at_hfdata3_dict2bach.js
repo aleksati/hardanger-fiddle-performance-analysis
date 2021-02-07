@@ -92,9 +92,12 @@ function dict2bach() {
     }
 
     // set the [bach.roll] domain to score length. [v domain] object.
-	this.patcher.getnamed("curr_domain").message("domain", global_note_onsets[0], global_markers[global_markers.length-1][1]);
-    
+	//this.patcher.getnamed("curr_domain").message("domain", global_note_onsets[0], global_markers[global_markers.length-1][1]);
 
+    // just set the domain value in the value box.
+    outlet(0, "domain", "domain", global_note_onsets[0], global_markers[global_markers.length-1][1]);
+
+    // start sending to bach.roll.
     outlet(0, "clear");
     var oned_pitch_velo = global_midi_pitch.reduce(function(prev, next) {
         return prev.concat(next);

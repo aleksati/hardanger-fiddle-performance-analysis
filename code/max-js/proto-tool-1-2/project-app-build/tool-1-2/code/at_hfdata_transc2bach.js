@@ -72,9 +72,9 @@ function csv(filename) {
         f.close();
         
 		// store the data in a Coll for jit.cellblock viewing
-		for (var i=0; i<global_data.length; i++) {
-			outlet(1, i, global_data[i]);
-		}
+		//for (var i=0; i<global_data.length; i++) {
+		//	outlet(1, i, global_data[i]);
+		//}
 	} else {
 		error("couldn't find the file ("+ filename +")\n");
 	}
@@ -152,13 +152,15 @@ function mir2bach() {
 	}
 	
 	// set the [bach.roll] domain to score length. [v domain] object.
-	this.patcher.getnamed(
-		"curr_domain").message(
-			"domain", 
-			global_data[0][global_data_onset_idx]*1000,
-			global_data[global_data.length-1][global_data_offset_idx]*1000);
+	//this.patcher.getnamed(
+	//	"curr_domain").message(
+	//		"domain", 
+	//		global_data[0][global_data_onset_idx]*1000,
+	//		global_data[global_data.length-1][global_data_offset_idx]*1000);
 	
 	
+    outlet(0, "domain", "domain", global_data[0][global_data_onset_idx]*1000, global_data[global_data.length-1][global_data_offset_idx]*1000);
+    
 	//output data to [bach.roll]
 	outlet(0, "clear");
 	outlet(0, "onsets", note_onsets);
