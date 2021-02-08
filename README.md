@@ -6,7 +6,7 @@ A work in progress..
  <img src="presentation/img/dict.jpg" width=440>
 </p>
 
-The prototyped tools examine performance patterns of Hardanger fiddle music. To narrow the scope, I decided to design a set of tools that specifically explore the timing patterns of such performances. The tools examine these aspects in 2 general ways; first, by looking at how the timing of repeating harmonic structures (motifs) evolve over time, and second by investigating other musical properties of recurrent timing patterns, such as pitch, metrical position and dynamics.
+The prototyped tools examine performance patterns of Hardanger fiddle music. To narrow the scope, I decided to specifically focus on the timing patterns of Hardanger fiddle performances. The tools examine these properties in 2 general ways; first, by looking at how timing patterns of repeating motifs (phrases/harmonic patterns) evolve over time, and second by investigating other musical properties of repeating timing patterns (such as pitch, metrical position and dynamics).
 
 Additionally, several data visualization techniques are featured, such as interactive score representation, automatic coloring and dynamic plotting capabilities, as well as the ability to edit beat lengths and onsets via simple click and drag. 
 
