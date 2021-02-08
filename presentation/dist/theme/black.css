@@ -101,42 +101,48 @@ section.has-light-background, section.has-light-background h1, section.has-light
  
  .reveal .dict-data {
     display: inline-block;
-    margin-top: 200px;
-    width: 1200px;
-    height: 960px;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    border: 2px solid white;
 }
 
 .reveal .dict-data .left {
     display: inherit;
-    max-width: 40%; 
-    max-height: 40%;
+    margin: inherit;
+    width: 40%; 
+    height: 40%;
     padding: 20px;
 }
 
 .reveal .dict-data .arrow {
     display: inherit;
-    margin-left: 2px;
-    margin-bottom: 140px;
-    width: 20%;
+    margin: inherit;
+    margin-bottom: 100px;
+    width: 5%;
     height: 2px;
     background-color: white;
 }
-/*.reveal .dict-data .arrow:before {
+
+.reveal .dict-data .arrow:before {
     display: inherit;
+    margin: inherit;
     content: '';
-    width: 20px;
-    height: 20px;
+    width: 20%;
+    height: 10px;
+    margin-left: 36px;
+    margin-top: -4px;
     border-top: solid 2px currentColor;
     border-right: solid 2px currentColor;
     -webkit-transform: rotate(45deg);
             transform: rotate(45deg);
-  }*/
+  }
 
 .reveal .dict-data .right {
     display: inherit;
-    max-width: 44%; 
-    max-height: 44%;
-    margin-left: 0px;
+    margin: inherit;
+    width: 40%; 
+    height: 40%;
     padding: 20px;
 }
 

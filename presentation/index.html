@@ -26,7 +26,7 @@
                             <small> 
                                 <li>Scandinavian folk music genre.</li>
                                 <li>Triplet meter with complex ornamentations and asymmetrical timing patterns.</li>
-                                <li>Associated with springar dance tradition.</li>
+                                <li>Associated with <em>springar</em> dance tradition.</li>
                             </small>
                         </ul>
                         <div class="fragment">
@@ -73,32 +73,47 @@
                         <h3>1/3</h3>
                         The Editor
                     </section>
+                    
                     <section>
-                        <div class="dict-data">
-                            <img class="left" data-src="img/theData.jpg">
-                            <div class="arrow"></div>
-                            <img class="right" data-src="img/dict.jpg">
-                        </div>
-                    </section>
-                    <section data-auto-animate> <img style="width: 100%;" data-src="img/1gif.gif"></section>
-                    <!--<section data-auto-animate> <img data-src="img/1.1.jpg" data-id="score"></section>-->
-                    <!--<section data-auto-animate> <img data-src="img/1.jpg" data-id="score"></section>-->
-                    <section>
-                        <h2>Why?</h2>
+                        <h2>Goal</h2>
                         <ul>
-                            <div class="fragment">
+                            <div>
                                 <li>Data compreshension</li>
                                     <ul>
                                         <small><li>Asymmetrical timing patterns.</li></small>
                                     </ul>
                             </div>
                             <!-- Visually.-->
-                            <li class="fragment">Explore alternative timing patterns.</li>
+                            <li>Explore alternative timing patterns.</li>
                             <!-- Fully quantized! and then see the difference.-->
-                            <li class="fragment">Invite reflection on how players modify the written score during play.</li>
+                            <li>Invite reflection on how players modify the written score during play.</li>
                             <!-- Compare different interpretations of same track and see the differences. Play games.-->
                         </ul>
                     </section>
+
+                    <section>
+                        <p>Transform the data</p>
+                        <div class="dict-data">
+                            <img class="left" data-src="img/theData.jpg">
+                            <div class="arrow"></div>
+                            <img class="right" data-src="img/dict.jpg">
+                        </div>
+                        <aside class="notes">
+                            <p>We transform the Transcription into more friendly data-format. JSON dictionary.
+                            We collect the onset and duration ratios of every beat, note and bar.</p>
+                            <p>However, in this tool, we purposefully avoid the ornametations. for simplicities sake.</p>
+                            
+                        </aside>
+                    </section>
+                    <section data-auto-animate> 
+                        <img style="width: 100%;" data-src="img/1gif.gif">
+                        <aside class="notes">
+                            <p>We actually recreate the performance using the information in our dictionary.
+                                This format also naturally enables interactivity though making adjustments to the ratios and then propegating every else accordingly.</p>
+                            <p>In this prototype, I have enabled the ability to move beats.</p>
+                        </aside>
+                    </section>
+
                 </section>
 
                 <section>
@@ -106,23 +121,30 @@
                         <h3>2/3</h3>
                         <p>Explores how timing patterns of repeating motifs (phrases/harmonic patterns) evolve over time.</p> 
                     </section>
-                    <section data-auto-animate><img data-src="img/2-present.jpg" data-id="tool2"></section>
-                    <section data-auto-animate><img data-src="img/2.1.jpg" data-id="tool2"></section>
-                    <section data-auto-animate><img data-src="img/2.2.jpg" data-id="tool2"></section>
+
                     <section>
-                        <h2>Why?</h2>
+                        <h2>Goal</h2>
                         <ul>
-                            <div class="fragment">
-                                <li>Makes more sense to look at timing patterns from a structural perspective.</li>
+                            <div>
+                                <li>Look at <b>timing patterns</b> from a structural perspective.</li>
                             </div>
-                            <div class="fragment">
-                                <li>Enhanced data visualization</li>
+                            <div>
+                                <li>Enhance data visualization</li>
                                     <ul>
-                                        <small><li>Enables a temporal perspective.</li></small>
+                                        <small><li>Enable a temporal perspective (evolution).</li></small>
                                     </ul>
                             </div>
                         </ul>                        
                     </section>
+
+                    <section>
+                        Have a slide here presenting a little more in-depth what the structures are, and what is actually being done. 
+                        I recieve a pattern.txt from Olivier. etc.. Look at the beat durations of those patterns.
+                    </section>
+
+                    <section data-auto-animate><img data-src="img/2-present.jpg" data-id="tool2"></section>
+                    <section data-auto-animate><img data-src="img/2.1.jpg" data-id="tool2"></section>
+                    <section data-auto-animate><img data-src="img/2.2.jpg" data-id="tool2"></section>
                 </section>
 
                 <section>
@@ -130,26 +152,36 @@
                         <h3>3/3</h3>
                         <p>Investigates various properties of recurring timing patterns</p>
                     </section>
-                    <section data-auto-animate><img data-src="img/3-present.jpg" data-id="tool3"></section>
-                    <section data-auto-animate><img data-src="img/3.1.jpg" data-id="tool3"></section>
-                    <section data-auto-animate><img data-src="img/3.2.jpg" data-id="tool3"></section>
+
                     <section>
-                        <h2>Why?</h2>
+                        <h2>Goal</h2>
                         <ul>
-                            <div class="fragment">
-                                <li>Enable inspection of property relationships between structures.</li>
+                            <div>
+                                <li>Enable inspection of property relationships between structures that have similar timing patterns.</li>
                                     <ul>
                                         <small><li>Multi-dimensional analysis</li></small>
                                     </ul>
                             </div>
-                            <div class="fragment">
+                            <div>
                                 <li>Dynamic UI</li>
                                     <ul>
                                         <small><li>User chooses which property relationships to plot.</li></small>
                                     </ul>
                             </div>
-                        </ul>                        
+                        </ul>
                     </section>
+
+                    <section>
+                        Have an image of what I mean! repeating patterns .. point at the relationships.
+                    </section>
+
+                    <section>
+                        Explain that its based on the note duration ratios. AND the slider with a picture. To scale. Ho
+                    </section>
+
+                    <section data-auto-animate><img data-src="img/3-present.jpg" data-id="tool3"></section>
+                    <section data-auto-animate><img data-src="img/3.1.jpg" data-id="tool3"></section>
+                    <section data-auto-animate><img data-src="img/3.2.jpg" data-id="tool3"></section>
                 </section>
 			</div>
 		</div>
