@@ -116,7 +116,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 .reveal .dict-data .arrow {
     display: inherit;
     margin-left: 2px;
-    margin-bottom: 100px;
+    margin-bottom: 140px;
     width: 20%;
     height: 2px;
     background-color: white;
@@ -134,8 +134,8 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 .reveal .dict-data .right {
     display: inherit;
-    max-width: 40%; 
-    max-height: 40%;
+    max-width: 44%; 
+    max-height: 44%;
     margin-left: 0px;
     padding: 20px;
 }
