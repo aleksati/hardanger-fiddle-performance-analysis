@@ -72,9 +72,9 @@ function csv(filename) {
         f.close();
         
 		// store the data in a Coll for jit.cellblock viewing
-		for (var i=0; i<global_data.length; i++) {
-			outlet(1, i, global_data[i]);
-		}
+		//for (var i=0; i<global_data.length; i++) {
+		//	outlet(1, i, global_data[i]);
+		//}
 	} else {
 		error("couldn't find the file ("+ filename +")\n");
 	}
