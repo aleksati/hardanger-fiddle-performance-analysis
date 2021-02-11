@@ -73,13 +73,13 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 * We can plot various musical properties which enables quick inspection of commonalities across regions that share the same timing pattern. In the prototype, I feature these plotting possibilities:
 	1. **Metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y-axis. This can help us to see if patterns with similar timing patterns share the same metrical positions, or not. 
-	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not.
+	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not. The velocity of a note is indicated by the size of its notehead. The bigger the louder.
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
 
 ## Further work suggestions
 * This first iteration of "tool nr.3" is a simple proof of concept. Instead of just finding similar sequences of note durations, we should try to find sequences of **inter onset intervals**, or something similar. The current system design can support alteration to our current definition of what a "timing pattern" is. 
 
-* Velocities are, for the time being, randomly generated because transcription data with note dynamics (velocity information) has not yet been provided to me. The velocity of a note is indicated by the size of its notehead. The bigger the louder.
+* Velocities are, for the time being, randomly generated because transcription data with note dynamics (velocity information) has not yet been provided to me.
 
 
 # References
