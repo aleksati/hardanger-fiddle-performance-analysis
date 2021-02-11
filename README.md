@@ -12,7 +12,7 @@ Additionally, several data visualization techniques are featured, such as intera
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science). The computationally annotated performances of Hardanger Fiddle music are provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
-*PS: None of the tools explore take ornamentations into account.. yet.*
+*PS: None of the proposed tools take ornamentations into account.. yet.*
 
 # Tool nr.1 and nr.2
 ## 1. The Editor
