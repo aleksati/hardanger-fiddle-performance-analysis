@@ -456,6 +456,7 @@ function getdictionary(dict_name) {
 
 
 // this is just to make the x_labels fit the selection. very native.
+// Should label in bars. 
 function selection() {
     var bars_input = arrayfromargs(arguments);
     var count=0;
@@ -466,9 +467,11 @@ function selection() {
         count+=1;
     }
     for (var y=0; y<full_bars.length; y++) {
-        labels_x.push("b"+full_bars[y]+"."+"1");
-        labels_x.push("b"+full_bars[y]+"."+"2");
-        labels_x.push("b"+full_bars[y]+"."+"3");
+        labels_x.push("bar "+full_bars[y]);
+        labels_x.push("");
+        labels_x.push("");
+        //labels_x.push("b"+full_bars[y]+"."+"2");
+        //labels_x.push("b"+full_bars[y]+"."+"3");
     }
 }
 
