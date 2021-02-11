@@ -52,9 +52,9 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 * This enables us to investigate the timing patterns of recurring motifs and how they evolve over time. A technique similar to what is used in (Johansson 2019, p.5). We can of course export the plotted data as a smaller, more concise dictionary.
 
 ## Further work suggestions
-* when changing the beat onset and durations, we only do so in one place. If the beat being adjusted is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes.   
+* When adjusting the beat onset and durations, we only do so in one place. However, if the beat is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes. We could have a toggle to turn such a feature "on" and "off".   
 
-* Have a feature that enables us to instantly "quantize" all the beats in the performance to have equal durations (based on the total duration of the performance). Then, users could try to "recreate" performance patterns by adjuting the beats. Would also enable the ability to go back and forth between a "quantized" version and the "real" version of the performance.<br>
+* Another addition could be to enable the user to instantly "quantize" all the beats in the performance to have equal durations (based on the total duration of the performance). Then, users could try to "recreate" performance patterns by adjuting the beats. The user could then to go back and forth between a "quantized" version and the "real" version of the performance for reference.<br>
 
 <small>*The note ratios are calculated with respects to their associated beat duration. The beat ratios are calculated with respect to their associated bar duration.</small> <br>
 
