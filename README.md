@@ -1,7 +1,7 @@
 A work in progress..
 
 ## Table of Contents  
-* [Short Introduction](#brief-description)  
+* [Short Introduction](#short-introduction)  
 * [Tool nr.1 and nr.2](#tool-nr1-and-nr2)
 	* [1. Interactive Score](#1-interactive-score)
 	* [2. Timing Evolution of Repeating Structures (Motifs and/or phrases)](#2-timing-evolution-of-repeating-structures-motifs-andor-phrases)
