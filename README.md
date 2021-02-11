@@ -52,7 +52,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 ## Further work suggestions
 * when changing the beat onset and durations, we only do so in one place. If the beat being adjusted is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes.   
 
-* Have a feature that enables us to instantly quantizes all the beats in the performance to have equal durations (based on the total duration of the performance). Then, users could try to "recreate" performance patterns by adjuting the beats. <br>
+* Have a feature that enables us to instantly quantize all the beats in the performance to have equal durations (based on the total duration of the performance). Then, users could try to "recreate" performance patterns by adjuting the beats. Would also enable the ability to go back and forth between a "quantized" version and the "real" version of the performance.<br>
 
 <small>*The note ratios are calculated with respects to their associated beat duration. The beat ratios are calculated with respect to their associated bar duration.</small> <br>
 
