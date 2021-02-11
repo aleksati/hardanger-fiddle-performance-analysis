@@ -48,7 +48,7 @@ In this tool we define "timing patterns" as a sequence of **beat duration ratios
 
 * This enables us to investigate how the timing patterns of the recurring motifs in a performance, and their evolution over time. A technique similar to what is used in (Johansson 2019, p.5). We can of course also export the plotted data in a smaller, more concise JSON format.
 
-### Further work suggestions
+## Further work suggestions
 * when changing the beat onset and durations, we only do so in one place. If the beat being adjusted is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes.   
 
 * Have one button (feature) that instantly quantizes all the beats in the performance to have equal durations based on the total duration of the performance. Then, users could try to "recreate" certian performance pattern by adjuting the beats. <br>
@@ -74,11 +74,10 @@ In this tool define "timing patterns" as a sequence of **note duration ratios**.
 	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not.
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
 
-### Further work suggestions
+## Further work suggestions
 * This first iteration of "tool nr.3" is a simple proof of concept. Instead of just finding similar sequences of note durations, we should try to find sequences of **inter onset intervals**, or something similar. The current system design can support alteration to our current definition of what a "timing pattern" is. 
 
-### Some closing remarks
-* Velocities are, for the time being, randomly generated because transcription data with note intensity (velocity) information has not yet been provided. The velocity of a note is indicated by the size of its notehead. The bigger the louder.
+* Velocities are, for the time being, randomly generated because transcription data with note dynamics (velocity information) has not yet been provided to me. The velocity of a note is indicated by the size of its notehead. The bigger the louder.
 
 
 # References
