@@ -54,7 +54,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 * Have a feature that enables us to instantly quantizes all the beats in the performance to have equal durations (based on the total duration of the performance). Then, users could try to "recreate" performance patterns by adjuting the beats. <br>
 
-*The note ratios are calculated with respects to their associated beat duration. The beat ratios are calculated with respect to their associated bar duration. <br>
+<small>*The note ratios are calculated with respects to their associated beat duration. The beat ratios are calculated with respect to their associated bar duration.</small> <br>
 
 
 # Tool nr.3
