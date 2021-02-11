@@ -31,7 +31,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 </p>
 
 * Converts all the necessary .csv peformance data* into a dictionary format. Note & beat level ratios are then used to create the score representation.
-	* Sidenote - these dictionaries provide the opportunity for further in-depth analysis, as shown in "code -> python-jupyter --> track-data_plotting_tobar40.ipynb". 
+	* Sidenote - these dictionaries provide the opportunity for further in-depth analysis, as roughly shown [here](https://github.com/AleksanderTidemann/hf-interactive-analysis/blob/main/code/python-jupyter/track-data-plotting-tobar40.ipynb).
 
 * We can dynamically change the beat lengths and onsets via simple click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beats will alter the onset and duration of all notes, but **not** the note ratios themselves.
 
