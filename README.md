@@ -16,7 +16,7 @@ A work in progress..
  <img src="presentation/img/dict.jpg" width=440>
 </p>
 
-These 3 prototyped tools examine performance patterns in traditional Norwegian folk music. To narrow the scope, I specifically focus on **timing patterns** in Hardanger fiddle performances. The tools examine these properties in 2 general ways; first, by looking at how timing patterns of repeating motifs (phrases/harmonic patterns) evolve over time, and second by investigating musical properties of repeating timing patterns (such as pitch, metrical position and dynamics).
+These 3 prototyped tools are designed to examine performance patterns in traditional Norwegian folk music. To narrow the scope, I specifically focus on **timing patterns** in Hardanger fiddle performances. The tools examine these properties in 2 general ways; first, by looking at how timing patterns of repeating motifs (phrases/harmonic patterns) evolve over time, and second by investigating musical properties of repeating timing patterns (such as pitch, metrical position and dynamics).
 
 Additionally, several data visualization techniques are featured, such as an interactive and adjustable score representation, coloring and dynamic plotting capabilities.
 
