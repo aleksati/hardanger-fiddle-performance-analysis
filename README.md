@@ -1,6 +1,6 @@
 A work in progress..
 
-##### Table of Contents  
+## Table of Contents  
 * [Short Introduction](#brief-description)  
 * [Tool nr.1 and nr.2](#tool-nr1-and-nr2)
 	* [1. The Editor](#1-the-editor)
@@ -8,10 +8,8 @@ A work in progress..
 	* [Further work suggestions](#further-work-suggestions)
 * [Tool nr.3](#tool-nr3)
 	* [3. Investigate Musical Properties of Recurring Timing Patterns](#3-investigate-musical-properties-of-recurring-timing-patterns)
-	* [Further work suggestions](#further-work-suggestions)
+	* [Further work suggestions](#further-work-suggestions-1)
 * [References](#references)
-
-...snip...
 
 <p align="left">
  <img src="presentation/img/dict.jpg" width=440>
