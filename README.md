@@ -3,7 +3,7 @@ A work in progress..
 ## Table of Contents  
 * [Short Introduction](#brief-description)  
 * [Tool nr.1 and nr.2](#tool-nr1-and-nr2)
-	* [1. The Editor](#1-the-editor)
+	* [1. Interactive Score](#1-interactive-score)
 	* [2. Timing Evolution of Repeating Structures (Motifs and/or phrases)](#2-timing-evolution-of-repeating-structures-motifs-andor-phrases)
 	* [Further work suggestions](#further-work-suggestions)
 * [Tool nr.3](#tool-nr3)
@@ -25,7 +25,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 *PS: None of the proposed tools take ornamentations into account.. yet.*
 
 # Tool nr.1 and nr.2
-## 1. The Editor
+## 1. Interactive Score
 <p align="left">
  <img src="presentation/img/1gif.gif" width="700">
 </p>
