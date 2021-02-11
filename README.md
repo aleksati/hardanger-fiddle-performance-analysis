@@ -2,11 +2,16 @@ A work in progress..
 
 ##### Table of Contents  
 * [Short Introduction](#brief-description)  
-* [Tool nr.1 and nr.2](#tool-nr.1-and-nr.2)
+* [Tool nr.1 and nr.2](#tool-nr1-and-nr2)
 	* [1. The Editor](#1-the-editor)
 	* [2. Timing Evolution of Repeating Structures (Motifs and/or phrases)](#2-timing-evolution-of-repeating-structures-motifs-andor-phrases)
 	* [Further work suggestions](#further-work-suggestions)
+* [Tool nr.3](#tool-nr3)
+	* [3. Investigate Musical Properties of Recurring Timing Patterns](#3-investigate-musical-properties-of-recurring-timing-patterns)
+	* [Further work suggestions](#further-work-suggestions)
+* [References](#references)
 
+...snip...
 
 <p align="left">
  <img src="presentation/img/dict.jpg" width=440>
