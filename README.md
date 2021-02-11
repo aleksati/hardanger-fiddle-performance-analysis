@@ -52,7 +52,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 ## Further work suggestions
 * when changing the beat onset and durations, we only do so in one place. If the beat being adjusted is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes.   
 
-* Have one button (feature) that instantly quantizes all the beats in the performance to have equal durations based on the total duration of the performance. Then, users could try to "recreate" certian performance pattern by adjuting the beats. <br>
+* Have a feature that enables us to instantly quantizes all the beats in the performance to have equal durations (based on the total duration of the performance). Then, users could try to "recreate" performance patterns by adjuting the beats. <br>
 
 *The note ratios are calculated with respects to their associated beat duration. The beat ratios are calculated with respect to their associated bar duration. <br>
 
@@ -67,9 +67,9 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 * In this tool, we import the JSON we created (and exported) in the "tool nr.1 and 2". The JSON creates the score and every feature that is available in the first tool.
 
 * If we manually select a region in the score, for instance 3 successive notes with our mouse, the program will collect the timing pattern of the selected region and find other regions in the performance where the same timing pattern occurs. Then it colors the regions and plots them for visual inspection.
-	* Since the ratios in question are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region. Therefore, the tool features a "scale" slider. This slider lets you round all the note duration ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more rounded the ratios, the more patterns you will find.
+	* Since the ratios in question are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region. Therefore, the tool features a "scale" slider. This slider lets you round all ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more patterns you will find.
 
-* We can plot various musical properties of the matching patterns. This enables us to quickly investigate commonalities across regions that share the same timing pattern. In the prototype, I feature these plotting possibilities:
+* We can plot various musical properties which enables quick inspection of commonalities across regions that share the same timing pattern. In the prototype, I feature these plotting possibilities:
 	1. **Metric position**. This will plot the number of selected notes along the X-axis, and the metric position (beat 1, 2 or 3) on the Y-axis. This can help us to see if patterns with similar timing patterns share the same metrical positions, or not. 
 	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not.
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
