@@ -12,8 +12,10 @@ Additionally, several data visualization techniques are featured, such as intera
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science). The computationally annotated performances of Hardanger Fiddle music are provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
-# 1. The Editor
+*PS: None of the tools explore take ornamentations into account.. yet.*
 
+# Tool nr.1 and nr.2
+## 1. The Editor
 <p align="left">
  <img src="presentation/img/1gif.gif" width="700">
 </p>
@@ -27,38 +29,36 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 -->
 
 * Converts all the necessary .csv peformance data into JSON format.
-	* Sidenote - the dictionaries provide the opportunity for interesting further music analysis, as shown in the jupyter notebook files in "src -> code -> python". 
+	* Sidenote - these dictionaries provide the opportunity for interesting further music analysis, as shown in the jupyter notebook files in "src -> code -> python". 
 
-* We use the the JSON information (and it's ratios) to "recreate" the performance in our score along with beat markers. 
+* The JSON information (note-& beat level ratios) is then used to "recreate" the performance and beat markers as a score representation (mix between piano roll and score).
 
-* We dynamically change the beat lengths and onsets via click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beat's will alter the onset and duration of all notes, but **not** the note ratios.
+* We can dynamically change the beat lengths and onsets via simple click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beat's will alter the onset and duration of all notes, but **not** the note ratios.
 
-### Some notes
-
-* The note ratios are calculated with respects to their associated beat duration.
-* The beat ratios are calculated with respect to their associated bar duration.
-* We cannot drag a beat marker across one of its neighbouring beats. This will simply result in the beat markers changing their names and configurations to fit. (a nice little brag to myself here)
-
-# 2. Timing Evolution of Repeating Structures (Motifs and/or phrases)
-
+## 2. Timing Evolution of Repeating Structures (Motifs and/or phrases)
 <p align="left">
  <img src="presentation/img/2.jpg" width=auto>
 </p>
 
-This is an extension of the first tool.
+An integrated extension of the first tool.
 
-* We import a specific text file listing all the repeating harmonic patterns of the performance. The list is added to the track JSON.
+* We import a specific text file listing all the repeating motifs (phrases/harmonic patterns) of the performance. The list is added to the track JSON.
 
-* By selecting a bar/measure range, for instance from bar 1 to bar 3, the program will see if your selection corresponds to any of the harmonic patterns. If it finds matches it colors ALL instances of the pattern in the performance.
+* By selecting a bar/measure range, for instance from bar-1 to bar-3, the program will see if your selection corresponds to any of the collected harmonic patterns. If it finds matches, it colors ALL instances of the pattern in the performance.
 
-* The main feature of this tool is its capability of plotting the timing patterns (in this case the **beat duration ratios**) of all the found patternm instances in a custom plot (built in jsui). We can then investigate how the timing of the repeating patterns evolve over the course of the performance. We can of course also export the plotted data in a smaller, more concise JSON format.
+* The main feature of this tool is its capability of plotting the timing patterns (in this case the **beat duration ratios**) of all the found pattern instances in a custom plot (built in jsui). We can then investigate how the timing of the recurrin motifs evolve over the course of the performance. We can of course also export the plotted data in a smaller, more concise JSON format.
 
-### Some notes
-* The plotted info (beat duration ratios of the motifs) does not consider the motif duration as reference. Rather, the beat durations are calculated with respect to their associated bar, as brefly mentioned.
+### Further work suggestions
+* when changing the beat onset and durations, we only do so in one place. If the beat being adjusted is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes.   
 
+* Have one button (feature) that instantly quantizes all the beats in the performance to have equal durations based on the total duration of the performance. Then, users could try to "recreate" certian performance pattern by adjuting the beats.
 
-# 3. Investigate Musical Properties of Recurring Timing Patterns.
+### Some closing remarks
+*The note ratios are calculated with respects to their associated beat duration.
+**The beat ratios are calculated with respect to their associated bar duration.
 
+# Tool nr.3
+## 3. Investigate Musical Properties of Recurring Timing Patterns.
 <p align="left">
  <img src="presentation/img/3.2.jpg" width=auto>
 </p>
@@ -73,22 +73,8 @@ This is an extension of the first tool.
 	2. **Velocities**. As with the first point, we plot the number of selected notes along the X-axis, but have the note velocity on the Y-axis. This can help us to see if patterns with similar timing profiles share similar dynamics or not.
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
 
+### Further work suggestions
+* This first iteration is a simple proof of concept. Instead of just finding similar sequences of note durations, we should try to find sequences of **inter onset intervals**, or something similar.
 
-### Some notes
+### Some closing remarks
 * Velocities are, for the time being, randomly generated because transcription data with note intensity (velocity) information has not yet been provided. The velocity of a note is indicated by the size of its notehead. The bigger the louder.  
-
-
-# Additional Suggestions / Further Work
-
-* None of the tools explore the timing patterns of ornamentations or how they relate to the "regular" notes. This could be worth looking into.
-
-* In relation to tool nr.1:
-	* when changing the beat durations and ratios, we only do so locally. A nice idea would be to make a new tool, based on 1 and 2, where a local beat duration change would result in similar changes being made to all of it's associated harmonic patterns.
-
-	* Instead of manually editing the beat onset and durations, maybe have one button that instantly quantizes the performance. And another button that recreates the performance variations again. 
-
-	* We could explore the possibility of changing the note onset and duration ratios as well.
-	
-* In relation to tool nr.2: 
-	* It will only find repeating harmonic patterns using the text file. It could be nice to actually detect repeating harmonic patterns in Max itself, using pitch. I do a similar kind of pattern detection in the third tool, when I look for similar note duration ratios throughout the track.
-
