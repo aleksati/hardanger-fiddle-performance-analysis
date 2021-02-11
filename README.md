@@ -19,14 +19,6 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 <p align="left">
  <img src="presentation/img/1gif.gif" width="700">
 </p>
-<!--
-<p align="center">
- <img src="presentation/img/1.jpg" width=440>
-</p>
-<p align="center">
- <img src="presentation/img/1.1.jpg" width=440>
-</p>
--->
 
 * Converts all the necessary .csv peformance data into JSON format.*
 	* Sidenote - these dictionaries provide the opportunity for interesting further music analysis, as shown in the jupyter notebook files in "src -> code -> python". 
@@ -40,7 +32,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
  <img src="presentation/img/2.jpg" width=auto>
 </p>
 
-In this tool we define "timing patterns" as a sequence of **beat duration ratios**.
+<p align="center">In this tool we define "timing patterns" as a sequence of **beat duration ratios**.</p>
 
 * We import a specific text file listing all the repeating motifs (phrases/harmonic patterns) of the performance. The list is added to the track JSON.
 
