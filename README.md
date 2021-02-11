@@ -1,5 +1,9 @@
 A work in progress..
 
+##### Table of Contents  
+* [Brief Description](#brief-description)  
+* [Emphasis](#emphasis) 
+
 # Brief Description
 
 <p align="left">
@@ -52,8 +56,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 <p align="left">
  <img src="presentation/img/3.2.jpg" width=auto>
 </p>
-
-In this tool define "timing patterns" as a sequence of **note duration ratios**. (see "Further work suggestions for comments on this")
+<p align="center">In this tool we define <b>timing patterns</b> as a sequence of <b>note duration ratios</b>. (see <b>Further work suggestions</b> below for comments on this..)</p>
 
 * In this tool, we import the JSON we created (and exported) in the "tool nr.1 and 2". The JSON creates the score and every feature that is available in the first tool.
 
