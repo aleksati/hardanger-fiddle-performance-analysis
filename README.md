@@ -31,8 +31,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 <p align="left">
  <img src="presentation/img/2.jpg" width=auto>
 </p>
-
-<p align="center">In this tool we define "timing patterns" as a sequence of **beat duration ratios**.</p>
+<p align="center">In this tool we define <b>timing patterns</b> as a sequence of <b>beat duration ratios</b>.</p>
 
 * We import a specific text file listing all the repeating motifs (phrases/harmonic patterns) of the performance. The list is added to the track JSON.
 
