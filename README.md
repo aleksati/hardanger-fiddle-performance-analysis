@@ -18,7 +18,7 @@ A work in progress..
 # Short Introduction
 These 3 prototyped tools examine performance patterns in traditional Norwegian folk music. To narrow the scope, I specifically focus on **timing patterns** in Hardanger fiddle performances. The tools examine these properties in 2 general ways; first, by looking at how timing patterns of repeating motifs (phrases/harmonic patterns) evolve over time, and second by investigating musical properties of repeating timing patterns (such as pitch, metrical position and dynamics).
 
-Additionally, several data visualization techniques are featured, such as interactive score representation, automatic coloring and dynamic plotting capabilities.
+Additionally, several data visualization techniques are featured, such as an interactive and adjustable score representation, coloring and dynamic plotting capabilities.
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science). The computationally annotated performances of Hardanger Fiddle music are provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
