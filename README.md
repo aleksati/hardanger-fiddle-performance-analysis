@@ -3,8 +3,8 @@ A work in progress..
 ##### Table of Contents  
 * [Short Introduction](#brief-description)  
 * [Tool nr.1 and nr.2](#tool-nr.1-and-nr.2)
-	* [1. The Editor](#1.-the-editor)
-	* [2. Timing Evolution of Repeating Structures (Motifs and/or phrases)](#timing-evolution-of-repeating-structures-motifs-andor-phrases)
+	* [1. The Editor](#1-the-editor)
+	* [2. Timing Evolution of Repeating Structures (Motifs and/or phrases)](#2-timing-evolution-of-repeating-structures-motifs-andor-phrases)
 	* [Further work suggestions](#further-work-suggestions)
 
 
