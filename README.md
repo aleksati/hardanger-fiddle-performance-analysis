@@ -30,29 +30,26 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
  <img src="presentation/img/1gif.gif" width="700">
 </p>
 
-* Converts all the necessary .csv peformance data into JSON format.*
-	* Sidenote - these dictionaries provide the opportunity for interesting further music analysis, as shown in the jupyter notebook files in "src -> code -> python". 
+* Converts all the necessary .csv peformance data* into a dictionary format. Note & beat level ratios are then used to create the score representation.
+	* Sidenote - these dictionaries provide the opportunity for further in-depth analysis, as shown in "code -> python-jupyter --> track-data_plotting_tobar40.ipynb". 
 
-* The JSON information (note-& beat level ratios) is then used to "recreate" the performance and beat markers as a score representation (mix between piano roll and score).
-
-* We can dynamically change the beat lengths and onsets via simple click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beat's will alter the onset and duration of all notes, but **not** the note ratios.
+* We can dynamically change the beat lengths and onsets via simple click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beats will alter the onset and duration of all notes, but **not** the note ratios themselves.
 
 * We can also select regions in the score and listen to it (as MIDI piano). 
 
-## 2. Timing Evolution of Repeating Structures (Motifs and/or phrases)
+## 2. Timing Evolution of Repeating Structures (Motifs)
 <p align="left">
  <img src="presentation/img/2.jpg" width=auto>
 </p>
 <p align="center">In this tool we define <b>timing patterns</b> as a sequence of <b>beat duration ratios</b>.</p>
 
-* We import a specific text file listing all the repeating motifs (phrases/harmonic patterns) of the performance. The list is added to the track JSON.
+* Here we import a specific text file listing the "location" og all the motifs (harmonic patterns) of the performance. The list is added to the track dictionary.
 
-* By selecting a bar/measure range, for instance from bar-1 to bar-3, the program will see if the selection corresponds to any of the collected harmonic patterns (from the text file). If it finds matches, it colors ALL instances of the pattern in the score and plots the timing patterns of said instances in a custom plot.
-
-* This enables us to investigate the timing patterns of recurring motifs and how they evolve over time. A technique similar to what is used in (Johansson 2019, p.5). We can of course export the plotted data as a smaller, more concise dictionary.
+* By selecting a bar/measure range, for instance from bar-1 to bar-3, the program will see if the selection corresponds to any of the recently collected harmonic patterns. If it finds matches, it colors ALL instances of the pattern in the score and plots the timing patterns of said instances in a custom plot.
+	* This enables us to investigate the timing patterns of recurring motifs and how they evolve over time. A technique similar to what is used in (Johansson 2019, p.5). We can of course export the plotted data as a smaller, more concise dictionary.
 
 ## Further work suggestions
-* When adjusting the beat onset and durations, we only do so in one place. However, if the beat is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes. We could have a toggle to turn such a feature "on" and "off".   
+* When adjusting beat onsets and durations, we only do so in one place. However, if the beat is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes. We could have a toggle to turn such propegation "on" and "off".   
 
 * Another addition could be to enable the user to instantly "quantize" all the beats in the performance to have equal durations (based on the total duration of the performance). Then, users could try to "recreate" performance patterns by adjuting the beats. The user could then to go back and forth between a "quantized" version and the "real" version of the performance for reference.<br>
 
@@ -66,9 +63,9 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 </p>
 <p align="center">In this tool we define <b>timing patterns</b> as a sequence of <b>note duration ratios</b>. (see <b>Further work suggestions</b> below for comments on this..)</p>
 
-* In this tool, we import the JSON we created (and exported) in the "tool nr.1 and 2". The JSON creates the score and every feature that is available in the first tool.
+* In this tool, we import the dictionary we created (and exported) in "tool nr.1 and 2". The dictionary creates the score and every feature that is available in the first tool.
 
-* If we manually select a region in the score, for instance 3 successive notes with our mouse, the program will collect the timing pattern of the selected region and find other regions in the performance where the same timing pattern occurs. Then it colors the regions and plots them for visual inspection.
+* If we manually select a region in the score, for instance 3 successive notes with our mouse, the program will collect the timing pattern of the selected region and find other regions in the performance where the same timing pattern occurs. Then it colors the found regions and plots them for visual inspection.
 	* Since the ratios in question are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region. Therefore, the tool features a "scale" slider. This slider lets you round all ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more patterns you will find.
 
 * We can plot various musical properties which enables quick inspection of commonalities across regions that share the same timing pattern. In the prototype, I feature these plotting possibilities:
