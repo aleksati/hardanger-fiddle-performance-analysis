@@ -16,9 +16,17 @@ A work in progress..
  <img src="presentation/img/dict.jpg" width=440>
 </p>
 
-These 3 prototyped tools are designed to examine performance patterns in traditional Norwegian folk music. To narrow the scope, I specifically focus on **timing patterns** in Hardanger fiddle performances. The tools examine these musical features in 2 general ways; first, by looking at how timing patterns of repeating motifs (harmonic patterns) evolve over time, and second by investigating musical properties of repeating timing patterns (such as pitch, metrical position and dynamics).
+These 3 prototyped tools are designed to examine performance patterns in traditional Norwegian folk music, specifically focusing on **timing patterns** in Hardanger fiddle performances. 
 
-Additionally, several data visualization techniques have been implemented, such as an interactive and adjustable score representation, coloring and dynamic plotting capabilities.
+The concept of "timing patterns" in musicological research often refers to the temporal positions (onsets) of the musical beats. However, Scandinavian folk music research usually considers timing patterns to be a combination of the position (onsets) and length (duration) of the beats. This extended definition is necessary to capture several unique characteristics of Hardanger fiddle performance timing, specifically the asymmetrical beat timings (that the beats have signicantly varying lengths).
+
+Conventional approaches to studying these timing patterns include measuring IOI (inter onset intervals) between beats, statistically examining these IOI distributions and systematicallty analyzing timing profiles of different motifs. However, research suggests that the irregular beat patterns are intematley related to aspects of motivic structures (Johansson, 2017, p. 82). These "melodic-rythmic" structures are therefore interesting performance characteristics for further research and exloration. 
+
+This considered, I propose a set of interactive tools that examine timing patterns of Hardanger fiddle performances in the following manner:  
+
+1. In the first tool, an interactive and adjustable score representation enable dynamic editing of the performance timing.
+2. In the second tool, a custom plotting window enables the inspection of "melodic-rythmic" structures. By specificying a bar-range, we plot the timing patterns of the repeating motifs.  
+3. In the third tool, we can investigate musical properties of recurring timing patterns. By selecting a note region in the score representation, the program will find other regions that exhibit similar timing patterns. Then, we can examine whether the repeating recurring timing patterns share other musical properties, such as pitch, metrical position and/or dynamics.
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science). The computationally annotated performances of Hardanger Fiddle music are provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
@@ -80,4 +88,8 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 
 # References
+
+Johansson, M. (2017). Empirical Research on Asymmetrical Rhythms in Scandinavian Folk Music: A Critical Review. Studia Musicologica Norvegica, 43(01), 58–89. https://doi.org/10.18261/issn.1504-2960-2017-01-05 
+
 Johansson, M. (2019). Timing-sound interactions in traditional Scandinavian fiddle music: Preliminary and implications. EasyChair Preprint, 5.
+
