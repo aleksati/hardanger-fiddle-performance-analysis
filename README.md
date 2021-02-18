@@ -41,22 +41,23 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 * Converts all the necessary .csv peformance data* into a dictionary format. Note & beat level ratios are then used to create the score representation.
 	* Sidenote - these dictionaries provide the opportunity for further in-depth analysis, as roughly shown [here](https://github.com/AleksanderTidemann/hf-interactive-analysis/blob/main/code/python-jupyter/track-data-plotting-tobar40.ipynb).
 
-* We can dynamically change the beat lengths and onsets via simple click and drag. The score is then refreshed and all note relations are scaled accordingly. This means that editing the beats will alter the onset and duration of all notes, but **not** the note ratios themselves.
+* We can dynamically change the beat lengths and onsets via simple click and drag. All notes are then scaled accordingly with resepct to their timing ratios within the beat. This means that editing the beats will alter the onset and duration of all notes, but **not** the note ratios themselves.
 
 * We can also select regions in the score and listen to it (as MIDI piano). 
 
-## 2. Timing Evolution of Repeating Structures (Motifs)
+## 2. Inspecting "melodic-rythmic" structures (motifs)
 <p align="left">
  <img src="presentation/img/2.jpg" width=auto>
 </p>
-<p align="center">In this tool we define <b>timing patterns</b> as a sequence of <b>beat duration ratios</b>.</p>
+<p align="center">In this tool, we specifically define <b>timing patterns</b> as relative <b>beat duration ratios</b>.</p>
 
-* Here we import a specific text file listing the "location" og all the motifs (harmonic patterns) of the performance. The list is added to the track dictionary.
+* Here we import a specific text file listing the "location" og all the motifs of the performance. The list is added to the track dictionary.
 
-* By selecting a bar/measure range, for instance from bar-1 to bar-3, the program will see if the selection corresponds to any of the recently collected harmonic patterns. If it finds matches, it colors ALL instances of the pattern in the score and plots the timing patterns of said instances in a custom plot.
-	* This enables us to investigate the timing patterns of recurring motifs and how they evolve over time. A technique similar to what is used in (Johansson 2019, p.5). We can of course export the plotted data as a smaller, more concise dictionary.
+* By selecting a bar/measure range, for instance from bar-1 to bar-3, the program will see if the selection corresponds to any of the performance motifs. If it finds matches, it colors ALL instances of the current motif in the score and plots the timing patterns of said instances.
+	* This enables us to investigate the timing patterns of recurring motifs in the performance, a technique similar to what is used in (Johansson 2019, p.5). We can of course export the plotted data as a smaller, more concise dictionary.
 
 ## Further work suggestions
+
 * When adjusting beat onsets and durations, we only do so in one place. However, if the beat is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes. We could have a toggle to turn such propegation "on" and "off".   
 
 * Another addition could be to enable the user to instantly "quantize" all the beats in the performance to have equal durations (based on the total duration of the performance). Then, users could try to "recreate" performance patterns by adjuting the beats. The user could then to go back and forth between a "quantized" version and the "real" version of the performance for reference.<br>
@@ -69,7 +70,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 <p align="left">
  <img src="presentation/img/3.2.jpg" width=auto>
 </p>
-<p align="center">In this tool we define <b>timing patterns</b> as a sequence of <b>note duration ratios</b>. (see <b>Further work suggestions</b> below for comments on this..)</p>
+<p align="center">In this tool I define <b>timing patterns</b> as <b>note duration ratios</b>. (see <b>Further work suggestions</b> below for comments on this..)</p>
 
 * In this tool, we import the dictionary we created (and exported) in "tool nr.1 and 2". The dictionary creates the score and every feature that is available in the first tool.
 
