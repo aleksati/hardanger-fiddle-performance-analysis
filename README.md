@@ -4,10 +4,10 @@ A work in progress..
 * [Short Introduction](#short-introduction)  
 * [Tool nr.1 and nr.2](#tool-nr1-and-nr2)
 	* [1. Interactive Score](#1-interactive-score)
-	* [2. Timing Evolution of Repeating Structures (Motifs and/or phrases)](#2-timing-evolution-of-repeating-structures-motifs-andor-phrases)
+	* [2. Inspecting Melodic-rythmic Structures (motifs)](#2-inspecting-melodic-rythmic-structures-motifs)
 	* [Further work suggestions](#further-work-suggestions)
 * [Tool nr.3](#tool-nr3)
-	* [3. Investigate Musical Properties of Recurring Timing Patterns](#3-investigate-musical-properties-of-recurring-timing-patterns)
+	* [3. Investigating Musical Properties of Recurring Timing Patterns](#3-investigate-musical-properties-of-recurring-timing-patterns)
 	* [Further work suggestions](#further-work-suggestions-1)
 * [References](#references)
 
@@ -45,7 +45,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 * We can also select regions in the score and listen to it (as MIDI piano). 
 
-## 2. Inspecting "melodic-rythmic" structures (motifs)
+## 2. Inspecting melodic-rythmic structures (motifs)
 <p align="left">
  <img src="presentation/img/2.jpg" width=auto>
 </p>
