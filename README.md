@@ -41,9 +41,13 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 * Converts all the necessary .csv peformance data* into a dictionary format. Note & beat level ratios are then used to create the score representation.
 	* Sidenote - these dictionaries provide the opportunity for further in-depth analysis, as roughly shown [here](https://github.com/AleksanderTidemann/hf-interactive-analysis/blob/main/code/python-jupyter/track-data-plotting-tobar40.ipynb).
 
-* We can dynamically change the beat lengths and onsets via simple click and drag. All notes are then scaled accordingly with resepct to their timing ratios within the beat. This means that editing the beats will alter the onset and duration of all notes, but **not** the note ratios themselves.
+* Via simple click and drag, the beat lengths and onsets can be dynamically adjusted. All note properties are then scaled accordingly with resepct to their timing ratios. This means that editing the beats will alter the onset and duration of all notes, but **not** the note ratios themselves.
 
-* We can also select regions in the score and listen to it (as MIDI piano). 
+* An option to quantize all beats to specific asymmetrical ratios is now also included (for instance, 35:40:25, etc.). This enables exploration of various performance timings and variations in post.
+
+* We can also choose to "shift" the entire score when lengthening a particular beat. This way, we can effectively also adjust measure and score length when needed. 
+
+* MIDI audio support.
 
 ## 2. Inspecting melodic-rythmic structures (motifs)
 <p align="left">
@@ -58,9 +62,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 ## Further work suggestions
 
-* When adjusting beat onsets and durations, we only do so in one place. However, if the beat is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes. We could have a toggle to turn such propegation "on" and "off".   
-
-* Another addition could be to enable the user to instantly "quantize" all the beats in the performance to have equal durations (based on the total duration of the performance). Then, users could try to "recreate" performance patterns by adjuting the beats. The user could then to go back and forth between a "quantized" version and the "real" version of the performance for reference.<br>
+* When adjusting beat onsets and durations, we only do so in one place. However, if the beat is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes. We could have a toggle to turn such propegation "on" and "off". 
 
 <small>*The note ratios are calculated with respects to their associated beat duration. The beat ratios are calculated with respect to their associated bar duration.</small> <br>
 
