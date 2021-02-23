@@ -8,7 +8,7 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
@@ -16,27 +16,41 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-                <section><h2>Interactive Tools for Exploring Performance Patterns in Hardanger Fiddle Music</h2></section>
+                <section><h2>Exploring Hardanger Fiddle Performance Patterns Through Interactive Computational Tools</h2></section>
 
-                <section>
-                    <h3>Brief Introduction</h3>
+                <section data-auto-animate>
+                    <h3>Introduction</h3>
                     <ul> 
-                        <li>Tradition Norwegian folk music</li>
+                        <li>Hardanger Fiddle Music</li>
                         <ul>
-                            <small> 
-                                <li>Hardanger fiddle</li>
+                            <small>
                                 <li>Associated with <em>springar</em> dance tradition.</li>
-                                <li>Triplet meter with complex ornamentations and asymmetrical timing patterns.</li>
+                                <li>Triplet meter with complex ornamentations and <b>asymmetrical timing patterns.</b></li>
                             </small>
                         </ul>
                         <div class="fragment">
-                            <li>MIRAGE - A Comprehensive AI-Based System for Advanced Music Analysis</li>
+                            <li>Irregular beat patterns are intimately related to aspects of motivic structures</li>
                             <ul>
                                 <small>
-                                    <li>Improve computers' capability to listen to and understand music. MIR</li>
-                                    <li>Currently research into performance patterns in Hardanger fiddle music.</li>
+                                    <li>Suggests that asymmetrical timing variations are related to motivic position rather than their beat position.</li>
                                 </small>
                             </ul>
+                        </div>
+                    </ul>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Introduction</h3>
+                    <ul>
+                        <li>MIRAGE</li>
+                        <ul>
+                            <small>
+                                <li>Improve computers' capability to listen to and understand music, and to conceive technologies to facilitate music understanding and appreciation.</li>
+                                <li>Currently researching performance patterns in Scandinavian Folk Music.</li>
+                            </small>
+                        </ul>
+                        <div class="fragment">
+                            <li>Contribution to musicology</li>
                         </div>
                     </ul>
                 </section>
@@ -44,47 +58,37 @@
                 <section>
                     <h3>Research Question</h3>
                     <p style="text-align:left">How can we design interactive computational tools to explore performance patterns in Hardanger fiddle music?</p>
-                    <ul class="fragment">
-                        <small><li> How can we successfully generate performances from Hardanger fiddle music transcriptions with the help of performance patterns?</li></small>
-                    </ul>
-                </section>
-        
-                <section>
-                    <h3>Method</h3>
-                    <p style="text-align:left">Develop a small set of interactive computational tools based on the performance data recieved from MIRAGE.</p>
-                    <ul class="fragment">
-                        <li style="color: rgb(0, 225, 255)"><b>Qualitative</b> - online presentation followed by questionnaire.</li>
-                        <li style="color: rgb(0, 255, 128)" class="fragment">Quantitative - small scale analysis of performance data produced by the tools.</li>
-                    </ul>
                 </section>
 
                 <section>
                     <h3>Approach</h3>
-                    <p style="text-align:left" data-id="text"> Design 3 interactive tools that explore <b>timing patterns</b> of Hardanger fiddle performances.</p>
-                    <ul class="fragment">
-                        <li>1/3 - Interactivity and engagement</li>
-                        <li>2/3 - A structural perspective</li>
-                        <li>3/3 - Multi-dimensional analysis</li>
+                    <p style="text-align:left" data-id="text"> Develop a 3 interactive computational tools that explore <b>timing patterns</b> in Hardanger fiddle performances, focusing on the <b><em>melodic-rhythmic</em> structures</b></p>
+                </section>
+
+                <section>
+                    <h3>Toolkit design</h3>
+                    <ul>
+                        <li>Interactivity and engagement</li>
+                        <li>A structural perspective</li>
+                        <li>Multi-dimensional analysis</li>
                     </ul>
                 </section>
 
                 <section>
+                    <section>
+                        Tool nr.1 and 2
+                    </section>
                     <section> 
-                        <h3>1/3</h3>
-                        The Editor
+                        <h3>1</h3>
+                        Interactive Score
                     </section>
                     
                     <section>
                         <h2>Goal</h2>
                         <ul>
-                            <div>
-                                <li>Data compreshension</li>
-                                    <ul>
-                                        <small><li>Asymmetrical timing patterns.</li></small>
-                                    </ul>
-                            </div>
+                            <li>Data compreshension</li>
                             <!-- Visually.-->
-                            <li>Explore alternative timing patterns.</li>
+                            <li>Explore alternative performance timings.</li>
                             <!-- Fully quantized! and then see the difference.-->
                             <li>Invite reflection on how players modify the written score during play.</li>
                             <!-- Compare different interpretations of same track and see the differences. Play games.-->
@@ -92,12 +96,7 @@
                     </section>
 
                     <section>
-                        <p>Transform the data</p>
-                        <div class="dict-data">
-                            <img class="left" data-src="img/theData.jpg">
-                            <div class="arrow"></div>
-                            <img class="right" data-src="img/dict.jpg">
-                        </div>
+                        <img class="right" data-src="img/dict.jpg">
                         <aside class="notes">
                             <p>We transform the Transcription into more friendly data-format. JSON dictionary.
                             We collect the onset and duration ratios of every beat, note and bar.</p>
@@ -106,84 +105,95 @@
                         </aside>
                     </section>
                     <section data-auto-animate> 
-                        <img style="width: 100%;" data-src="img/1gif.gif">
+                        <img data-src="img/adjustbeats.gif" data-id="tool1">
                         <aside class="notes">
-                            <p>We actually recreate the performance using the information in our dictionary.
-                                This format also naturally enables interactivity though making adjustments to the ratios and then propegating every else accordingly.</p>
-                            <p>In this prototype, I have enabled the ability to move beats.</p>
+                            <p>interactivity though making adjustments</p>
+                            <p>Might open for moving notes. due to the format</p>
+                            <p>sThe way the notes are adjuted is not very much desirable. good for proto.</p>
                         </aside>
                     </section>
-
-                </section>
-
-                <section>
+                    <section data-auto-animate><img data-src="img/shiftadjustbeats.gif" data-id="tool1"></section>
+                    <section data-auto-animate><img data-src="img/quantizescore.gif" data-id="tool1"></section>
                     <section> 
-                        <h3>2/3</h3>
-                        <p>Explores how timing patterns of repeating motifs (phrases/harmonic patterns) evolve over time.</p> 
+                        <h3>2</h3>
+                        <p> Inspecting melodic-rythmic structures (motifs)</p>
                     </section>
 
                     <section>
                         <h2>Goal</h2>
                         <ul>
                             <div>
-                                <li>Look at <b>timing patterns</b> from a structural perspective.</li>
+                                <li>Explore timing patterns from a motivic perspective.</li>
                             </div>
                             <div>
-                                <li>Enhance data visualization</li>
-                                    <ul>
-                                        <small><li>Enable a temporal perspective (evolution).</li></small>
-                                    </ul>
+                                <li>Increase accessibility through data visualization</li>
                             </div>
                         </ul>                        
                     </section>
 
                     <section>
-                        Have a slide here presenting a little more in-depth what the structures are, and what is actually being done. 
-                        I recieve a pattern.txt from Olivier. etc.. Look at the beat durations of those patterns.
-                        HERE we define timing patterns as being -- BEAT duration ratios in succession.
-                    </section>
+                        <img data-src="img/motif.jpg" data-id="motif">
 
+                        <aside class="notes">
+                            <p>"melodic-rytmic sentences", or melodies. Often in 2 measure instead of 4.</p>
+                            <p>By MIRAGE</p>
+                        </aside>
+                    </section>
                     <section data-auto-animate><img data-src="img/2-present.jpg" data-id="tool2"></section>
+                    <section data-auto-animate><img data-src="img/2-present-2.jpg" data-id="tool2"></section>
                     <section data-auto-animate><img data-src="img/2.1.jpg" data-id="tool2"></section>
                     <section data-auto-animate><img data-src="img/2.2.jpg" data-id="tool2"></section>
+                    <section>What about miliseconds?</section>
+                    <section>
+                        <h3>Further Development</h3>
+                        <ul>
+                            <li>Propegate beat adjusting to all motivic instances.</li>
+                            <li>MS option instead of beat duration ratios</li>
+                        </ul>
+                    </section>
+                    <section>Propegate changes to all motifs</section>
                 </section>
 
                 <section>
                     <section>
-                        <h3>3/3</h3>
-                        <p>Investigates various properties of recurring timing patterns</p>
+                        Tool nr.3
+                        <p>Investigating musical properties of repeating timing patterns</p>
                     </section>
-
                     <section>
                         <h2>Goal</h2>
                         <ul>
-                            <div>
-                                <li>Enable inspection of property relationships between structures that have similar timing patterns.</li>
-                                    <ul>
-                                        <small><li>Multi-dimensional analysis</li></small>
-                                    </ul>
-                            </div>
-                            <div>
-                                <li>Dynamic UI</li>
-                                    <ul>
-                                        <small><li>User chooses which property relationships to plot.</li></small>
-                                    </ul>
+                            <li>Enable multi-dimensional analysis through a dynamic UI.</li>
+                            <div class="fragment">
+                                <li>Examine property relationships between regions that share similar timing patterns.</li>
+                                <ul>
+                                    <small>
+                                        <li>Pitch</li>
+                                        <li>Velocity</li>
+                                        <li>Beat position</li>
+                                    </small>
+                                </ul>
                             </div>
                         </ul>
                     </section>
 
-                    <section>
-                        Have an image of what I mean! repeating patterns .. point at the relationships.
-                        Another slide... HERE we define timing patterns as being -- note duration ratios in succession.
-                    </section>
-
-                    <section>
-                        Explain that its based on the note duration ratios. AND the slider with a picture. To scale. Ho
-                    </section>
+                    <section data-auto-animate><img data-src="img/selectnotes.jpg" data-id="tool3"></section>
+                    <section data-auto-animate><img data-src="img/selectnotes-dur.jpg" data-id="tool3"></section>
+                    <section><img data-src="img/selectnotes-graph.jpg" data-id="tool3"></section>
+                    <section data-auto-animate><img data-src="img/selectnotes-match.jpg" data-id="tool3"></section>
+                    <section data-auto-animate><img data-src="img/selectnotes-match2.jpg" data-id="tool3"></section>
 
                     <section data-auto-animate><img data-src="img/3-present.jpg" data-id="tool3"></section>
                     <section data-auto-animate><img data-src="img/3.1.jpg" data-id="tool3"></section>
                     <section data-auto-animate><img data-src="img/3.2.jpg" data-id="tool3"></section>
+                    <section data-auto-animate><img data-src="img/3-slider.jpg" data-id="tool3"></section>
+                    <section><img data-src="img/scalefactor.gif" data-id="tool3"></section>
+                    <section>
+                        <h3>Further Development</h3>
+                        <ul>
+                            <li>Timing pattern formalization (IOI)</li>
+                            <li>Motivic position</li>
+                        </ul>
+                    </section>
                 </section>
 			</div>
 		</div>
