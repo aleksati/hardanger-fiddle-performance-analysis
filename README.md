@@ -4,7 +4,7 @@ A work in progress..
 * [Short Introduction](#short-introduction)  
 * [Tool nr.1 and nr.2](#tool-nr1-and-nr2)
 	* [1. Interactive Score](#1-interactive-score)
-	* [2. Inspecting Melodic-rythmic Structures (motifs)](#2-inspecting-melodic-rythmic-structures-motifs)
+	* [2. Inspecting melodic-rythmic Structures (motifs)](#2-inspecting-melodic-rythmic-structures-motifs)
 	* [Further work suggestions](#further-work-suggestions)
 * [Tool nr.3](#tool-nr3)
 	* [3. Investigating Musical Properties of Recurring Timing Patterns](#3-investigate-musical-properties-of-recurring-timing-patterns)
