@@ -4,7 +4,7 @@ A work in progress..
 * [Short Introduction](#short-introduction)  
 * [Tool nr.1 and nr.2](#tool-nr1-and-nr2)
 	* [1. Interactive Score](#1-interactive-score)
-	* [2. Timing patterns of section and phrase repetitions](#2-timing-patterns-of-section-and-phrase-repetitions)
+	* [2. Timing patterns of repeating sections and phrases](#2-timing-patterns-of-repeating-sections-and-phrases)
 	* [Further work suggestions](#further-work-suggestions)
 * [Tool nr.3](#tool-nr3)
 	* [3. Investigating Musical Properties of Recurring Timing Patterns](#3-investigate-musical-properties-of-recurring-timing-patterns)
@@ -49,7 +49,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 * MIDI audio support.
 
-## 2. Timing patterns of section and phrase repetitions
+## 2. Timing patterns of repeating sections and phrases
 <p align="left">
  <img src="presentation/img/2.jpg" width=auto>
 </p>
