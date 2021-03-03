@@ -95,7 +95,7 @@ function update_dict(b_onsets) {
 
     // go through every beat
     hf_dict.remove(global_filename+"::beat_onset_and_duration");
-    for (var p=0; p<global_marker_tags.length; p++) {
+    for (var p=0; p<global_marker_tags.length-1; p++) {
         // update the beat onset and duration (ms).
         var tag = global_marker_tags[p][2] + (global_marker_tags[p][3]/10);
         var str_tag = "beat" + tag

@@ -59,7 +59,8 @@ function markers() {
     } else {
       error("Global and Current markers have different sizes ... ");
     }
-    outlet(0, new_marker_onsets);
+    // output = [beat onset (ms), beat onset (ms), beat onset (ms) etc..]
+    outlet(0, "recreateOD", new_marker_onsets);
   } else {
     error("Init error (bach2onsets). The [mir2bach] function has not been called yet..?");
   }

@@ -1,3 +1,6 @@
+// Takes a bar-range from user and find the relevant "dict-keys" I need for plotting and selecting. 
+// the output is used as keys to the track_data dict.
+
 autowatch = 1;
 inlets = 1;
 outlets = 2;

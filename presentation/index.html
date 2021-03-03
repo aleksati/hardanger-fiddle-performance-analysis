@@ -16,7 +16,12 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-                <section data-auto-animate><h2>Exploring Hardanger Fiddle Performance Patterns Through Interactive Computational Tools</h2></section>
+                <section data-auto-animate>
+                    <h2>Exploring Hardanger Fiddle Performance Patterns Through Interactive Computational Tools</h2>
+                    <aside class="notes">
+                        <p>Collaboration with the MIRAGAE ...</p>
+                    </aside>
+                </section>
 
                 <section>
                     <h2>Agenda</h2>
@@ -31,7 +36,9 @@
                     <h3>Research Question</h3>
                     <p style="text-align:left">How can we design interactive computational tools to explore performance patterns in Hardanger fiddle music?</p>
                     <aside class="notes">
+                        <p>Arose out of:</p>
                         <p>Mitigating challenges present in music-related transdisciplinary research projects.</p>
+                        <p>MIRAGE - including traditional musicology, cognitive science, signal processing and artificial intelligence.</p>
                         <p>Tailored computational tools can not only explore, but benefit research into musical performance patterns.</p>
                     </aside>
                 </section>
@@ -44,28 +51,26 @@
                 <section data-auto-animate>
                     <p data-id="head"><span data-id="spanhead" style="font-size: 45px;">Performance patterns in Hardanger fiddle music</span></p>
                     <ul> 
-                        <li>Associated with traditional dances.</li>
+                        <li>Performance timing</li>
                         <ul>
                             <small>
-                                <li>Triplet meter with <b>asymmetrical timing patterns</b>.</li>
+                                <li><b>Asymmetrical timing patterns</b>.</li>
                             </small>
                         </ul>
-                    <div class="fragment">
-                        <li>Beat asymmetry is related to motivic structures. <small>(Johansson, 2017, p.82)</small></li>
-                        <ul>
-                            <small>
-                                <li>Melodic-rythmic sentences.</li>
-                            </small>
-                        </ul>
-                    </div>
+                        <div class="fragment">
+                            <li>Beat asymmetry is related to motivic structures.</li>
+
+                            <img data-src="img/motif.jpg" data-id="motif">
+                            <p><span style="font-size: 20px;">(Johansson, 2017, p.82) (Johansson, 2009, p.101)</span></p>
+
+                        </div>
                     </ul>
                     <aside class="notes">
                         <p>HF is in a dialctic and intimate relatioship with dance traditions. springar, halling and pols.</p>
-                        <p>Most characteristc features of the music is its often triplet meter with asym. beat with dif length.</p>
-                        <p>timing p often refers to temporal pos of mus beats, folk music include length.</p>
-                        <p>While conv. approch. study timing patterns - IOI, distri. newer ... </p>
-                        <p>Suggesting that what might be called .. MOTIFS.."rythmic-melodic" sentences...</p>
-                        <p>Open new intersting perspectives into understanding HF performance patterns.</p>
+                        <p>Although many interesting performance patterns, orna, bowing, fingering/tunic etc.. Considering the scope I chose to.</p>
+                        <p>While conv. approch. study timing patterns - IOI, distri. general. newer ... </p>
+                        <p>"rythmic-melodic" phrases/sentences... understanding motifs and timing patterns together</p>
+                        <p>This understnading has been the basis for my work..</p>
                     </aside>
                 </section>
 
@@ -76,13 +81,13 @@
 
                 <section data-auto-animate>
                     <h3 style="color: white">Research Question</h3>
-                    <p style="text-align:left; color: white" data-id="head">How can we design <span style="color: black" data-id="spanhead">interactive computational tools</span> to explore performance patterns in Hardanger fiddle music?</p>
+                    <p style="text-align:left; color: white" data-id="head">How can we design interactive <span style="color: black" data-id="spanhead">computational tools</span> to explore performance patterns in Hardanger fiddle music?</p>
                 </section>
 
                 <section data-auto-animate>
-                    <p data-id="head"><span data-id="spanhead" style="font-size: 45px;">Interactive computational tools</span></p>
+                    <p data-id="head"><span data-id="spanhead" style="font-size: 45px;">Computational tools</span></p>
                     <ul>
-                        <li>MIRAGE Research Project</li>
+                        <li>MIRAGE Research Project <span style="font-size: 20px;">(Lartillot, 2020)</span></li>
                         <ul>
                             <small>
                                 <li>Ground-breaking AI system for music analysis.</li>
@@ -92,11 +97,10 @@
                         </ul>
                     </ul>
                     <aside class="notes">
-                        <p>Collaboration with the MIRAGAE ...</p>
-                        <p>Transdisciplinary research project. Traditional musicology, cognitive science, signal processing and artificial intelligence.</p>
+                        <p>Transdisciplinary project</p>
                         <p>seek to Improve computers' capability to listen to and understand music, and to conceive technologies to facilitate music understanding and appreciation.</p>
                         <p>Currently.... MPA and MIR.</p>
-                        <p>Work has led to new tools and extension to existing CMA frameworks such as the MiningSuite and MIR toolbox.</p>
+                        <p>Work is constatnly leading to new tools and models that investigate these musical phenomena.</p>
                         <p></p>
                     </aside>
                 </section>
@@ -111,7 +115,12 @@
 
                     <aside class="notes">
                         <p>Current methodology is/has been to prototype .... in the MaxMSP and Javascript programming environments.</p>
+                        <p>By getting performance transcriptions from MIRAGE. note values and temporal onse/offset and metrical position of all note events.</p>
                     </aside>
+                </section>
+
+                <section>
+                    <h2>Showcase</h2>
                 </section>
 
                 <section>
@@ -124,10 +133,6 @@
                     <aside class="notes">
                         <p>With emphasis of the melodic-rythmic structures previously mentioned</p>
                     </aside>
-                </section>
-
-                <section>
-                    <h2>Showcase</h2>
                 </section>
 
                 <section>
@@ -152,16 +157,6 @@
 
                         </aside>
                     </section>
-
-                    <section>
-                        <img class="right" data-src="img/dict.jpg">
-                        <aside class="notes">
-                            <p>Recieve performance trascription with note and beat annotations. so m and t.</p>
-                            <p>We transform the Performance transcription into more friendly data-format. JSON dictionary. onset and duration ratios of every beat, note and bar</p>
-                            <p>Basis for the all the tools.</p>
-                            <p>Moving on to the features..</p>
-                        </aside>
-                    </section>
                     <section data-auto-animate> 
                         <img data-src="img/adjustbeats.gif" data-id="tool1">
                         <aside class="notes">
@@ -180,44 +175,46 @@
                         <img data-src="img/quantizescore.gif" data-id="tool1">
                         <aside class="notes">
                             <p>Ability to impose statistical beat distributions is features.</p>
+                            <p>So all of these features enable easy exploration and data gathering.</p>
                         </aside>
                     </section>
                     <section> 
                         <h3>2</h3>
-                        <p> Inspecting melodic-rythmic structures (motifs)</p>
+                        <p>Timing patterns of motivic structures</p>
                     </section>
 
                     <section>
                         <h2>Goal</h2>
                         <ul>
                             <div>
-                                <li>Explore timing patterns from a motivic perspective.</li>
+                                <li>Explore timing patterns from a structural perspective.</li>
                             </div>
                             <div>
                                 <li>Increase data accessibility through visualization</li>
                             </div>
                         </ul>                        
                     </section>
-
-                    <section>
-                        <img data-src="img/motif.jpg" data-id="motif">
-                        <p><small>(Johansson, 2009, p.101)</small></p>
-
+                    <section data-auto-animate>
+                        <img data-src="img/2-present.jpg" data-id="tool2">
                         <aside class="notes">
-                            <p></p>
-                            <p>Motifs are to be understood as reapting "melodic-rytmic" phrases, or sentences. usually after 2 measures in springar.</p>
+                            <p>first thing to notice is the dictionary. p data into more firendly format</p>
+                            <p>second, patterns text. list of number which indicate where the motifs are in the score.</p>
                         </aside>
                     </section>
-                    <section data-auto-animate><img data-src="img/2-present.jpg" data-id="tool2"></section>
-                    <section data-auto-animate><img data-src="img/2-present-2.jpg" data-id="tool2"></section>
+                    <section data-auto-animate>
+                        <img data-src="img/2-present-2.jpg" data-id="tool2">
+                        <aside class="notes">
+                            <p>third, we select a range and plot the timing patterns.</p>
+                            <p>instantly plot a desired range, see if the range conicides with any motivic strucutre, and plot the timing patterns of that structure.</p>
+                        </aside>
+                    </section>
                     <section data-auto-animate><img data-src="img/2.1.jpg" data-id="tool2"></section>
                     <section data-auto-animate><img data-src="img/2.2.jpg" data-id="tool2"></section>
                     <section>
                         <h3>Further Development</h3>
                         <ul>
-                            <li>Propegate beat adjusting to all motivic instances.</li>
-                            <li>Dynamic plotting (MS instead of ratio percentage)</li>
-                            <li>note scaling when adjusting beats.</li>
+                            <li>Propegate beat adjustments to all motivic instances.</li>
+                            <li>Note scaling when adjusting beats.</li>
                         </ul>
                     </section>
                 </section>
@@ -225,7 +222,7 @@
                 <section>
                     <section>
                         Tool nr.3
-                        <p>Investigating musical properties of repeating timing patterns</p>
+                        <p>Musical properties of repeating timing patterns</p>
                     </section>
                     <section>
                         <h2>Goal</h2>
@@ -233,12 +230,12 @@
                             <li>Enable multi-dimensional analysis through a dynamic UI.</li>
                             <div class="fragment">
                                 <ul>
-                                    <li>Examine property relationships between regions that share similar timing patterns.</li>
+                                    <li>Examining property relationships between regions that share similar timing patterns.</li>
                                     <ul>
                                         <small>
                                             <li>Pitch</li>
                                             <li>Velocity</li>
-                                            <li>Beat position</li>
+                                            <li>Beat/motivic position</li>
                                         </small>
                                     </ul>
                                 </ul>
