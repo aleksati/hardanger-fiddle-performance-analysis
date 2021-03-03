@@ -66,7 +66,7 @@
                     </ul>
                     <aside class="notes">
                         <p>There are many p practices and characteristics I could explore, orna, bowing, fingering/tunic etc.. but the scope I chose to.</p>
-                        <p>Specifically, the work is based on recent research..</p>
+                        <p>Also, recent research has indicated that .... This is the basis for mye study. Structural perspective on performance timing.</p>
                     </aside>
                 </section>
 
@@ -87,7 +87,7 @@
                         <ul>
                             <small>
                                 <li>Ground-breaking AI system for music analysis.</li>
-                                <li>Currently Researching performance patterns in Scandinavian Folk Music.</li>
+                                <li>Currently researching performance patterns in Scandinavian Folk Music.</li>
                             </small>
 
                         </ul>
@@ -110,7 +110,8 @@
 
                     <aside class="notes">
                         <p>Current methodology is/has been to prototype .... in the MaxMSP and Javascript programming environments.</p>
-                        <p>By getting performance transcriptions from MIRAGE. note values and temporal onse/offset and metrical position of all note events.</p>
+                        <p>This is possible due to performance annotation from MIRAGE</p>
+                        <p>data consists of every note onset, offset and pitch value AS WELL AS the metrical posisition of each note.</p>
                     </aside>
                 </section>
 
@@ -134,6 +135,9 @@
                     <section> 
                         <h3>1</h3>
                         Interactive Score
+                        <aside class="notes">
+                            <p>Graphical score representation</p>
+                        </aside>
                     </section>
                     
                     <section>
@@ -143,34 +147,43 @@
                             <li>Explore alternative performance timings.</li>
                         </ul>
                         <aside class="notes">
-                            <p>Recieve data from MIRAGE and make sense of it in meaningful and interacive/engaging way</p>
-                            <p>Through visually and interactive comparison. Gamification. Play game</p>
+                            <p>Goal is first and foremost data comp</p>
+                            <p>Turn the MIRAGE data into something meaningful that users can interacive/engage with</p>
+                            <p>Throught that! enable ability to explore alternative...</p>
 
                         </aside>
                     </section>
                     <section data-auto-animate> 
                         <img data-src="img/adjustbeats.gif" data-id="tool1">
                         <aside class="notes">
-                            <p>Converts the data into a mix of piano roll and score representation</p>
-                            <p>The green bars indicate beat and bar!! X-axis is time in ms.</p>
+                            <p>Its a mix of piano roll and score representation, with time in seconds on the X-axis, and green bars represent musical beats.</p>
+                            <p>As you can see, the user has the ability to dynamically adjust the beat positions as they wish. And listen.</p>
+                            <p>Thats not the only thing, we can also (for instance) choose not to temporally companste for our adjustments and rather shift the whole score.</p>
                         </aside>
                     </section>
                     <section data-auto-animate>
                         <img data-src="img/shiftadjustbeats.gif" data-id="tool1">
                         <aside class="notes">
-                            <p>Also, the ability to shift-adjust the score. avoid temporal compensation.</p>
+                            <p>This way, our adjustments dont affect the neightborign beats. A longer beat = a longer score.</p>
+                            <p>Also...</p>
                         </aside>
                     </section>
                     <section data-auto-animate>
                         <img data-src="img/quantizescore.gif" data-id="tool1">
                         <aside class="notes">
-                            <p>Ability to impose statistical beat duration distributions to ALL measures.</p>
-                            <p>Explain more in-depth.</p>
+                            <p>implemented the ability to impose average beat timing to ALL measures in the performance.</p>
+                            <p>Inspired by more convential research into asymmetrical timing patterns.</p>
+                            <p>The 3 number refer to the 3 beats in our time signature.</p>
+                            <p>If we select 40,40,20, EVERY first and second beat make up 40% each of their associated measure. and EVERY 3rd beat 20%</p>
+                            <p>Export various versions and compare.</p>
                         </aside>
                     </section>
                     <section> 
                         <h3>2</h3>
                         <p>Timing patterns of repeating sections and phrases</p>
+                        <aside class="notes">
+                            <p>The second tool explores timing patterns of repeating sections or phrases. 2nd design pillar.</p>
+                        </aside>
                     </section>
 
                     <section>
@@ -183,24 +196,31 @@
                     <section data-auto-animate>
                         <img data-src="img/2-present.jpg" data-id="tool2">
                         <aside class="notes">
-                            <p>first thing to notice is the dictionary. p data into more firendly format</p>
+                            <p>first thing to notice is the dictionary. Converts p data into more firendly and high-level format. which we can export.</p>
                             <p>second, in addition to perf-data, MIRAGE provided me with a list of all repeating sections and phrases. Result of structural analysis. list of numbers.</p>
+                            <p>This we add in our app, and it adds the data to the dict.</p>
+                            <p>What we now can do is:</p>
                         </aside>
                     </section>
                     <section data-auto-animate>
                         <img data-src="img/2-present-2.jpg" data-id="tool2">
                         <aside class="notes">
-                            <p>Choose a range, see if the particular range repeats itself in the peformance, plot timing patterns of all those repetitions.</p>
+                            <p>Choose a range (from a bar to a bar), click plot, and the program will see if the particular range we selected repeats itself in the peformance (is part of a phrase, motif or section). If so, it plots and colors timing patterns of all those repetitions.</p>
+                            <p>In this example, we found 4 instances of a repeating phrase (from b 17-18). As we can see, the timing patterns of these repititions are fairly consistent throughout the performance, only with greater variations at the start.</p>
+                            <p>Additionally, various plotting settings enable us to view the data in various ways.</p>
                         </aside>
                     </section>
                     <section data-auto-animate><img data-src="img/2.1.jpg" data-id="tool2"></section>
                     <section data-auto-animate><img data-src="img/2.2.jpg" data-id="tool2"></section>
                     <section>
-                        <h3>Further Development</h3>
+                        <h3>Comments</h3>
                         <ul>
-                            <li>Propegate beat adjustments to all section and phrase repetitions.</li>
                             <li>Note scaling when adjusting beats.</li>
                             <li>Incorporate ornamentations</li>
+                            <aside class="notes">
+                                <p>Note scaling when adjusting beats can be improved. Research suggests that there often are some notes that are more essential to the beat length than others.</p>
+                                <p>Incorporating ornametation and other performance patterns would also make the tools more complex and be more applicable for research purposes.</p>
+                            </aside>
                         </ul>
                     </section>
                 </section>
@@ -213,7 +233,7 @@
                     <section>
                         <h2>Goal</h2>
                         <ul>
-                            <li>Enable multi-dimensional analysis through a dynamic UI.</li>
+                            <li>Enable multi-dimensional analysis</li>
                             <div class="fragment">
                                 <ul>
                                     <li>Examining property relationships between regions that share similar timing patterns.</li>
@@ -227,29 +247,79 @@
                                 </ul>
                             </div>
                         </ul>
+                    </section>
+
+                    <section data-auto-animate>
+                        <img data-src="img/selectnotes.jpg" data-id="tool3">
                         <aside class="notes">
-                            <p>A little more experimental in nature.</p>
-                            <p></p>
+                            <p>Select a region with mouse.</p>
+                        </aside>
+                    </section>
+                    <section data-auto-animate>
+                        <img data-src="img/selectnotes-dur.jpg" data-id="tool3">
+                        <aside class="notes">
+                            <p>The program then interpretes the note durations of the selection as a "timing pattern".</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <img data-src="img/selectnotes-graph.jpg" data-id="tool3">
+                        <aside class="notes">
+                            <p>Another way to view this is through a graph where the note amount is on X, and their durations in on Y.</p>
+                            <p>Imagine our previous note selection is whats inside this circle.</p>
+                            <p>The program understands this as a pattern and tries to find similar patterns in the performance, basically.</p>
+                        </aside>
+                    </section>
+                    <section data-auto-animate>
+                        <img data-src="img/selectnotes-match.jpg" data-id="tool3">
+                        <aside class="notes">
+                            <p>If it does find any patterns, it selects them in our score.</p>
+                        </aside>
+                    </section>
+                    <section data-auto-animate>
+                        <img data-src="img/selectnotes-match2.jpg" data-id="tool3">
+                        <aside class="notes">
+                            <p>Then we can extract and compare properties from those regions.</p>
                         </aside>
                     </section>
 
-                    <section data-auto-animate><img data-src="img/selectnotes.jpg" data-id="tool3"></section>
-                    <section data-auto-animate><img data-src="img/selectnotes-dur.jpg" data-id="tool3"></section>
-                    <section><img data-src="img/selectnotes-graph.jpg" data-id="tool3"></section>
-                    <section data-auto-animate><img data-src="img/selectnotes-match.jpg" data-id="tool3"></section>
-                    <section data-auto-animate><img data-src="img/selectnotes-match2.jpg" data-id="tool3"></section>
-
-                    <section data-auto-animate><img data-src="img/3-present.jpg" data-id="tool3"></section>
-                    <section data-auto-animate><img data-src="img/3.1.jpg" data-id="tool3"></section>
+                    <section data-auto-animate>
+                        <img data-src="img/3-present.jpg" data-id="tool3">
+                        <aside class="notes">
+                            <p>Choose which properties we want to examine, select a note region and hit the button. If it finds any patterns, it colors and plots them.</p>
+                            <p>So in this example, its found 2 region that share similar timing pattern, and we compare their metrical position.</p>
+                        </aside>
+                    </section>
+                    <section data-auto-animate>
+                        <img data-src="img/3.1.jpg" data-id="tool3">
+                        <aside class="notes">
+                            <p>We can also compare pitch content.</p>
+                        </aside>
+                    </section>
                     <section data-auto-animate><img data-src="img/3.2.jpg" data-id="tool3"></section>
-                    <section data-auto-animate><img data-src="img/3-slider.jpg" data-id="tool3"></section>
-                    <section><img data-src="img/scalefactor.gif" data-id="tool3"></section>
+                    <section data-auto-animate>
+                        <img data-src="img/3-slider.jpg" data-id="tool3">
+                        <aside class="notes">
+                            <p>Lastly I want to draw your attention to this scale slider.</p>
+                            <p>Since its hard to find exact pattern matches (if not impossible), this slider ROUNDS all the timing values to higher and higher numbers.</p>
+                            <p>Making pattern finding much easier.</p>
+                        </aside>
+                    </section>
                     <section>
-                        <h3>Further Development</h3>
+                        <img data-src="img/scalefactor.gif" data-id="tool3">
+                        <aside class="notes">
+                            <p>The higher the scale factor, the more regions we will find that have similar timing patterns.</p>
+                        </aside>
+                    </section>
+                    <section>
+                        <h3>Comments</h3>
                         <ul>
                             <li>Timing pattern formalization (IOI)</li>
                             <li>Motivic position</li>
                         </ul>
+                        <aside class="notes">
+                            <p>Timing pattern formalization is not optimal at all, but serves prototyping purposes. We would rather define timing patterns as a collection of inter onset intervals or something similar</p>
+                            <p>Finally, a very nice feature would be to examine the motivic or structural position of the regions with similar patterns. This is highly possible, and is only limited by the scope of this thesis.</p>
+                        </aside>
                     </section>
                 </section>
                 <section>
