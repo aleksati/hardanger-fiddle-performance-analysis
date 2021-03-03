@@ -4,7 +4,7 @@ A work in progress..
 * [Short Introduction](#short-introduction)  
 * [Tool nr.1 and nr.2](#tool-nr1-and-nr2)
 	* [1. Interactive Score](#1-interactive-score)
-	* [2. Inspecting melodic-rythmic Structures (motifs)](#2-inspecting-melodic-rythmic-structures-motifs)
+	* [2. Timing patterns of section and phrase repetitions](#2-timing-patterns-of-section-and-phrase-repetitions)
 	* [Further work suggestions](#further-work-suggestions)
 * [Tool nr.3](#tool-nr3)
 	* [3. Investigating Musical Properties of Recurring Timing Patterns](#3-investigate-musical-properties-of-recurring-timing-patterns)
@@ -49,26 +49,26 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 
 * MIDI audio support.
 
-## 2. Inspecting melodic-rythmic structures (motifs)
+## 2. Timing patterns of section and phrase repetitions
 <p align="left">
  <img src="presentation/img/2.jpg" width=auto>
 </p>
 <p align="center">In this tool, we specifically define <b>timing patterns</b> as relative <b>beat duration ratios</b>.</p>
 
-* Here we import a specific text file listing the "location" og all the motifs of the performance. The list is added to the track dictionary.
+* Here we import a specific text file listing the "location" og all the section and phrase repetitions in the performance. This list is added to the track dictionary under "harmonic_patterns".
 
-* By selecting a bar/measure range, for instance from bar-1 to bar-3, the program will see if the selection corresponds to any of the performance motifs. If it finds matches, it colors ALL instances of the current motif in the score and plots the timing patterns of said instances.
-	* This enables us to investigate the timing patterns of recurring motifs in the performance, a technique similar to what is used in (Johansson 2019, p.5). We can of course export the plotted data as a smaller, more concise dictionary.
+* By selecting a bar/measure range, for instance from bar-1 to bar-3, the program will see if the selection corresponds to any repeating sections in the performance. If it finds matches, it colors ALL instances of the section and plots its timing patterns.
+	* A technique similar to what is used in (Johansson 2019, p.5). We can of course export the plotted data as a smaller, more concise dictionary.
 
 ## Further work suggestions
 
-* When adjusting beat onsets and durations, we only do so in one place. However, if the beat is part of a repeating motif (harmonic pattern), maybe a good idea would be to make the local change propegate to all instances of the motif. So all instances of the repeating motif would be subjected to the same changes. We could have a toggle to turn such propegation "on" and "off". 
+* When adjusting beat onsets and durations, we only do so in one place. However, if the beat is part of a repeating section, maybe a good idea would be to make the local change propegate to all its instances. So all instances would be subjected to the same changes. We could have a toggle to turn such propegation "on" and "off". 
 
 <small>*The note ratios are calculated with respects to their associated beat duration. The beat ratios are calculated with respect to their associated bar duration.</small> <br>
 
 
 # Tool nr.3
-## 3. Investigate Musical Properties of Recurring Timing Patterns.
+## 3. Musical properties of recurring timing patterns.
 <p align="left">
  <img src="presentation/img/3.2.jpg" width=auto>
 </p>
