@@ -25,7 +25,7 @@ Conventional approaches to studying these timing patterns include measuring IOI 
 With these aspects considered, I propose a set of interactive tools that exlore timing patterns of Hardanger fiddle performances in the following manner:  
 
 1. In the first tool, an interactive and adjustable score representation enables dynamic editing of the performance timing.
-2. In the second tool, a custom plotting window enables the inspection of "melodic-rhythmic" structures by displaying the timing patterns of the repeating motifs.  
+2. In the second tool, a custom plotting window enables the inspection of timing patterns of section and phrase repetitions.  
 3. In the third tool, we can investigate the musical properties of recurring timing patterns. By selecting a note region in the score representation, the program will find other regions that exhibit similar timing patterns. Then, plotting helps us examine whether these recurring timing patterns share other musical properties, such as pitch, metrical/motivic position and dynamics.
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science). The computationally annotated performances of Hardanger Fiddle music are provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
