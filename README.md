@@ -2,11 +2,11 @@ A work in progress..
 
 ## Table of Contents  
 * [Short Introduction](#short-introduction)  
-* [Tool nr.1 and nr.2](#tool-nr1-and-nr2)
+* [Tool nr.1](#tool-nr1)
 	* [1. Interactive Score](#1-interactive-score)
 	* [2. Timing patterns of repeating sections and phrases](#2-timing-patterns-of-repeating-sections-and-phrases)
 	* [Further work suggestions](#further-work-suggestions)
-* [Tool nr.3](#tool-nr3)
+* [Tool nr.2](#tool-nr2)
 	* [3. Investigating Musical Properties of Recurring Timing Patterns](#3-investigate-musical-properties-of-recurring-timing-patterns)
 	* [Further work suggestions](#further-work-suggestions-1)
 * [References](#references)
@@ -16,7 +16,7 @@ A work in progress..
  <img src="presentation/img/dict.jpg" width=440>
 </p>
 
-These 3 prototyped tools are designed to examine performance patterns in traditional Norwegian folk music, specifically focusing on **timing patterns** in Hardanger fiddle performances. 
+These prototyped tools are designed to examine performance patterns in traditional Norwegian folk music, specifically focusing on **timing patterns** in Hardanger fiddle performances. 
 
 In musicological research, the concept of "timing patterns" often refers to the temporal position (onsets) of the musical beats. However, research into traditional Scandinavian folk music usually considers timing patterns as combinations of the beat position (onsets) and length (duration). This extended definition is necessary for studying the asymmetrical nature of Hardanger fiddle performance timing, as the beat durations significantly vary throughout a performance.
 
@@ -24,15 +24,15 @@ Conventional approaches to studying these timing patterns include measuring IOI 
 
 With these aspects considered, I propose a set of interactive tools that exlore timing patterns of Hardanger fiddle performances in the following manner:  
 
-1. In the first tool, an interactive and adjustable score representation enables dynamic editing of the performance timing.
-2. In the second tool, a custom plotting window enables us to inspect timing patterns of repeating sections and phrases.
-3. In the third tool, we can investigate the musical properties of recurring timing patterns. By selecting a note region in the score representation, the program will find other regions that exhibit similar timing patterns. Then, plotting helps us examine whether these recurring timing patterns share other musical properties, such as pitch, metrical/motivic position and dynamics.
+1. In the first tool, an interactive and adjustable score representation enables dynamic editing of the performance timing. Additionally, a custom plotting window enables us to inspect timing patterns of repeating sections and phrases.
+
+2. In the second tool, we can investigate the musical properties of recurring timing patterns. By selecting a note region in the score representation, the program will find other regions that exhibit similar timing patterns. Then, plotting helps us examine whether these recurring timing patterns share other musical properties, such as pitch, metrical position and/or dynamics.
 
 The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science). The computationally annotated performances of Hardanger Fiddle music are provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
 *PS: None of the prototyped tools take ornamentations into account... yet.*
 
-# Tool nr.1 and nr.2
+# Tool nr.1
 ## 1. Interactive Score
 <p align="left">
  <img src="presentation/img/1gif.gif" width="700">
@@ -67,14 +67,14 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 <small>*The note ratios are calculated with respects to their associated beat duration. The beat ratios are calculated with respect to their associated bar duration.</small> <br>
 
 
-# Tool nr.3
+# Tool nr.2
 ## 3. Musical properties of recurring timing patterns.
 <p align="left">
  <img src="presentation/img/3.2.jpg" width=auto>
 </p>
 <p align="center">In this tool I define <b>timing patterns</b> as <b>note duration ratios</b>. (see <b>Further work suggestions</b> below for comments on this..)</p>
 
-* In this tool, we import the dictionary we created (and exported) in "tool nr.1 and 2". The dictionary creates the score and every feature that is available in the first tool.
+* In the second tool, we import the dictionary we created (and exported) in "tool nr.1". The dictionary creates the score and every feature that is available in the first tool.
 
 * If we manually select a region in the score, for instance 3 successive notes with our mouse, the program will collect the timing pattern of the selected region and find other regions in the performance where the same timing pattern occurs. Then it colors the found regions and plots them for visual inspection.
 	* Since the ratios in question are very specific (percentages with 2 or more decimal points), it's unlikely we find any 100% pattern matches of a manually selected region. Therefore, the tool features a "scale" slider. This slider lets you round all ratios to nearest N, making pattern finding much easier. So the higher the "scale" number is, the more patterns you will find.
@@ -85,7 +85,7 @@ The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bach
 	3. **Pitch**. As with the first and second point, we plot the number of selected notes along the X-axis, but have the note pitches on the Y-axis. This can help us to see if patterns with similar timing profiles share similar harmonic content or not.
 
 ## Further work suggestions
-* This first iteration of "tool nr.3" is a simple proof of concept. Instead of just finding similar sequences of note durations, we should try to find sequences of **inter onset intervals**, or something similar. The current system design can support alteration to our current definition of what a "timing pattern" is. 
+* This first iteration of "tool nr.2" is a simple proof of concept. Instead of just finding similar sequences of note durations, we should try to find sequences of **inter onset intervals**, or something similar. The current system design can support alteration to our current definition of what a "timing pattern" is. 
 
 * Velocities are, for the time being, randomly generated because transcription data with note dynamics (velocity information) has not yet been provided to me.
 
