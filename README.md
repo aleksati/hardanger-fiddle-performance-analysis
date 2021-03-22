@@ -96,3 +96,6 @@ Johansson, M. (2017). Empirical Research on Asymmetrical Rhythms in Scandinavian
 
 Johansson, M. (2019). Timing-sound interactions in traditional Scandinavian fiddle music: Preliminary and implications. EasyChair Preprint, 5.
 
+
+# License
+This toolbox is released under the [GNU General Public License 3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
