@@ -12,13 +12,10 @@ A work in progress..
 * [References](#references)
 
 # Short Introduction
-<p align="left">
- <img src="presentation/img/dict.jpg" width=440>
-</p>
 
-These prototyped tools are designed to examine performance patterns in traditional Norwegian folk music, specifically focusing on the **asymmetrical timing patterns** in Hardanger fiddle performances. 
+A set of prototypes designed to explore asymmetrical timing patterns in Hardanger fiddle performances.
 
-The tools are prototyped in MaxMSP v8, using the [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science). High-dimensional performance transcription of Hardanger Fiddle music are provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
+Using MaxMSP v8's [Bach Library](https://www.bachproject.net/) (for score representation and visualization), Javascript (for list processing, logic and custom plotting), and Python (for further data science). High-dimensional performance transcription of Hardanger Fiddle music are provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
 # Tool nr.1
 ## 1. Interactive Score
