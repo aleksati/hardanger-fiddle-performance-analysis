@@ -75,12 +75,5 @@ Using MaxMSP v8's [Bach Library](https://www.bachproject.net/) (for score repres
 * Velocities are, for the time being, randomly generated because transcription data with note dynamics (velocity information) has not yet been provided to me.
 
 
-# References
-
-Johansson, M. (2017). Empirical Research on Asymmetrical Rhythms in Scandinavian Folk Music: A Critical Review. Studia Musicologica Norvegica, 43(01), 58–89. https://doi.org/10.18261/issn.1504-2960-2017-01-05 
-
-Johansson, M. (2019). Timing-sound interactions in traditional Scandinavian fiddle music: Preliminary and implications. EasyChair Preprint, 5.
-
-
 # License
 This toolbox is released under the [GNU General Public License 3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html).
