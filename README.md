@@ -1,5 +1,5 @@
 
-A set of prototypes designed to explore the complex rythmical structuring in Hardanger fiddle springar performances. Prototypes are implemented in MaxMSP, with the [Bach Library](https://www.bachproject.net/) and Javascript. High-dimensional performance transcription of Hardanger Fiddle music are provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
+Two computational tools that enable structural and multi-dimensional perspectives on the complex rhythmical structuring of *springar* performances through interactive user interfaces. Implemented in MaxMSP, with the [Bach Library](https://www.bachproject.net/) and additional Javascript. Hardanger Fiddle Performance transcription provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
 
 <p align="left">
