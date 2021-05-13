@@ -1,4 +1,4 @@
-Two computational tools that enable structural and multi-dimensional perspectives on the complex rhythmical structuring of *springar* performances through interactive user interfaces. Implemented in MaxMSP, with the [Bach Library](https://www.bachproject.net/) and additional Javascript for complex list processing. Hardanger Fiddle Performance data provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
+Two software prototypes that enable structural and multi-dimensional perspectives on the complex rhythmical structuring of *springar* performances through interactive user interfaces. Implemented in MaxMSP, with the [Bach Library](https://www.bachproject.net/) and additional Javascript for complex list processing. Hardanger Fiddle Performance data provided by the [MIRAGE Research Project](https://www.uio.no/ritmo/english/projects/mirage/).
 
 
 <p align="center">
