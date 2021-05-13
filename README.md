@@ -2,7 +2,7 @@ Two computational tools that enable structural and multi-dimensional perspective
 
 
 <p align="center">
- <img src="toolkit.gif" width=640>
+ <img src="toolkit.gif">
 </p>
 
 
